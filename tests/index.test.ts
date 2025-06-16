@@ -30,6 +30,8 @@ import {
   AdditionalContextTypes,
   AdditionalContext,
   SectionGenerationContext,
+  LocaleCode,
+  Locale,
 } from "../src";
 
 const TEST_EXTENSION_ID = "test-extension-id";
@@ -185,5 +187,14 @@ describe("SDK Exports", () => {
     expect(appMetaData.extensionId).toBe("test");
     expect(appMetaData.iconDataUri).toBe("test");
     expect(appMetaData.supportedChannels).toEqual([Email, Meta, Display]);
+  });
+
+  it("should export Locale types", () => {
+    const locale: Locale = {
+      code: "en-US",
+      label: "English (United States)",
+    };
+    expect(locale.code).toBe("en-US");
+    expect(locale.label).toBe("English (United States)");
   });
 });

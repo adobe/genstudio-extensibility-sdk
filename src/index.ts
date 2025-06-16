@@ -32,3 +32,8 @@ export {
   ExtensionRegistrationService,
   ExtensionRegistrationError,
 } from "./types/extensionRegistration/ExtensionRegistration";
+
+export {
+  LocaleCode,
+  Locale,
+} from "./types/translation/locales";
