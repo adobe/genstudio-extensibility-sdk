@@ -36,4 +36,6 @@ export {
 export {
   LocaleCode,
   Locale,
-} from "./types/translation/locales";
+  TranslationRequest,
+  TranslationResponse,
+} from "./types/translation";
