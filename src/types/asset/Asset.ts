@@ -17,6 +17,7 @@ import { Channel } from "../channel/Channel";
  */
 export type Asset = {
   id: string;
+  externalId: string;
   name: string;
   signedUrl: string;
   source: string;

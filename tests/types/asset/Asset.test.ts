@@ -21,6 +21,7 @@ describe("Asset", () => {
   it("should create an Asset with required properties", () => {
     const asset: Asset = {
       id: "asset-123",
+      externalId: "external-asset-123",
       name: "Test Asset",
       signedUrl: "https://example.com/assets/test.jpg",
       sourceUrl: "https://example.com/assets/test.jpg",
@@ -28,6 +29,7 @@ describe("Asset", () => {
     };
 
     expect(asset.id).toBe("asset-123");
+    expect(asset.externalId).toBe("external-asset-123");
     expect(asset.name).toBe("Test Asset");
     expect(asset.signedUrl).toBe("https://example.com/assets/test.jpg");
     expect(asset.sourceUrl).toBe("https://example.com/assets/test.jpg");
@@ -46,6 +48,7 @@ describe("Asset", () => {
 
     const asset: Asset = {
       id: "asset-123",
+      externalId: "external-asset-123",
       name: "Test Asset with Metadata",
       signedUrl: "https://example.com/assets/test.jpg",
       sourceUrl: "https://example.com/assets/test.jpg",
@@ -106,6 +109,7 @@ describe("ExternalAssetSelection", () => {
       assets: [
         {
           id: "asset-123",
+          externalId: "external-asset-123",
           name: "Test Asset",
           signedUrl: "https://example.com/assets/test.jpg",
           sourceUrl: "https://example.com/assets/test.jpg",

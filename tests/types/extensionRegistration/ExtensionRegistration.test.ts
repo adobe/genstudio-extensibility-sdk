@@ -89,17 +89,19 @@ describe("ExtensionRegistrationService", () => {
     const mockAssets: Asset[] = [
       {
         id: "asset1",
+        externalId: "external-asset-1",
         name: "Asset 1",
         signedUrl: "https://example.com/asset1",
         sourceUrl: "https://example.com/asset1",
-        source: "source1"
+        source: "source1",
       },
       {
         id: "asset2",
+        externalId: "external-asset-2",
         name: "Asset 2",
         signedUrl: "https://example.com/asset2",
         sourceUrl: "https://example.com/asset2",
-        source: "source2"
+        source: "source2",
       },
     ];
 
