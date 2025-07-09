@@ -11,6 +11,7 @@ governing permissions and limitations under the License.
 */
 
 import { Channel } from "../channel/Channel";
+import { Experience } from "../experience/Experience";
 /* this file defines types and interfaces that are considered as api for extension consumers */
 
 /** Generation Context */
@@ -56,9 +57,12 @@ export type GenerationContext = {
   id: string;
   userPrompt: string;
   channel?: Channel;
-  additionalContexts?: AdditionalContext<any>[];
+  locale?: string;
   brand?: Brand;
   product?: Product;
   persona?: Persona;
+  additionalContexts?: AdditionalContext<any>[];
   sections?: SectionGenerationContext[] | undefined;
+  sourceLocale?: string;
+  sourceExperience?: Experience;
 };

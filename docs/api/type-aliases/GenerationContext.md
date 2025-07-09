@@ -6,7 +6,7 @@
 
 # Type Alias: GenerationContext
 
-> **GenerationContext**: \{ `additionalContexts`: [`AdditionalContext`](AdditionalContext.md)\<`any`\>[]; `brand`: [`Brand`](Brand.md); `channel`: [`Channel`](Channel.md); `id`: `string`; `persona`: [`Persona`](Persona.md); `product`: [`Product`](Product.md); `sections`: [`SectionGenerationContext`](SectionGenerationContext.md)[]; `userPrompt`: `string`; \}
+> **GenerationContext**: \{ `additionalContexts`: [`AdditionalContext`](AdditionalContext.md)\<`any`\>[]; `brand`: [`Brand`](Brand.md); `channel`: [`Channel`](Channel.md); `id`: `string`; `locale`: `string`; `persona`: [`Persona`](Persona.md); `product`: [`Product`](Product.md); `sections`: [`SectionGenerationContext`](SectionGenerationContext.md)[]; `sourceExperience`: [`Experience`](../interfaces/Experience.md); `sourceLocale`: `string`; `userPrompt`: `string`; \}
 
 ## Type declaration
 
@@ -26,6 +26,10 @@
 
 > **id**: `string`
 
+### locale?
+
+> `optional` **locale**: `string`
+
 ### persona?
 
 > `optional` **persona**: [`Persona`](Persona.md)
@@ -37,6 +41,14 @@
 ### sections?
 
 > `optional` **sections**: [`SectionGenerationContext`](SectionGenerationContext.md)[]
+
+### sourceExperience?
+
+> `optional` **sourceExperience**: [`Experience`](../interfaces/Experience.md)
+
+### sourceLocale?
+
+> `optional` **sourceLocale**: `string`
 
 ### userPrompt
 
