@@ -63,6 +63,5 @@ export type GenerationContext = {
   persona?: Persona;
   additionalContexts?: AdditionalContext<any>[];
   sections?: SectionGenerationContext[] | undefined;
-  sourceLocale?: string;
   sourceExperience?: Experience;
 };

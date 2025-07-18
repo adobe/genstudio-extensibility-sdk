@@ -20,6 +20,7 @@ export interface Experience {
     id: string;
     /** Collection of experience fields stored as key-value pairs */
     experienceFields: Record<string, ExperienceField>;
+    locale?: string;
 }
 
 /**

@@ -24,3 +24,9 @@ Collection of experience fields stored as key-value pairs
 > **id**: `string`
 
 Unique identifier for the experience
+
+***
+
+### locale?
+
+> `optional` **locale**: `string`
