@@ -22,3 +22,7 @@ export type Locale = {
   code: LocaleCode;
   label: string;
 }
+
+export type LocalesResponse = {
+  locales: Locale[];
+}
