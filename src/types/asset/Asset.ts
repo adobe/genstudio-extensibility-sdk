@@ -21,6 +21,8 @@ export type Asset = {
   signedUrl: string;
   source: string;
   sourceUrl: string;
+  extensionId: string;
+  iconUrl?: string;
   metadata?: AssetMetadata;
 };
 
