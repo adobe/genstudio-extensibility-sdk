@@ -6,11 +6,23 @@
 
 # Type Alias: Asset
 
-> **Asset**: \{ `id`: `string`; `metadata`: [`AssetMetadata`](AssetMetadata.md); `name`: `string`; `signedUrl`: `string`; `source`: `string`; `sourceUrl`: `string`; \}
+> **Asset**: \{ `assetId`: `string`; `extensionId`: `string`; `iconUrl`: `string`; `id`: `string`; `metadata`: [`AssetMetadata`](AssetMetadata.md); `name`: `string`; `signedUrl`: `string`; `source`: `string`; `sourceUrl`: `string`; \}
 
 Represents an Asset entity in the Experience.
 
 ## Type declaration
+
+### assetId?
+
+> `optional` **assetId**: `string`
+
+### extensionId
+
+> **extensionId**: `string`
+
+### iconUrl?
+
+> `optional` **iconUrl**: `string`
 
 ### id
 

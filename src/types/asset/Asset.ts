@@ -16,7 +16,8 @@ import { Channel } from "../channel/Channel";
  * Represents an Asset entity in the Experience.
  */
 export type Asset = {
-  id: string;
+  id: string; // External Asset ID
+  assetId?: string; // GenStudio Asset ID
   name: string;
   signedUrl: string;
   source: string;
