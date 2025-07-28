@@ -25,6 +25,7 @@ describe("Asset", () => {
       signedUrl: "https://example.com/assets/test.jpg",
       sourceUrl: "https://example.com/assets/test.jpg",
       source: "bynder",
+      extensionId: "test-extension-id",
     };
 
     expect(asset.id).toBe("asset-123");
@@ -50,6 +51,7 @@ describe("Asset", () => {
       signedUrl: "https://example.com/assets/test.jpg",
       sourceUrl: "https://example.com/assets/test.jpg",
       source: "bynder",
+      extensionId: "test-extension-id",
       metadata,
     };
 
@@ -110,6 +112,7 @@ describe("ExternalAssetSelection", () => {
           signedUrl: "https://example.com/assets/test.jpg",
           sourceUrl: "https://example.com/assets/test.jpg",
           source: "bynder",
+          extensionId: "test-extension-id",
         },
       ],
     };
