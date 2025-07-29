@@ -92,14 +92,16 @@ describe("ExtensionRegistrationService", () => {
         name: "Asset 1",
         signedUrl: "https://example.com/asset1",
         sourceUrl: "https://example.com/asset1",
-        source: "source1"
+        source: "source1",
+        extensionId: "test-extension-id",
       },
       {
         id: "asset2",
         name: "Asset 2",
         signedUrl: "https://example.com/asset2",
         sourceUrl: "https://example.com/asset2",
-        source: "source2"
+        source: "source2",
+        extensionId: "test-extension-id",
       },
     ];
 

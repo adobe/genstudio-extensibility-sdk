@@ -25,6 +25,8 @@ describe("Asset", () => {
       signedUrl: "https://example.com/assets/test.jpg",
       sourceUrl: "https://example.com/assets/test.jpg",
       source: "bynder",
+      extensionId: "test-extension-id",
+      assetId: "asset-123",
     };
 
     expect(asset.id).toBe("asset-123");
@@ -33,6 +35,7 @@ describe("Asset", () => {
     expect(asset.sourceUrl).toBe("https://example.com/assets/test.jpg");
     expect(asset.source).toBe("bynder");
     expect(asset.metadata).toBeUndefined();
+    expect(asset.assetId).toBe("asset-123");
   });
 
   it("should support optional metadata", () => {
@@ -50,6 +53,7 @@ describe("Asset", () => {
       signedUrl: "https://example.com/assets/test.jpg",
       sourceUrl: "https://example.com/assets/test.jpg",
       source: "bynder",
+      extensionId: "test-extension-id",
       metadata,
     };
 
@@ -110,6 +114,8 @@ describe("ExternalAssetSelection", () => {
           signedUrl: "https://example.com/assets/test.jpg",
           sourceUrl: "https://example.com/assets/test.jpg",
           source: "bynder",
+          extensionId: "test-extension-id",
+          assetId: "asset-123",
         },
       ],
     };
@@ -124,5 +130,6 @@ describe("ExternalAssetSelection", () => {
       "https://example.com/assets/test.jpg",
     );
     expect(asset.assets[0].source).toBe("bynder");
+    expect(asset.assets[0].assetId).toBe("asset-123");
   });
 });
