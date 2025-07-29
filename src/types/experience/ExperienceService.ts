@@ -50,24 +50,8 @@ export class ExperienceService {
     }
 
     try {
-      //TODO: getExperiences will change to return the actual Experiences object
-      // should handle it here and deprecate the old one once released to production
       // @ts-ignore Remote API is handled through postMessage
-      const experiences = await connection.host.api.createRightPanel.getExperiences();
-      return experiences;
-      // check if experiences is already of type Experience[]
-      if (
-        experiences &&
-        experiences.length > 0 &&
-        typeof experiences[0] === "object" &&
-        experiences[0]?.experienceFields &&
-        experiences[0]?.id &&
-        Object.keys(experiences[0]).length === 2
-      ) {
-        return experiences;
-      }
-      // otherwise convert the raw experiences to Experience[]
-      return this.convertRawExperiencesToExperiences(experiences);
+      return await connection.host.api.createRightPanel.getExperiences();
     } catch (error) {
       throw new ExperienceError("Failed to fetch experiences from host");
     }
