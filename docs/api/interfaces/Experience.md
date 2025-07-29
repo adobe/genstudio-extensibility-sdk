@@ -27,6 +27,6 @@ Unique identifier for the experience
 
 ***
 
-### locale?
+### metadata?
 
-> `optional` **locale**: `string`
+> `optional` **metadata**: [`ExperienceMetadata`](../type-aliases/ExperienceMetadata.md)

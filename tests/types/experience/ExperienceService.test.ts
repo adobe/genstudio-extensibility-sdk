@@ -45,6 +45,9 @@ describe('ExperienceService', () => {
         fieldName: 'description',
         fieldValue: 'Test Description'
       },
+    },
+    metadata: {
+      locale: 'en-US'
     }
   };
 
@@ -66,6 +69,8 @@ describe('ExperienceService', () => {
         expect(result.id).toBeDefined();
         expect(result.experienceFields).toBeDefined();
         expect(typeof result.experienceFields).toBe('object');
+        expect(result.metadata).toBeDefined();
+        expect(typeof result.metadata).toBe('object');
       });
     });
 
