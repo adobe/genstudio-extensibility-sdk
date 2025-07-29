@@ -58,48 +58,6 @@ export class ExperienceService {
   }
 
   /**
-   * Converts a raw experience object to Experience format
-   * @param rawExperience - Raw experience data from the host
-   * @returns Experience - Converted Experience object
-   */
-  static convertRawExperienceToExperience(rawExperience: {
-    id?: string;
-    fields: { [key: string]: any };
-  }): Experience {
-    const experienceFields: Record<string, ExperienceField> = {};
-
-    Object.entries(rawExperience.fields).forEach(([key, value]) => {
-      let fieldValue = "";
-      if (value !== null && value !== undefined) {
-        fieldValue =
-          typeof value === "object" ? JSON.stringify(value) : String(value);
-      }
-      experienceFields[key] = {
-        fieldName: key,
-        fieldValue,
-      };
-    });
-
-    return {
-      id: rawExperience.id ?? "",
-      experienceFields,
-    };
-  }
-
-  /**
-   * Converts an array of raw experiences to Experience format
-   * @param rawExperiences - Array of raw experience data
-   * @returns Experience[] - Array of converted Experience objects
-   */
-  static convertRawExperiencesToExperiences(
-    rawExperiences: any[],
-  ): Experience[] {
-    return rawExperiences.map(exp =>
-      this.convertRawExperienceToExperience(exp),
-    );
-  }
-
-  /**
    * Gets the generation context from the connection
    * @param connection - The guest connection to the host
    * @returns The generation context
