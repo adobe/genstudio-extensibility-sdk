@@ -24,3 +24,9 @@ Collection of experience fields stored as key-value pairs
 > **id**: `string`
 
 Unique identifier for the experience
+
+***
+
+### metadata?
+
+> `optional` **metadata**: [`ExperienceMetadata`](../type-aliases/ExperienceMetadata.md)

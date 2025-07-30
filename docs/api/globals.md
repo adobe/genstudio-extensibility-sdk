@@ -37,6 +37,7 @@
 - [Brand](type-aliases/Brand.md)
 - [Channel](type-aliases/Channel.md)
 - [Claim](type-aliases/Claim.md)
+- [ExperienceMetadata](type-aliases/ExperienceMetadata.md)
 - [ExternalAssetSelection](type-aliases/ExternalAssetSelection.md)
 - [GenerationContext](type-aliases/GenerationContext.md)
 - [Locale](type-aliases/Locale.md)
