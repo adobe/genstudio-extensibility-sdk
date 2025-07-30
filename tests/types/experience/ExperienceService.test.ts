@@ -47,7 +47,8 @@ describe('ExperienceService', () => {
       },
     },
     metadata: {
-      locale: 'en-US'
+      locale: 'en-US',
+      random_key: 'random_value'
     }
   };
 
