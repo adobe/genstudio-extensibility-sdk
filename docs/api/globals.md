@@ -16,6 +16,8 @@
 - [ExtensionRegistrationService](classes/ExtensionRegistrationService.md)
 - [GenerationContextError](classes/GenerationContextError.md)
 - [GenerationContextService](classes/GenerationContextService.md)
+- [ValidationService](classes/ValidationService.md)
+- [ValidationServiceError](classes/ValidationServiceError.md)
 
 ## Interfaces
 
