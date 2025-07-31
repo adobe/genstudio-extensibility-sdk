@@ -10,39 +10,32 @@ OF ANY KIND, either express or implied. See the License for the specific languag
 governing permissions and limitations under the License.
 */
 
-import { Experience } from "./Experience";
+import { Experience } from "../types/experience/Experience";
 
 import { GuestUI } from "@adobe/uix-guest";
 import { VirtualApi } from "@adobe/uix-core";
-import { GenerationContext } from "../generationContext/GenerationContext";
+import { GenerationContext } from "../types/generationContext/GenerationContext";
 
 export interface RightPanelApi extends VirtualApi {
   api: {
-    createRightPanel: {
+    validationExtension: {
       getExperiences: () => Promise<any[]>;
       getGenerationContext: () => Promise<any>;
     };
   };
 }
 
-export class ExperienceError extends Error {
+export class ValidationServiceError extends Error {
   constructor(message: string) {
     super(message);
-    this.name = "ExperienceError";
+    this.name = "ValidationServiceError";
   }
 }
 
 /**
- * @deprecated This class is deprecated and will be removed in version 2.0.0.
- * Use the new ValidationService class instead.
- * 
- * Example usage of the replacement:
- * ```typescript
- * import { ValidationService } from './ValidationService';
- * const service = new ValidationService();
- * ```
+ * Manages experience data conversion and retrieval
  */
-export class ExperienceService {
+export class ValidationService {
   /**
    * Fetches experiences from the connection
    * @param connection - The guest connection to the host
@@ -53,14 +46,14 @@ export class ExperienceService {
     connection: GuestUI<RightPanelApi>,
   ): Promise<Experience[]> {
     if (!connection) {
-      throw new ExperienceError("Connection is required to get experiences");
+      throw new ValidationServiceError("Connection is required to get experiences");
     }
 
     try {
       // @ts-ignore Remote API is handled through postMessage
-      return await connection.host.api.createRightPanel.getExperiences();
+      return await connection.host.api.validationExtension.getExperiences();
     } catch (error) {
-      throw new ExperienceError("Failed to fetch experiences from host");
+      throw new ValidationServiceError("Failed to fetch experiences from host");
     }
   }
 
@@ -74,13 +67,13 @@ export class ExperienceService {
     connection: GuestUI<RightPanelApi>
   ): Promise<GenerationContext> {
     if (!connection) {
-      throw new ExperienceError("Connection is required to get generation context");
+      throw new ValidationServiceError("Connection is required to get generation context");
     }
     try {
       // @ts-ignore Remote API is handled through postMessage
-      return await connection.host.api.createRightPanel.getGenerationContext();
+      return await connection.host.api.validationExtension.getGenerationContext();
     } catch (error) {
-      throw new ExperienceError("Failed to get generation context");
+      throw new ValidationServiceError("Failed to get generation context");
     }
   }
 }

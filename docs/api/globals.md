@@ -11,7 +11,7 @@
 ## Classes
 
 - [ExperienceError](classes/ExperienceError.md)
-- [ExperienceService](classes/ExperienceService.md)
+- [~~ExperienceService~~](classes/ExperienceService.md)
 - [ExtensionRegistrationError](classes/ExtensionRegistrationError.md)
 - [ExtensionRegistrationService](classes/ExtensionRegistrationService.md)
 - [GenerationContextError](classes/GenerationContextError.md)
@@ -32,6 +32,7 @@
 - [App](type-aliases/App.md)
 - [AppMetadata](type-aliases/AppMetadata.md)
 - [~~AppMetaData~~](type-aliases/AppMetaData-1.md)
+- [AppOptions](type-aliases/AppOptions.md)
 - [Asset](type-aliases/Asset.md)
 - [AssetMetadata](type-aliases/AssetMetadata.md)
 - [Brand](type-aliases/Brand.md)

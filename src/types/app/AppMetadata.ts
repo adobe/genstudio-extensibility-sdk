@@ -14,6 +14,14 @@ governing permissions and limitations under the License.
 
 import { Account } from "../account/Account";
 import { Channel } from "../channel/Channel";
+
+export type AppOptions = {
+  validation?: {
+    autoOpenApp?: boolean;
+    singleExperienceViewMode?: boolean;
+  };
+};
+
 /** App Metadata */
 export type AppMetadata = {
   id: string;
@@ -22,6 +30,7 @@ export type AppMetadata = {
   supportedChannels: Channel[];
   label: string;
   accounts?: Account[];
+  options?: AppOptions;
 };
 
 /**

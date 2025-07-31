@@ -4,9 +4,18 @@
 
 [@adobe/genstudio-extensibility-sdk](../globals.md) / ExperienceService
 
-# Class: ExperienceService
+# Class: ~~ExperienceService~~
 
-Manages experience data conversion and retrieval
+## Deprecated
+
+This class is deprecated and will be removed in version 2.0.0.
+Use the new ValidationService class instead.
+
+Example usage of the replacement:
+```typescript
+import { ValidationService } from './ValidationService';
+const service = new ValidationService();
+```
 
 ## Constructors
 
@@ -20,7 +29,7 @@ Manages experience data conversion and retrieval
 
 ## Methods
 
-### getExperiences()
+### ~~getExperiences()~~
 
 > `static` **getExperiences**(`connection`: `GuestUI`\<[`RightPanelApi`](../interfaces/RightPanelApi.md)\>): `Promise`\<[`Experience`](../interfaces/Experience.md)[]\>
 
@@ -46,7 +55,7 @@ Error if connection is missing
 
 ***
 
-### getGenerationContext()
+### ~~getGenerationContext()~~
 
 > `static` **getGenerationContext**(`connection`: `GuestUI`\<[`RightPanelApi`](../interfaces/RightPanelApi.md)\>): `Promise`\<[`GenerationContext`](../type-aliases/GenerationContext.md)\>
 
