@@ -6,7 +6,7 @@
 
 # Type Alias: AppMetadata
 
-> **AppMetadata**: \{ `accounts`: [`Account`](Account.md)[]; `extensionId`: `string`; `iconDataUri`: `string`; `id`: `string`; `label`: `string`; `supportedChannels`: [`Channel`](Channel.md)[]; \}
+> **AppMetadata**: \{ `accounts`: [`Account`](Account.md)[]; `extensionId`: `string`; `iconDataUri`: `string`; `id`: `string`; `label`: `string`; `options`: [`AppOptions`](AppOptions.md); `supportedChannels`: [`Channel`](Channel.md)[]; \}
 
 App Metadata
 
@@ -31,6 +31,10 @@ App Metadata
 ### label
 
 > **label**: `string`
+
+### options?
+
+> `optional` **options**: [`AppOptions`](AppOptions.md)
 
 ### supportedChannels
 
