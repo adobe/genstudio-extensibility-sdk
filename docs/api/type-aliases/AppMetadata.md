@@ -1,14 +1,20 @@
-[**@adobe/genstudio-uix-sdk**](../README.md)
+[**@adobe/genstudio-extensibility-sdk**](../README.md)
 
 ***
 
-[@adobe/genstudio-uix-sdk](../globals.md) / AppMetadata
+[@adobe/genstudio-extensibility-sdk](../globals.md) / AppMetadata
 
 # Type Alias: AppMetadata
 
-> **AppMetadata**: \{ `extensionId`: `string`; `iconDataUri`: `string`; `id`: `string`; `label`: `string`; `supportedChannels`: [`Channel`](Channel.md)[]; \}
+> **AppMetadata**: \{ `accounts`: [`Account`](Account.md)[]; `extensionId`: `string`; `iconDataUri`: `string`; `id`: `string`; `label`: `string`; `options`: [`AppOptions`](AppOptions.md); `supportedChannels`: [`Channel`](Channel.md)[]; \}
+
+App Metadata
 
 ## Type declaration
+
+### accounts?
+
+> `optional` **accounts**: [`Account`](Account.md)[]
 
 ### extensionId
 
@@ -25,6 +31,10 @@
 ### label
 
 > **label**: `string`
+
+### options?
+
+> `optional` **options**: [`AppOptions`](AppOptions.md)
 
 ### supportedChannels
 

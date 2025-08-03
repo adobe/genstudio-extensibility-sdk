@@ -1,12 +1,21 @@
-[**@adobe/genstudio-uix-sdk**](../README.md)
+[**@adobe/genstudio-extensibility-sdk**](../README.md)
 
 ***
 
-[@adobe/genstudio-uix-sdk](../globals.md) / ExperienceService
+[@adobe/genstudio-extensibility-sdk](../globals.md) / ExperienceService
 
-# Class: ExperienceService
+# Class: ~~ExperienceService~~
 
-Manages experience data conversion and retrieval
+## Deprecated
+
+This class is deprecated and will be removed in version 2.0.0.
+Use the new ValidationService class instead.
+
+Example usage of the replacement:
+```typescript
+import { ValidationService } from './ValidationService';
+const service = new ValidationService();
+```
 
 ## Constructors
 
@@ -20,57 +29,7 @@ Manages experience data conversion and retrieval
 
 ## Methods
 
-### convertRawExperiencesToExperiences()
-
-> `static` **convertRawExperiencesToExperiences**(`rawExperiences`: `any`[]): [`Experience`](../interfaces/Experience.md)[]
-
-Converts an array of raw experiences to Experience format
-
-#### Parameters
-
-##### rawExperiences
-
-`any`[]
-
-Array of raw experience data
-
-#### Returns
-
-[`Experience`](../interfaces/Experience.md)[]
-
-Experience[] - Array of converted Experience objects
-
-***
-
-### convertRawExperienceToExperience()
-
-> `static` **convertRawExperienceToExperience**(`rawExperience`: \{ `fields`: \{\}; `id`: `string`; \}): [`Experience`](../interfaces/Experience.md)
-
-Converts a raw experience object to Experience format
-
-#### Parameters
-
-##### rawExperience
-
-Raw experience data from the host
-
-###### fields
-
-\{\}
-
-###### id
-
-`string`
-
-#### Returns
-
-[`Experience`](../interfaces/Experience.md)
-
-Experience - Converted Experience object
-
-***
-
-### getExperiences()
+### ~~getExperiences()~~
 
 > `static` **getExperiences**(`connection`: `GuestUI`\<[`RightPanelApi`](../interfaces/RightPanelApi.md)\>): `Promise`\<[`Experience`](../interfaces/Experience.md)[]\>
 
@@ -96,7 +55,7 @@ Error if connection is missing
 
 ***
 
-### getGenerationContext()
+### ~~getGenerationContext()~~
 
 > `static` **getGenerationContext**(`connection`: `GuestUI`\<[`RightPanelApi`](../interfaces/RightPanelApi.md)\>): `Promise`\<[`GenerationContext`](../type-aliases/GenerationContext.md)\>
 

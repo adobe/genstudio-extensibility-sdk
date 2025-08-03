@@ -10,7 +10,10 @@ OF ANY KIND, either express or implied. See the License for the specific languag
 governing permissions and limitations under the License.
 */
 
-export * from "./types/appMetaData/AppMetaData";
+export * from "./types/asset/Asset";
+export * from "./types/account/Account";
+export * from "./types/app/App";
+export * from "./types/app/AppMetadata";
 export * from "./types/channel/Channel";
 export * from "./types/generationContext/GenerationContext";
 export * from "./types/experience/Experience";
@@ -28,4 +31,13 @@ export {
 export {
   ExtensionRegistrationService,
   ExtensionRegistrationError,
-} from "./types/extensionRegistration/ExtenstionRegistration";
+} from "./types/extensionRegistration/ExtensionRegistration";
+
+export {
+  LocaleCode,
+  Locale,
+  TranslationRequest,
+  TranslationResponse,
+} from "./types/translation";
+
+export * from "./services";

@@ -10,22 +10,16 @@ OF ANY KIND, either express or implied. See the License for the specific languag
 governing permissions and limitations under the License.
 */
 
-/* this file defines types and interfaces that are considered as api for extension consumers */
+import { Account } from "../../../src/types/account/Account";
 
-import { Channel } from "../channel/Channel";
-/** App MetaData */
-export type AppMetaData = {
-  id: string;
-  extensionId: string;
-  iconDataUri: string;
-  supportedChannels: Channel[];
-  label: string;
-};
+describe("Account", () => {
+  it("should create an Account with required properties", () => {
+    const account: Account = {
+      id: "account-123",
+      name: "Test Account",
+    };
 
-export type AppMetadata = {
-  id: string;
-  extensionId: string;
-  iconDataUri: string;
-  supportedChannels: Channel[];
-  label: string;
-};
+    expect(account.id).toBe("account-123");
+    expect(account.name).toBe("Test Account");
+  });
+});

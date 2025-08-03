@@ -10,7 +10,7 @@ OF ANY KIND, either express or implied. See the License for the specific languag
 governing permissions and limitations under the License.
 */
 
-import { Experience, ExperienceField } from "./Experience";
+import { Experience } from "./Experience";
 
 import { GuestUI } from "@adobe/uix-guest";
 import { VirtualApi } from "@adobe/uix-core";
@@ -33,7 +33,14 @@ export class ExperienceError extends Error {
 }
 
 /**
- * Manages experience data conversion and retrieval
+ * @deprecated This class is deprecated and will be removed in version 2.0.0.
+ * Use the new ValidationService class instead.
+ * 
+ * Example usage of the replacement:
+ * ```typescript
+ * import { ValidationService } from './ValidationService';
+ * const service = new ValidationService();
+ * ```
  */
 export class ExperienceService {
   /**
@@ -50,69 +57,11 @@ export class ExperienceService {
     }
 
     try {
-      //TODO: getExperiences will change to return the actual Experiences object
-      // should handle it here and deprecate the old one once released to production
       // @ts-ignore Remote API is handled through postMessage
-      const experiences = await connection.host.api.createRightPanel.getExperiences();
-
-      // check if experiences is already of type Experience[]
-      if (
-        experiences &&
-        experiences.length > 0 &&
-        typeof experiences[0] === "object" &&
-        experiences[0]?.experienceFields &&
-        experiences[0]?.id &&
-        Object.keys(experiences[0]).length === 2
-      ) {
-        return experiences;
-      }
-      // otherwise convert the raw experiences to Experience[]
-      return this.convertRawExperiencesToExperiences(experiences);
+      return await connection.host.api.createRightPanel.getExperiences();
     } catch (error) {
       throw new ExperienceError("Failed to fetch experiences from host");
     }
-  }
-
-  /**
-   * Converts a raw experience object to Experience format
-   * @param rawExperience - Raw experience data from the host
-   * @returns Experience - Converted Experience object
-   */
-  static convertRawExperienceToExperience(rawExperience: {
-    id?: string;
-    fields: { [key: string]: any };
-  }): Experience {
-    const experienceFields: Record<string, ExperienceField> = {};
-
-    Object.entries(rawExperience.fields).forEach(([key, value]) => {
-      let fieldValue = "";
-      if (value !== null && value !== undefined) {
-        fieldValue =
-          typeof value === "object" ? JSON.stringify(value) : String(value);
-      }
-      experienceFields[key] = {
-        fieldName: key,
-        fieldValue,
-      };
-    });
-
-    return {
-      id: rawExperience.id ?? "",
-      experienceFields,
-    };
-  }
-
-  /**
-   * Converts an array of raw experiences to Experience format
-   * @param rawExperiences - Array of raw experience data
-   * @returns Experience[] - Array of converted Experience objects
-   */
-  static convertRawExperiencesToExperiences(
-    rawExperiences: any[],
-  ): Experience[] {
-    return rawExperiences.map(exp =>
-      this.convertRawExperienceToExperience(exp),
-    );
   }
 
   /**

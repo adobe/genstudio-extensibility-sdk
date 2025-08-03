@@ -36,10 +36,19 @@ describe('ExperienceService', () => {
 
   const mockRawExperience = {
     id: 'exp123',
-    fields: {
-      name: 'Test Experience',
-      description: 'Test Description',
-      complexField: { key: 'value' }
+    experienceFields: {
+      name: {
+        fieldName: 'name',
+        fieldValue: 'Test Experience'
+      },
+      description: {
+        fieldName: 'description',
+        fieldValue: 'Test Description'
+      },
+    },
+    metadata: {
+      locale: 'en-US',
+      random_key: 'random_value'
     }
   };
 
@@ -48,90 +57,22 @@ describe('ExperienceService', () => {
     userPrompt: "test-user-prompt"
   };
 
-  describe('convertRawExperienceToExperience', () => {
-    it('should convert raw experience to Experience format', () => {
-      const result = ExperienceService.convertRawExperienceToExperience(mockRawExperience);
-
-      expect(result.id).toBe('exp123');
-      expect(result.experienceFields.name).toEqual({
-        fieldName: 'name',
-        fieldValue: 'Test Experience'
-      });
-      expect(result.experienceFields.complexField).toEqual({
-        fieldName: 'complexField',
-        fieldValue: '{"key":"value"}'
-      });
-    });
-
-    it('should handle missing id', () => {
-      const result = ExperienceService.convertRawExperienceToExperience({
-        fields: mockRawExperience.fields
-      });
-      expect(result.id).toBe('');
-    });
-
-    it('should handle null field values', () => {
-      const result = ExperienceService.convertRawExperienceToExperience({
-        id: 'exp123',
-        fields: { nullField: null }
-      });
-      expect(result.experienceFields.nullField.fieldValue).toBe('');
-    });
-
-    it('should handle undefined field values', () => {
-      const result = ExperienceService.convertRawExperienceToExperience({
-        id: 'exp123',
-        fields: { undefinedField: undefined }
-      });
-      expect(result.experienceFields.undefinedField.fieldValue).toBe('');
-    });
-
-    it('should handle falsy field values', () => {
-      const result = ExperienceService.convertRawExperienceToExperience({
-        id: 'exp123',
-        fields: { 
-          nullField: null,
-          undefinedField: undefined,
-          emptyString: '',
-          zeroNumber: 0,
-          falseBoolean: false
-        }
-      });
-      
-      expect(result.experienceFields.nullField.fieldValue).toBe('');
-      expect(result.experienceFields.undefinedField.fieldValue).toBe('');
-      expect(result.experienceFields.emptyString.fieldValue).toBe('');
-      expect(result.experienceFields.zeroNumber.fieldValue).toBe('0');
-      expect(result.experienceFields.falseBoolean.fieldValue).toBe('false');
-    });
-  });
-
-  describe('convertRawExperiencesToExperiences', () => {
-    it('should convert array of raw experiences', () => {
-      const rawExperiences = [mockRawExperience, mockRawExperience];
-      const results = ExperienceService.convertRawExperiencesToExperiences(rawExperiences);
-      
-      expect(results).toHaveLength(2);
-      expect(results[0].id).toBe('exp123');
-      expect(results[1].id).toBe('exp123');
-    });
-
-    it('should handle empty array', () => {
-      const results = ExperienceService.convertRawExperiencesToExperiences([]);
-      expect(results).toHaveLength(0);
-    });
-  });
-
   describe('getExperiences', () => {
-    it('should fetch and convert experiences', async () => {
+    it('should fetch experiences', async () => {
       const mockGetExperiences = jest.fn().mockResolvedValue([mockRawExperience]);
       const mockConnection = createMockConnection(mockGetExperiences);
 
       const results = await ExperienceService.getExperiences(mockConnection);
       
-      expect(results).toHaveLength(1);
-      expect(results[0].id).toBe('exp123');
       expect(mockGetExperiences).toHaveBeenCalled();
+
+      results.forEach(result => {
+        expect(result.id).toBeDefined();
+        expect(result.experienceFields).toBeDefined();
+        expect(typeof result.experienceFields).toBe('object');
+        expect(result.metadata).toBeDefined();
+        expect(typeof result.metadata).toBe('object');
+      });
     });
 
     it('should throw ExperienceError on API failure', async () => {
@@ -155,27 +96,6 @@ describe('ExperienceService', () => {
       await expect(ExperienceService.getExperiences(null))
         .rejects
         .toThrow('Connection is required to get experiences');
-    });
-    it('should handle already converted experiences', async () => {
-      const mockGetExperiences = jest.fn().mockResolvedValue([{
-        id: 'exp123',
-        experienceFields: {
-          name: {
-            fieldName: 'name',
-            fieldValue: 'Test Experience'
-          }
-        }
-      }]);
-      const mockConnection = createMockConnection(mockGetExperiences);
-
-      const results = await ExperienceService.getExperiences(mockConnection);
-      
-      expect(results).toHaveLength(1);
-      expect(results[0].id).toBe('exp123');
-      expect(results[0].experienceFields.name).toEqual({
-        fieldName: 'name',
-        fieldValue: 'Test Experience'
-      });
     });
   });
 

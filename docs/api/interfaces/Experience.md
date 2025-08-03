@@ -1,8 +1,8 @@
-[**@adobe/genstudio-uix-sdk**](../README.md)
+[**@adobe/genstudio-extensibility-sdk**](../README.md)
 
 ***
 
-[@adobe/genstudio-uix-sdk](../globals.md) / Experience
+[@adobe/genstudio-extensibility-sdk](../globals.md) / Experience
 
 # Interface: Experience
 
@@ -24,3 +24,9 @@ Collection of experience fields stored as key-value pairs
 > **id**: `string`
 
 Unique identifier for the experience
+
+***
+
+### metadata?
+
+> `optional` **metadata**: [`ExperienceMetadata`](../type-aliases/ExperienceMetadata.md)

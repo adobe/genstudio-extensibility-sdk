@@ -1,33 +1,13 @@
-[**@adobe/genstudio-uix-sdk**](../README.md)
+[**@adobe/genstudio-extensibility-sdk**](../README.md)
 
 ***
 
-[@adobe/genstudio-uix-sdk](../globals.md) / AppMetaData
+[@adobe/genstudio-extensibility-sdk](../globals.md) / AppMetaData
 
-# Type Alias: AppMetaData
+# Type Alias: ~~AppMetaData~~
 
-> **AppMetaData**: \{ `extensionId`: `string`; `iconDataUri`: `string`; `id`: `string`; `label`: `string`; `supportedChannels`: [`Channel`](Channel.md)[]; \}
+> **AppMetaData**: [`AppMetadata`](AppMetadata.md)
 
-App MetaData
+## Deprecated
 
-## Type declaration
-
-### extensionId
-
-> **extensionId**: `string`
-
-### iconDataUri
-
-> **iconDataUri**: `string`
-
-### id
-
-> **id**: `string`
-
-### label
-
-> **label**: `string`
-
-### supportedChannels
-
-> **supportedChannels**: [`Channel`](Channel.md)[]
+This type is deprecated. Please use AppMetadata instead.
