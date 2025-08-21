@@ -40,4 +40,5 @@ export {
   TranslationResponse,
 } from "./types/translation";
 
+export * from "./types";
 export * from "./services";

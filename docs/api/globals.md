@@ -7,6 +7,7 @@
 ## Enumerations
 
 - [AdditionalContextTypes](enumerations/AdditionalContextTypes.md)
+- [EmailFieldRole](enumerations/EmailFieldRole.md)
 
 ## Classes
 
@@ -48,6 +49,7 @@
 - [Persona](type-aliases/Persona.md)
 - [Product](type-aliases/Product.md)
 - [SectionGenerationContext](type-aliases/SectionGenerationContext.md)
+- [Template](type-aliases/Template.md)
 - [Toggle](type-aliases/Toggle.md)
 - [TranslationRequest](type-aliases/TranslationRequest.md)
 - [TranslationResponse](type-aliases/TranslationResponse.md)
