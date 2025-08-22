@@ -98,7 +98,6 @@ describe('PromptExtensionService', () => {
     });
 
     it('should handle empty extensionId', () => {
-        //TODO: Can you confirm what the expected behavior is for an empty extensionId? I couldnt find the behavior in the code.
       const mockOpen = jest.fn();
       const mockConnection = createMockConnection(mockOpen);
       const extensionId = '';
@@ -212,7 +211,6 @@ describe('PromptExtensionService', () => {
     });
 
     it('should handle different types of additional context', () => {
-        //TODO: Can you confirm what the expected behavior is for different types of additional context?
       const mockUpdateAdditionalContext = jest.fn();
       const mockConnection = createMockConnection(undefined, undefined, undefined, mockUpdateAdditionalContext);
 

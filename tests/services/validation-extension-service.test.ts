@@ -165,7 +165,6 @@ describe('ValidationExtensionService', () => {
     });
 
     it('should handle empty extensionId', () => {
-      //TODO: Can you confirm what the expected behavior is for an empty extensionId? I couldnt find the behavior in the code.
       const mockOpen = jest.fn();
       const mockConnection = createMockConnection(undefined, undefined, mockOpen);
       const extensionId = '';
