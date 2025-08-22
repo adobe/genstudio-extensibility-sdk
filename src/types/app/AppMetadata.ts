@@ -17,8 +17,18 @@ import { Channel } from "../channel/Channel";
 
 export type AppOptions = {
   validation?: {
-    autoOpenApp?: boolean;
+    /**
+     * Use the single experience view mode for email experiences.
+     */
     singleExperienceViewMode?: boolean;
+    /**
+     * Open this app automatically after navigating to the draft.
+     */
+    autoOpenApp?: boolean;
+    /**
+     * Reload the app automatically when the draft is updated.
+     */
+    autoRefreshApp?: boolean;
   };
 };
 
