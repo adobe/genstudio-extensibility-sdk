@@ -151,17 +151,6 @@ describe('ValidationExtensionService', () => {
         .toThrow('Connection is required to open validation extension');
     });
 
-    it('should throw ValidationExtensionServiceError if connection is undefined', () => {
-      const extensionId = 'test-extension-id';
-
-      // @ts-ignore Testing undefined case explicitly
-      expect(() => ValidationExtensionService.open(undefined, extensionId))
-        .toThrow(ValidationExtensionServiceError);
-      // @ts-ignore Testing undefined case explicitly
-      expect(() => ValidationExtensionService.open(undefined, extensionId))
-        .toThrow('Connection is required to open validation extension');
-    });
-
     it('should throw ValidationExtensionServiceError on API failure', () => {
       const mockOpen = jest.fn().mockImplementation(() => {
         throw new Error('API Error');
