@@ -12,7 +12,13 @@ Manages experience data conversion and retrieval
 
 ### new ValidationExtensionService()
 
-> **new ValidationExtensionService**(): [`ValidationExtensionService`](ValidationExtensionService.md)
+> **new ValidationExtensionService**(`connection`: `GuestUI`\<[`ValidationExtensionApi`](../interfaces/ValidationExtensionApi.md)\>): [`ValidationExtensionService`](ValidationExtensionService.md)
+
+#### Parameters
+
+##### connection
+
+`GuestUI`\<[`ValidationExtensionApi`](../interfaces/ValidationExtensionApi.md)\>
 
 #### Returns
 
@@ -22,17 +28,9 @@ Manages experience data conversion and retrieval
 
 ### getExperiences()
 
-> `static` **getExperiences**(`connection`: `GuestUI`\<[`ValidationExtensionApi`](../interfaces/ValidationExtensionApi.md)\>): `Promise`\<[`Experience`](../interfaces/Experience.md)[]\>
+> **getExperiences**(): `Promise`\<[`Experience`](../interfaces/Experience.md)[]\>
 
 Fetches experiences from the connection
-
-#### Parameters
-
-##### connection
-
-`GuestUI`\<[`ValidationExtensionApi`](../interfaces/ValidationExtensionApi.md)\>
-
-The guest connection to the host
 
 #### Returns
 
@@ -48,17 +46,9 @@ Error if connection is missing
 
 ### getGenerationContext()
 
-> `static` **getGenerationContext**(`connection`: `GuestUI`\<[`ValidationExtensionApi`](../interfaces/ValidationExtensionApi.md)\>): `Promise`\<[`GenerationContext`](../type-aliases/GenerationContext.md)\>
+> **getGenerationContext**(): `Promise`\<[`GenerationContext`](../type-aliases/GenerationContext.md)\>
 
 Gets the generation context from the connection
-
-#### Parameters
-
-##### connection
-
-`GuestUI`\<[`ValidationExtensionApi`](../interfaces/ValidationExtensionApi.md)\>
-
-The guest connection to the host
 
 #### Returns
 
@@ -74,17 +64,11 @@ Error if connection is missing
 
 ### open()
 
-> `static` **open**(`connection`: `GuestUI`\<[`ValidationExtensionApi`](../interfaces/ValidationExtensionApi.md)\>, `extensionId`: `string`): `void`
+> **open**(`extensionId`: `string`): `void`
 
 Opens the validation extension
 
 #### Parameters
-
-##### connection
-
-`GuestUI`\<[`ValidationExtensionApi`](../interfaces/ValidationExtensionApi.md)\>
-
-The guest connection to the host
 
 ##### extensionId
 

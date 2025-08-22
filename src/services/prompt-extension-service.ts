@@ -36,23 +36,25 @@ export class PromptExtensionServiceError extends Error {
  * Manages prompt extension functionality
  */
 export class PromptExtensionService {
+  private readonly connection: GuestUI<PromptExtensionApi>;
+
+  constructor(connection: GuestUI<PromptExtensionApi>) {
+    this.connection = connection;
+  }
+
   /**
    * Opens the prompt extension
-   * @param connection - The guest connection to the host
    * @param extensionId - The ID of the extension to open
    * @throws Error if connection is missing
    */
-  static open(
-    connection: GuestUI<PromptExtensionApi>,
-    extensionId: string
-  ): void {
-    if (!connection) {
+  open(extensionId: string): void {
+    if (!this.connection) {
       throw new PromptExtensionServiceError("Connection is required to open prompt extension");
     }
 
     try {
       // @ts-ignore Remote API is handled through postMessage
-      connection.host.api.promptExtension.open(extensionId);
+      this.connection.host.api.promptExtension.open(extensionId);
     } catch (error) {
       throw new PromptExtensionServiceError("Failed to open prompt extension");
     }
@@ -60,19 +62,16 @@ export class PromptExtensionService {
 
   /**
    * Closes the prompt extension
-   * @param connection - The guest connection to the host
    * @throws Error if connection is missing
    */
-  static close(
-    connection: GuestUI<PromptExtensionApi>
-  ): void {
-    if (!connection) {
+  close(): void {
+    if (!this.connection) {
       throw new PromptExtensionServiceError("Connection is required to close prompt extension");
     }
 
     try {
       // @ts-ignore Remote API is handled through postMessage
-      connection.host.api.promptExtension.close();
+      this.connection.host.api.promptExtension.close();
     } catch (error) {
       throw new PromptExtensionServiceError("Failed to close prompt extension");
     }
@@ -80,20 +79,17 @@ export class PromptExtensionService {
 
   /**
    * Gets the generation context from the prompt extension
-   * @param connection - The guest connection to the host
    * @returns Promise<GenerationContext> The generation context
    * @throws Error if connection is missing
    */
-  static async getGenerationContext(
-    connection: GuestUI<PromptExtensionApi>
-  ): Promise<GenerationContext> {
-    if (!connection) {
+  async getGenerationContext(): Promise<GenerationContext> {
+    if (!this.connection) {
       throw new PromptExtensionServiceError("Connection is required to get generation context");
     }
 
     try {
       // @ts-ignore Remote API is handled through postMessage
-      return await connection.host.api.promptExtension.getGenerationContext();
+      return await this.connection.host.api.promptExtension.getGenerationContext();
     } catch (error) {
       throw new PromptExtensionServiceError("Failed to get generation context from prompt extension");
     }
@@ -101,24 +97,19 @@ export class PromptExtensionService {
 
   /**
    * Updates the additional context in the prompt extension
-   * @param connection - The guest connection to the host
    * @param context - The additional context to update
    * @throws Error if connection is missing
    */
-  static updateAdditionalContext(
-    connection: GuestUI<PromptExtensionApi>,
-    context: AdditionalContext<any>
-  ): void {
-    if (!connection) {
+  updateAdditionalContext(context: AdditionalContext<any>): void {
+    if (!this.connection) {
       throw new PromptExtensionServiceError("Connection is required to update additional context");
     }
 
     try {
       // @ts-ignore Remote API is handled through postMessage
-      connection.host.api.promptExtension.updateAdditionalContext(context);
+      this.connection.host.api.promptExtension.updateAdditionalContext(context);
     } catch (error) {
       throw new PromptExtensionServiceError("Failed to update additional context in prompt extension");
     }
   }
-
 }

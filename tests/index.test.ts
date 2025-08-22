@@ -39,17 +39,14 @@ const TEST_EXTENSION_ID = "test-extension-id";
 describe("SDK Exports", () => {
   it("should export ValidationExtensionService", () => {
     expect(ValidationExtensionService).toBeDefined();
-    expect(typeof ValidationExtensionService.getExperiences).toBe("function");
-    expect(typeof ValidationExtensionService.getGenerationContext).toBe("function");
-    expect(typeof ValidationExtensionService.open).toBe("function");
+    expect(typeof ValidationExtensionService).toBe("function");
+    expect(ValidationExtensionService.prototype).toBeDefined();
   });
 
   it("should export PromptExtensionService", () => {
     expect(PromptExtensionService).toBeDefined();
-    expect(typeof PromptExtensionService.open).toBe("function");
-    expect(typeof PromptExtensionService.close).toBe("function");
-    expect(typeof PromptExtensionService.getGenerationContext).toBe("function");
-    expect(typeof PromptExtensionService.updateAdditionalContext).toBe("function");
+    expect(typeof PromptExtensionService).toBe("function");
+    expect(PromptExtensionService.prototype).toBeDefined();
   });
 
   it("should export Experience types", () => {
