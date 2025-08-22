@@ -41,6 +41,3 @@ export {
 } from "./types/translation";
 
 export * from "./services";
-
-
-
