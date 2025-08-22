@@ -16,26 +16,27 @@ import { GuestUI } from "@adobe/uix-guest";
 import { VirtualApi } from "@adobe/uix-core";
 import { GenerationContext } from "../types/generationContext/GenerationContext";
 
-export interface RightPanelApi extends VirtualApi {
+export interface ValidationExtensionApi extends VirtualApi {
   api: {
     validationExtension: {
       getExperiences: () => Promise<any[]>;
       getGenerationContext: () => Promise<any>;
+      open: (extensionId: string) => void;
     };
   };
 }
 
-export class ValidationServiceError extends Error {
+export class ValidationExtensionServiceError extends Error {
   constructor(message: string) {
     super(message);
-    this.name = "ValidationServiceError";
+    this.name = "ValidationExtensionServiceError";
   }
 }
 
 /**
  * Manages experience data conversion and retrieval
  */
-export class ValidationService {
+export class ValidationExtensionService {
   /**
    * Fetches experiences from the connection
    * @param connection - The guest connection to the host
@@ -43,17 +44,17 @@ export class ValidationService {
    * @throws Error if connection is missing
    */
   static async getExperiences(
-    connection: GuestUI<RightPanelApi>,
+    connection: GuestUI<ValidationExtensionApi>,
   ): Promise<Experience[]> {
     if (!connection) {
-      throw new ValidationServiceError("Connection is required to get experiences");
+      throw new ValidationExtensionServiceError("Connection is required to get experiences");
     }
 
     try {
       // @ts-ignore Remote API is handled through postMessage
       return await connection.host.api.validationExtension.getExperiences();
     } catch (error) {
-      throw new ValidationServiceError("Failed to fetch experiences from host");
+      throw new ValidationExtensionServiceError("Failed to fetch experiences from host");
     }
   }
 
@@ -64,16 +65,39 @@ export class ValidationService {
    * @throws Error if connection is missing
    */
   static async getGenerationContext(
-    connection: GuestUI<RightPanelApi>
+    connection: GuestUI<ValidationExtensionApi>
   ): Promise<GenerationContext> {
     if (!connection) {
-      throw new ValidationServiceError("Connection is required to get generation context");
+      throw new ValidationExtensionServiceError("Connection is required to get generation context");
     }
     try {
       // @ts-ignore Remote API is handled through postMessage
       return await connection.host.api.validationExtension.getGenerationContext();
     } catch (error) {
-      throw new ValidationServiceError("Failed to get generation context");
+      throw new ValidationExtensionServiceError("Failed to get generation context");
+    }
+  }
+
+  /**
+   * Opens the validation extension
+   * @param connection - The guest connection to the host
+   * @param extensionId - The ID of the extension to open
+   * @throws Error if connection is missing
+   */
+  static open(
+    connection: GuestUI<ValidationExtensionApi>,
+    extensionId: string
+  ): void {
+    if (!connection) {
+      throw new ValidationExtensionServiceError("Connection is required to open validation extension");
+    }
+    
+    try {
+      
+      // @ts-ignore Remote API is handled through postMessage
+      connection.host.api.validationExtension.open(extensionId);
+    } catch (error) {
+      throw new ValidationExtensionServiceError("Failed to open validation extension");
     }
   }
 }

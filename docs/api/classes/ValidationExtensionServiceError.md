@@ -2,9 +2,9 @@
 
 ***
 
-[@adobe/genstudio-extensibility-sdk](../globals.md) / ValidationServiceError
+[@adobe/genstudio-extensibility-sdk](../globals.md) / ValidationExtensionServiceError
 
-# Class: ValidationServiceError
+# Class: ValidationExtensionServiceError
 
 ## Extends
 
@@ -12,9 +12,9 @@
 
 ## Constructors
 
-### new ValidationServiceError()
+### new ValidationExtensionServiceError()
 
-> **new ValidationServiceError**(`message`: `string`): [`ValidationServiceError`](ValidationServiceError.md)
+> **new ValidationExtensionServiceError**(`message`: `string`): [`ValidationExtensionServiceError`](ValidationExtensionServiceError.md)
 
 #### Parameters
 
@@ -24,7 +24,7 @@
 
 #### Returns
 
-[`ValidationServiceError`](ValidationServiceError.md)
+[`ValidationExtensionServiceError`](ValidationExtensionServiceError.md)
 
 #### Overrides
 

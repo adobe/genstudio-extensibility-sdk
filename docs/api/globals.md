@@ -16,15 +16,19 @@
 - [ExtensionRegistrationService](classes/ExtensionRegistrationService.md)
 - [GenerationContextError](classes/GenerationContextError.md)
 - [GenerationContextService](classes/GenerationContextService.md)
-- [ValidationService](classes/ValidationService.md)
-- [ValidationServiceError](classes/ValidationServiceError.md)
+- [PromptExtensionService](classes/PromptExtensionService.md)
+- [PromptExtensionServiceError](classes/PromptExtensionServiceError.md)
+- [ValidationExtensionService](classes/ValidationExtensionService.md)
+- [ValidationExtensionServiceError](classes/ValidationExtensionServiceError.md)
 
 ## Interfaces
 
 - [CreateApi](interfaces/CreateApi.md)
 - [Experience](interfaces/Experience.md)
 - [ExperienceField](interfaces/ExperienceField.md)
+- [PromptExtensionApi](interfaces/PromptExtensionApi.md)
 - [RightPanelApi](interfaces/RightPanelApi.md)
+- [ValidationExtensionApi](interfaces/ValidationExtensionApi.md)
 
 ## Type Aliases
 

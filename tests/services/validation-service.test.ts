@@ -10,22 +10,27 @@ OF ANY KIND, either express or implied. See the License for the specific languag
 governing permissions and limitations under the License.
 */
 
-import { ValidationService, ValidationServiceError, RightPanelApi } from '../../src/services/validation-service';
+import { ValidationExtensionService, ValidationExtensionServiceError, ValidationExtensionApi } from '../../src/services';
 import { GuestUI } from '@adobe/uix-guest';
 import { GenerationContext } from '../../src/types/generationContext/GenerationContext';
 
-const createMockConnection = (getExperiencesMock?: jest.Mock, getGenerationContextMock?: jest.Mock) => ({
+const createMockConnection = (
+  getExperiencesMock?: jest.Mock, 
+  getGenerationContextMock?: jest.Mock,
+  openMock?: jest.Mock
+) => ({
   host: {
     api: {
       validationExtension: {
-        getExperiences: getExperiencesMock,
-        getGenerationContext: getGenerationContextMock
+        getExperiences: getExperiencesMock || jest.fn(),
+        getGenerationContext: getGenerationContextMock || jest.fn(),
+        open: openMock || jest.fn()
       }
     }
   }
-} as unknown as GuestUI<RightPanelApi>);
+} as unknown as GuestUI<ValidationExtensionApi>);
 
-describe('ValidationService', () => {
+describe('ValidationExtensionService', () => {
   beforeEach(() => {
     jest.spyOn(console, 'error').mockImplementation(() => {});
   });
@@ -62,7 +67,7 @@ describe('ValidationService', () => {
       const mockGetExperiences = jest.fn().mockResolvedValue([mockRawExperience]);
       const mockConnection = createMockConnection(mockGetExperiences);
 
-      const results = await ValidationService.getExperiences(mockConnection);
+      const results = await ValidationExtensionService.getExperiences(mockConnection);
       
       expect(mockGetExperiences).toHaveBeenCalled();
 
@@ -79,21 +84,21 @@ describe('ValidationService', () => {
       const mockGetExperiences = jest.fn().mockRejectedValue(new Error('API Error'));
       const mockConnection = createMockConnection(mockGetExperiences);
 
-      await expect(ValidationService.getExperiences(mockConnection))
+      await expect(ValidationExtensionService.getExperiences(mockConnection))
         .rejects
-        .toThrow(ValidationServiceError);
-      await expect(ValidationService.getExperiences(mockConnection))
+        .toThrow(ValidationExtensionServiceError);
+      await expect(ValidationExtensionService.getExperiences(mockConnection))
         .rejects
         .toThrow('Failed to fetch experiences from host');
     });
 
     it('should throw ExperienceError if connection is missing', async () => {
       // @ts-ignore Testing null case explicitly
-      await expect(ValidationService.getExperiences(null))
+      await expect(ValidationExtensionService.getExperiences(null))
         .rejects
-        .toThrow(ValidationServiceError);
+        .toThrow(ValidationExtensionServiceError);
       // @ts-ignore Testing null case explicitly  
-      await expect(ValidationService.getExperiences(null))
+      await expect(ValidationExtensionService.getExperiences(null))
         .rejects
         .toThrow('Connection is required to get experiences');
     });
@@ -103,23 +108,83 @@ describe('ValidationService', () => {
     it("should get generation context", async () => {
       const mockGetGenerationContext = jest.fn().mockResolvedValue(mockGenerationContext);
       const mockConnection = createMockConnection(undefined, mockGetGenerationContext);
-      const generationContext = await ValidationService.getGenerationContext(mockConnection);
+      const generationContext = await ValidationExtensionService.getGenerationContext(mockConnection);
       expect(generationContext).toEqual(mockGenerationContext);
     });
 
     it("should throw GenerationContextError if connection is missing", async () => {
       const connection = null;
-      await expect(ValidationService.getGenerationContext(
-        connection as unknown as GuestUI<RightPanelApi>
-      )).rejects.toThrow(new ValidationServiceError('Connection is required to get generation context'));
+      await expect(ValidationExtensionService.getGenerationContext(
+        connection as unknown as GuestUI<ValidationExtensionApi>
+      )).rejects.toThrow(new ValidationExtensionServiceError('Connection is required to get generation context'));
     });
 
     it("should throw ExperienceError on API failure", async () => {
       const mockGetGenerationContext = jest.fn().mockRejectedValue(new Error('API Error'));
       const mockConnection = createMockConnection(undefined, mockGetGenerationContext);
-      await expect(ValidationService.getGenerationContext(mockConnection))
+      await expect(ValidationExtensionService.getGenerationContext(mockConnection))
         .rejects
-        .toThrow(new ValidationServiceError('Failed to get generation context'));
+        .toThrow(new ValidationExtensionServiceError('Failed to get generation context'));
     });
   });
+
+  describe('open', () => {
+    it('should open validation extension successfully', () => {
+      const mockOpen = jest.fn();
+      const mockConnection = createMockConnection(undefined, undefined, mockOpen);
+      const extensionId = 'test-extension-id';
+
+      ValidationExtensionService.open(mockConnection, extensionId);
+
+      expect(mockOpen).toHaveBeenCalledWith(extensionId);
+      expect(mockOpen).toHaveBeenCalledTimes(1);
+    });
+
+    it('should throw ValidationExtensionServiceError if connection is missing', () => {
+      const extensionId = 'test-extension-id';
+
+      // @ts-ignore Testing null case explicitly
+      expect(() => ValidationExtensionService.open(null, extensionId))
+        .toThrow(ValidationExtensionServiceError);
+      // @ts-ignore Testing null case explicitly
+      expect(() => ValidationExtensionService.open(null, extensionId))
+        .toThrow('Connection is required to open validation extension');
+    });
+
+    it('should throw ValidationExtensionServiceError if connection is undefined', () => {
+      const extensionId = 'test-extension-id';
+
+      // @ts-ignore Testing undefined case explicitly
+      expect(() => ValidationExtensionService.open(undefined, extensionId))
+        .toThrow(ValidationExtensionServiceError);
+      // @ts-ignore Testing undefined case explicitly
+      expect(() => ValidationExtensionService.open(undefined, extensionId))
+        .toThrow('Connection is required to open validation extension');
+    });
+
+    it('should throw ValidationExtensionServiceError on API failure', () => {
+      const mockOpen = jest.fn().mockImplementation(() => {
+        throw new Error('API Error');
+      });
+      const mockConnection = createMockConnection(undefined, undefined, mockOpen);
+      const extensionId = 'test-extension-id';
+
+      expect(() => ValidationExtensionService.open(mockConnection, extensionId))
+        .toThrow(ValidationExtensionServiceError);
+      expect(() => ValidationExtensionService.open(mockConnection, extensionId))
+        .toThrow('Failed to open validation extension');
+    });
+
+    it('should handle empty extensionId', () => {
+      //TODO: Can you confirm what the expected behavior is for an empty extensionId? I couldnt find the behavior in the code.
+      const mockOpen = jest.fn();
+      const mockConnection = createMockConnection(undefined, undefined, mockOpen);
+      const extensionId = '';
+
+      ValidationExtensionService.open(mockConnection, extensionId);
+
+      expect(mockOpen).toHaveBeenCalledWith(extensionId);
+    });
+  });
+  
 });
