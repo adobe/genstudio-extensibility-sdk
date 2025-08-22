@@ -19,9 +19,9 @@ import { GenerationContext } from "../types/generationContext/GenerationContext"
 export interface ValidationExtensionApi extends VirtualApi {
   api: {
     validationExtension: {
+      open: (extensionId: string) => void;
       getExperiences: () => Promise<any[]>;
       getGenerationContext: () => Promise<any>;
-      open: (extensionId: string) => void;
     };
   };
 }
@@ -37,6 +37,28 @@ export class ValidationExtensionServiceError extends Error {
  * Manages experience data conversion and retrieval
  */
 export class ValidationExtensionService {
+  /**
+ * Opens the validation extension
+ * @param connection - The guest connection to the host
+ * @param extensionId - The ID of the extension to open
+ * @throws Error if connection is missing
+ */
+  static open(
+    connection: GuestUI<ValidationExtensionApi>,
+    extensionId: string
+  ): void {
+    if (!connection) {
+      throw new ValidationExtensionServiceError("Connection is required to open validation extension");
+    }
+
+    try {
+      // @ts-ignore Remote API is handled through postMessage
+      connection.host.api.validationExtension.open(extensionId);
+    } catch (error) {
+      throw new ValidationExtensionServiceError("Failed to open validation extension");
+    }
+  }
+
   /**
    * Fetches experiences from the connection
    * @param connection - The guest connection to the host
@@ -70,34 +92,12 @@ export class ValidationExtensionService {
     if (!connection) {
       throw new ValidationExtensionServiceError("Connection is required to get generation context");
     }
+
     try {
       // @ts-ignore Remote API is handled through postMessage
       return await connection.host.api.validationExtension.getGenerationContext();
     } catch (error) {
       throw new ValidationExtensionServiceError("Failed to get generation context");
-    }
-  }
-
-  /**
-   * Opens the validation extension
-   * @param connection - The guest connection to the host
-   * @param extensionId - The ID of the extension to open
-   * @throws Error if connection is missing
-   */
-  static open(
-    connection: GuestUI<ValidationExtensionApi>,
-    extensionId: string
-  ): void {
-    if (!connection) {
-      throw new ValidationExtensionServiceError("Connection is required to open validation extension");
-    }
-    
-    try {
-      
-      // @ts-ignore Remote API is handled through postMessage
-      connection.host.api.validationExtension.open(extensionId);
-    } catch (error) {
-      throw new ValidationExtensionServiceError("Failed to open validation extension");
     }
   }
 }

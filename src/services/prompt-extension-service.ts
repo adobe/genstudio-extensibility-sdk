@@ -49,7 +49,7 @@ export class PromptExtensionService {
     if (!connection) {
       throw new PromptExtensionServiceError("Connection is required to open prompt extension");
     }
-    
+
     try {
       // @ts-ignore Remote API is handled through postMessage
       connection.host.api.promptExtension.open(extensionId);
@@ -69,7 +69,7 @@ export class PromptExtensionService {
     if (!connection) {
       throw new PromptExtensionServiceError("Connection is required to close prompt extension");
     }
-    
+
     try {
       // @ts-ignore Remote API is handled through postMessage
       connection.host.api.promptExtension.close();
@@ -90,7 +90,7 @@ export class PromptExtensionService {
     if (!connection) {
       throw new PromptExtensionServiceError("Connection is required to get generation context");
     }
-    
+
     try {
       // @ts-ignore Remote API is handled through postMessage
       return await connection.host.api.promptExtension.getGenerationContext();
@@ -112,7 +112,7 @@ export class PromptExtensionService {
     if (!connection) {
       throw new PromptExtensionServiceError("Connection is required to update additional context");
     }
-    
+
     try {
       // @ts-ignore Remote API is handled through postMessage
       connection.host.api.promptExtension.updateAdditionalContext(context);
