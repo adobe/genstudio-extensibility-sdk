@@ -32,46 +32,57 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - Integration tests for multiple operations
 
 
-
-### Changed
-- **Export Structure**: Refactored main SDK exports for better organization
-  - Moved from services index to direct service imports
-  - Eliminated naming conflicts between services
-  - Cleaner, more explicit export structure
-  - Better tree-shaking support for bundlers
-
-- **Service Architecture**: Improved service layer organization
-  - Separated validation and prompt services
-  - Cleaner separation of concerns
-  - Better error handling consistency
-  - More maintainable code structure
-
-### Fixed
-- **Build Issues**: Resolved TypeScript compilation problems
-  - Fixed export naming conflicts
-  - Resolved module resolution issues
-  - Eliminated build hanging problems
-  - Clean compilation with no errors
-
-- **Import/Export Conflicts**: Resolved duplicate interface exports
-  - Fixed `RightPanelApi` naming conflicts
-  - Cleaner service exports
-  - Better type safety
-
 ### Deprecated
 - **ExperienceService**: This service is now deprecated and will be removed in version 2.0.0
   - **Replacement**: Use `ValidationExtensionService` instead
   - **Migration**: 
     - `ExperienceService.getExperiences()` → `ValidationExtensionService.getExperiences()`
     - `ExperienceService.getGenerationContext()` → `ValidationExtensionService.getGenerationContext()`
-  - **Reason**: Consolidated into unified validation extension service for better architecture
 
 - **GenerationContextService**: This service is now deprecated and will be removed in version 2.0.0
   - **Replacement**: Use `PromptExtensionService` instead
   - **Migration**:
     - `GenerationContextService.setAdditionalContext()` → `PromptExtensionService.updateAdditionalContext()`
     - `GenerationContextService.getGenerationContext()` → `PromptExtensionService.getGenerationContext()`
-  - **Reason**: Moved to prompt extension service for better context management
+
+### Interface Changes
+- **RightPanelApi**: This interface has been replaced with service-specific APIs
+  - **Replacement**: Use `ValidationExtensionApi` or `PromptExtensionApi` instead
+  - **Migration Examples**:
+    ```typescript
+    // OLD (Deprecated)
+    import { RightPanelApi } from '@adobe/genstudio-extensibility-sdk';
+    
+    // NEW (Recommended)
+    import { ValidationExtensionApi } from '@adobe/genstudio-extensibility-sdk';
+    import { PromptExtensionApi } from '@adobe/genstudio-extensibility-sdk';
+    
+    // Usage Examples:
+    // For validation operations
+    const validationConnection: GuestUI<ValidationExtensionApi> = await register({
+      id: 'validation-extension',
+      methods: {
+        validationExtension: {
+          getExperiences: async () => [...],
+          getGenerationContext: async () => {...},
+          open: (extensionId: string) => {...}
+        }
+      }
+    });
+    
+    // For prompt operations  
+    const promptConnection: GuestUI<PromptExtensionApi> = await register({
+      id: 'prompt-extension',
+      methods: {
+        promptExtension: {
+          open: (extensionId: string) => {...},
+          close: () => {...},
+          getGenerationContext: async () => {...},
+          updateAdditionalContext: (context: AdditionalContext<any>) => {...}
+        }
+      }
+    });
+    ```
 
 ### Removed
 - **Prompt Service Dependencies**: Cleaned up unused prompt service references
@@ -97,13 +108,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - Improved test readability
 
 ## [2.5.1] - Previous Release
-
-### Existing Features
-- Core SDK functionality
-- Basic validation services
-- Type definitions for experiences, generation context, and channels
-- Extension registration services
-- Translation services
 
 ---
 
