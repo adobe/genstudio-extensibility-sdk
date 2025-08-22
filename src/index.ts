@@ -17,16 +17,7 @@ export * from "./types/app/AppMetadata";
 export * from "./types/channel/Channel";
 export * from "./types/generationContext/GenerationContext";
 export * from "./types/experience/Experience";
-export {
-  ExperienceService,
-  ExperienceError,
-  RightPanelApi,
-} from "./types/experience/ExperienceService";
-export {
-  GenerationContextService,
-  GenerationContextError,
-  CreateApi,
-} from "./types/generationContext/GenerationContextService";
+
 
 export {
   ExtensionRegistrationService,

@@ -11,8 +11,6 @@ governing permissions and limitations under the License.
 */
 
 import {
-  ExperienceService,
-  ExperienceError,
   Experience,
   ExperienceField,
   Channel,
@@ -32,20 +30,26 @@ import {
   SectionGenerationContext,
   LocaleCode,
   Locale,
+  ValidationExtensionService,
+  PromptExtensionService,
 } from "../src";
 
 const TEST_EXTENSION_ID = "test-extension-id";
 
 describe("SDK Exports", () => {
-  it("should export ExperienceService", () => {
-    expect(ExperienceService).toBeDefined();
-    expect(typeof ExperienceService.getExperiences).toBe("function");
+  it("should export ValidationExtensionService", () => {
+    expect(ValidationExtensionService).toBeDefined();
+    expect(typeof ValidationExtensionService.getExperiences).toBe("function");
+    expect(typeof ValidationExtensionService.getGenerationContext).toBe("function");
+    expect(typeof ValidationExtensionService.open).toBe("function");
   });
 
-  it("should export ExperienceError", () => {
-    const error = new ExperienceError("test");
-    expect(error).toBeInstanceOf(Error);
-    expect(error.name).toBe("ExperienceError");
+  it("should export PromptExtensionService", () => {
+    expect(PromptExtensionService).toBeDefined();
+    expect(typeof PromptExtensionService.open).toBe("function");
+    expect(typeof PromptExtensionService.close).toBe("function");
+    expect(typeof PromptExtensionService.getGenerationContext).toBe("function");
+    expect(typeof PromptExtensionService.updateAdditionalContext).toBe("function");
   });
 
   it("should export Experience types", () => {

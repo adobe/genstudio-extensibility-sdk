@@ -65,7 +65,7 @@ describe('ValidationExtensionService', () => {
   describe('getExperiences', () => {
     it('should fetch experiences', async () => {
       const mockGetExperiences = jest.fn().mockResolvedValue([mockRawExperience]);
-      const mockConnection = createMockConnection(mockGetExperiences);
+      const mockConnection = createMockConnection(mockGetExperiences, undefined, undefined);
 
       const results = await ValidationExtensionService.getExperiences(mockConnection);
       
@@ -82,7 +82,7 @@ describe('ValidationExtensionService', () => {
 
     it('should throw ExperienceError on API failure', async () => {
       const mockGetExperiences = jest.fn().mockRejectedValue(new Error('API Error'));
-      const mockConnection = createMockConnection(mockGetExperiences);
+      const mockConnection = createMockConnection(mockGetExperiences, undefined, undefined);
 
       await expect(ValidationExtensionService.getExperiences(mockConnection))
         .rejects
@@ -107,7 +107,7 @@ describe('ValidationExtensionService', () => {
   describe("getGenerationContext", () => {
     it("should get generation context", async () => {
       const mockGetGenerationContext = jest.fn().mockResolvedValue(mockGenerationContext);
-      const mockConnection = createMockConnection(undefined, mockGetGenerationContext);
+      const mockConnection = createMockConnection(undefined, mockGetGenerationContext, undefined);
       const generationContext = await ValidationExtensionService.getGenerationContext(mockConnection);
       expect(generationContext).toEqual(mockGenerationContext);
     });
@@ -121,7 +121,7 @@ describe('ValidationExtensionService', () => {
 
     it("should throw ExperienceError on API failure", async () => {
       const mockGetGenerationContext = jest.fn().mockRejectedValue(new Error('API Error'));
-      const mockConnection = createMockConnection(undefined, mockGetGenerationContext);
+      const mockConnection = createMockConnection(undefined, mockGetGenerationContext, undefined);
       await expect(ValidationExtensionService.getGenerationContext(mockConnection))
         .rejects
         .toThrow(new ValidationExtensionServiceError('Failed to get generation context'));
