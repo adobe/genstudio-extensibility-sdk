@@ -5,7 +5,7 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [Unreleased] - 2025-01-21
+## [2.6.0] - 2025-09-XX
 
 ### Added
 - **New Prompt Extension Service**: Added comprehensive `PromptExtensionService` class with full API support
@@ -22,14 +22,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - **`open(connection, extensionId)`**: Opens the validation extension with the specified extension ID
   - **Enhanced error handling**: Comprehensive error management with `ValidationExtensionServiceError`
   - **Better connection management**: Robust connection validation and API interaction
-
-- **Comprehensive Test Coverage**: Added extensive unit test suites
-  - Complete test coverage for `PromptExtensionService` (24 tests)
-  - Enhanced test coverage for `ValidationExtensionService` including `open()` method
-  - Mock connection factories for reliable testing
-  - Edge case testing for null/undefined connections
-  - API failure scenario testing
-  - Integration tests for multiple operations
 
 
 ### Deprecated
@@ -84,39 +76,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
     });
     ```
 
-### Removed
-- **Prompt Service Dependencies**: Cleaned up unused prompt service references
-  - Removed prompt service from main exports
-  - Cleaned up services index file
-  - Eliminated unused dependencies
-
-### Technical Improvements
-- **Type Safety**: Enhanced TypeScript type definitions
-  - Better interface definitions
-  - Improved error type handling
-  - More precise API contracts
-
-- **Error Handling**: Standardized error handling across services
-  - Consistent error message formats
-  - Proper error inheritance
-  - Better error context information
-
-- **Testing Infrastructure**: Improved test setup and organization
-  - Jest-based testing framework
-  - Comprehensive mock factories
-  - Better test isolation
-  - Improved test readability
-
 ## [2.5.1] - Previous Release
 
 ---
 
 ## Development Notes
-
-### Testing
-- Run tests with: `npm test`
-- Run specific test file: `npm test tests/services/prompt-service.test.ts`
-- Build project: `npm run build`
 
 ### Import Patterns
 ```typescript
@@ -163,5 +127,6 @@ import { PromptExtensionService } from '@adobe/genstudio-extensibility-sdk';
 
 #### **Timeline:**
 - **v2.5.1**: Deprecation warnings added
+- **v2.6.0**: New services introduced alongside deprecated ones
 - **v2.0.0**: Deprecated services will be removed
 - **Current**: Both old and new services available for backward compatibility
