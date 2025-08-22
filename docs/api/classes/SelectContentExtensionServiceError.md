@@ -2,9 +2,9 @@
 
 ***
 
-[@adobe/genstudio-extensibility-sdk](../globals.md) / ExperienceError
+[@adobe/genstudio-extensibility-sdk](../globals.md) / SelectContentExtensionServiceError
 
-# Class: ExperienceError
+# Class: SelectContentExtensionServiceError
 
 ## Extends
 
@@ -12,9 +12,9 @@
 
 ## Constructors
 
-### new ExperienceError()
+### new SelectContentExtensionServiceError()
 
-> **new ExperienceError**(`message`: `string`): [`ExperienceError`](ExperienceError.md)
+> **new SelectContentExtensionServiceError**(`message`: `string`): [`SelectContentExtensionServiceError`](SelectContentExtensionServiceError.md)
 
 #### Parameters
 
@@ -24,7 +24,7 @@
 
 #### Returns
 
-[`ExperienceError`](ExperienceError.md)
+[`SelectContentExtensionServiceError`](SelectContentExtensionServiceError.md)
 
 #### Overrides
 

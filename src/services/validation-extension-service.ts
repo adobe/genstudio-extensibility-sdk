@@ -20,8 +20,8 @@ export interface ValidationExtensionApi extends VirtualApi {
   api: {
     validationExtension: {
       open: (extensionId: string) => void;
-      getExperiences: () => Promise<any[]>;
-      getGenerationContext: () => Promise<any>;
+      getExperiences: () => Promise<Experience[]>;
+      getGenerationContext: () => Promise<GenerationContext>;
     };
   };
 }

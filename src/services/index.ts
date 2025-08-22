@@ -12,3 +12,4 @@ governing permissions and limitations under the License.
 
 export * from "./validation-extension-service";
 export * from "./prompt-extension-service";
+export * from "./select-content-extension-service";

@@ -18,27 +18,27 @@
 
 ### api
 
-> **api**: \{ `validationExtension`: \{ `getExperiences`: () => `Promise`\<`any`[]\>; `getGenerationContext`: () => `Promise`\<`any`\>; `open`: (`extensionId`: `string`) => `void`; \}; \}
+> **api**: \{ `validationExtension`: \{ `getExperiences`: () => `Promise`\<[`Experience`](Experience.md)[]\>; `getGenerationContext`: () => `Promise`\<[`GenerationContext`](../type-aliases/GenerationContext.md)\>; `open`: (`extensionId`: `string`) => `void`; \}; \}
 
 #### validationExtension
 
-> **validationExtension**: \{ `getExperiences`: () => `Promise`\<`any`[]\>; `getGenerationContext`: () => `Promise`\<`any`\>; `open`: (`extensionId`: `string`) => `void`; \}
+> **validationExtension**: \{ `getExperiences`: () => `Promise`\<[`Experience`](Experience.md)[]\>; `getGenerationContext`: () => `Promise`\<[`GenerationContext`](../type-aliases/GenerationContext.md)\>; `open`: (`extensionId`: `string`) => `void`; \}
 
 ##### validationExtension.getExperiences()
 
-> **getExperiences**: () => `Promise`\<`any`[]\>
+> **getExperiences**: () => `Promise`\<[`Experience`](Experience.md)[]\>
 
 ###### Returns
 
-`Promise`\<`any`[]\>
+`Promise`\<[`Experience`](Experience.md)[]\>
 
 ##### validationExtension.getGenerationContext()
 
-> **getGenerationContext**: () => `Promise`\<`any`\>
+> **getGenerationContext**: () => `Promise`\<[`GenerationContext`](../type-aliases/GenerationContext.md)\>
 
 ###### Returns
 
-`Promise`\<`any`\>
+`Promise`\<[`GenerationContext`](../type-aliases/GenerationContext.md)\>
 
 ##### validationExtension.open()
 

@@ -10,24 +10,21 @@
 
 ## Classes
 
-- [ExperienceError](classes/ExperienceError.md)
-- [~~ExperienceService~~](classes/ExperienceService.md)
 - [ExtensionRegistrationError](classes/ExtensionRegistrationError.md)
 - [ExtensionRegistrationService](classes/ExtensionRegistrationService.md)
-- [GenerationContextError](classes/GenerationContextError.md)
-- [GenerationContextService](classes/GenerationContextService.md)
 - [PromptExtensionService](classes/PromptExtensionService.md)
 - [PromptExtensionServiceError](classes/PromptExtensionServiceError.md)
+- [SelectContentExtensionService](classes/SelectContentExtensionService.md)
+- [SelectContentExtensionServiceError](classes/SelectContentExtensionServiceError.md)
 - [ValidationExtensionService](classes/ValidationExtensionService.md)
 - [ValidationExtensionServiceError](classes/ValidationExtensionServiceError.md)
 
 ## Interfaces
 
-- [CreateApi](interfaces/CreateApi.md)
 - [Experience](interfaces/Experience.md)
 - [ExperienceField](interfaces/ExperienceField.md)
 - [PromptExtensionApi](interfaces/PromptExtensionApi.md)
-- [RightPanelApi](interfaces/RightPanelApi.md)
+- [SelectContentExtensionApi](interfaces/SelectContentExtensionApi.md)
 - [ValidationExtensionApi](interfaces/ValidationExtensionApi.md)
 
 ## Type Aliases
