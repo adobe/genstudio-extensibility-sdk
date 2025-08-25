@@ -22,7 +22,7 @@ Manages experience data conversion and retrieval
 
 ### getExperiences()
 
-> `static` **getExperiences**(`connection`: `GuestUI`\<[`ValidationExtensionApi`](../interfaces/ValidationExtensionApi.md)\>): `Promise`\<[`Experience`](../interfaces/Experience.md)[]\>
+> `static` **getExperiences**(`connection`: `any`): `Promise`\<[`Experience`](../interfaces/Experience.md)[]\>
 
 Fetches experiences from the connection
 
@@ -30,7 +30,7 @@ Fetches experiences from the connection
 
 ##### connection
 
-`GuestUI`\<[`ValidationExtensionApi`](../interfaces/ValidationExtensionApi.md)\>
+`any`
 
 The guest connection to the host
 
@@ -48,7 +48,7 @@ Error if connection is missing
 
 ### getGenerationContext()
 
-> `static` **getGenerationContext**(`connection`: `GuestUI`\<[`ValidationExtensionApi`](../interfaces/ValidationExtensionApi.md)\>): `Promise`\<[`GenerationContext`](../type-aliases/GenerationContext.md)\>
+> `static` **getGenerationContext**(`connection`: `any`): `Promise`\<[`GenerationContext`](../type-aliases/GenerationContext.md)\>
 
 Gets the generation context from the connection
 
@@ -56,7 +56,7 @@ Gets the generation context from the connection
 
 ##### connection
 
-`GuestUI`\<[`ValidationExtensionApi`](../interfaces/ValidationExtensionApi.md)\>
+`any`
 
 The guest connection to the host
 
@@ -74,7 +74,7 @@ Error if connection is missing
 
 ### open()
 
-> `static` **open**(`connection`: `GuestUI`\<[`ValidationExtensionApi`](../interfaces/ValidationExtensionApi.md)\>, `extensionId`: `string`): `void`
+> `static` **open**(`connection`: `any`, `extensionId`: `string`): `void`
 
 Opens the validation extension
 
@@ -82,7 +82,7 @@ Opens the validation extension
 
 ##### connection
 
-`GuestUI`\<[`ValidationExtensionApi`](../interfaces/ValidationExtensionApi.md)\>
+`any`
 
 The guest connection to the host
 

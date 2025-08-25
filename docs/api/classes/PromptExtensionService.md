@@ -22,7 +22,7 @@ Manages prompt extension functionality
 
 ### close()
 
-> `static` **close**(`connection`: `GuestUI`\<[`PromptExtensionApi`](../interfaces/PromptExtensionApi.md)\>): `void`
+> `static` **close**(`connection`: `any`): `void`
 
 Closes the prompt extension
 
@@ -30,7 +30,7 @@ Closes the prompt extension
 
 ##### connection
 
-`GuestUI`\<[`PromptExtensionApi`](../interfaces/PromptExtensionApi.md)\>
+`any`
 
 The guest connection to the host
 
@@ -46,7 +46,7 @@ Error if connection is missing
 
 ### getGenerationContext()
 
-> `static` **getGenerationContext**(`connection`: `GuestUI`\<[`PromptExtensionApi`](../interfaces/PromptExtensionApi.md)\>): `Promise`\<[`GenerationContext`](../type-aliases/GenerationContext.md)\>
+> `static` **getGenerationContext**(`connection`: `any`): `Promise`\<[`GenerationContext`](../type-aliases/GenerationContext.md)\>
 
 Gets the generation context from the prompt extension
 
@@ -54,7 +54,7 @@ Gets the generation context from the prompt extension
 
 ##### connection
 
-`GuestUI`\<[`PromptExtensionApi`](../interfaces/PromptExtensionApi.md)\>
+`any`
 
 The guest connection to the host
 
@@ -72,7 +72,7 @@ Error if connection is missing
 
 ### open()
 
-> `static` **open**(`connection`: `GuestUI`\<[`PromptExtensionApi`](../interfaces/PromptExtensionApi.md)\>, `extensionId`: `string`): `void`
+> `static` **open**(`connection`: `any`, `extensionId`: `string`): `void`
 
 Opens the prompt extension
 
@@ -80,7 +80,7 @@ Opens the prompt extension
 
 ##### connection
 
-`GuestUI`\<[`PromptExtensionApi`](../interfaces/PromptExtensionApi.md)\>
+`any`
 
 The guest connection to the host
 
@@ -102,7 +102,7 @@ Error if connection is missing
 
 ### updateAdditionalContext()
 
-> `static` **updateAdditionalContext**(`connection`: `GuestUI`\<[`PromptExtensionApi`](../interfaces/PromptExtensionApi.md)\>, `context`: [`AdditionalContext`](../type-aliases/AdditionalContext.md)\<`any`\>): `void`
+> `static` **updateAdditionalContext**(`connection`: `any`, `context`: [`AdditionalContext`](../type-aliases/AdditionalContext.md)\<`any`\>): `void`
 
 Updates the additional context in the prompt extension
 
@@ -110,7 +110,7 @@ Updates the additional context in the prompt extension
 
 ##### connection
 
-`GuestUI`\<[`PromptExtensionApi`](../interfaces/PromptExtensionApi.md)\>
+`any`
 
 The guest connection to the host
 

@@ -10,13 +10,7 @@
 
 ### new SelectContentExtensionService()
 
-> **new SelectContentExtensionService**(`connection`: `GuestUI`\<[`SelectContentExtensionApi`](../interfaces/SelectContentExtensionApi.md)\>): [`SelectContentExtensionService`](SelectContentExtensionService.md)
-
-#### Parameters
-
-##### connection
-
-`GuestUI`\<[`SelectContentExtensionApi`](../interfaces/SelectContentExtensionApi.md)\>
+> **new SelectContentExtensionService**(): [`SelectContentExtensionService`](SelectContentExtensionService.md)
 
 #### Returns
 
@@ -26,11 +20,15 @@
 
 ### setSelectedAssets()
 
-> **setSelectedAssets**(`extensionId`: `string`, `assets`: [`Asset`](../type-aliases/Asset.md)[]): `any`
+> `static` **setSelectedAssets**(`connection`: `any`, `extensionId`: `string`, `assets`: [`Asset`](../type-aliases/Asset.md)[]): `void`
 
 Set the selected assets
 
 #### Parameters
+
+##### connection
+
+`any`
 
 ##### extensionId
 
@@ -46,15 +44,23 @@ the selected assets
 
 #### Returns
 
-`any`
+`void`
 
 ***
 
 ### sync()
 
-> **sync**(): `Promise`\<\{ `selectedAssets`: [`Asset`](../type-aliases/Asset.md)[]; `selectionLimit`: `number`; \}\>
+> `static` **sync**(`connection`: `any`): `Promise`\<\{ `selectedAssets`: [`Asset`](../type-aliases/Asset.md)[]; `selectionLimit`: `number`; \}\>
 
 Sync the selected assets
+
+#### Parameters
+
+##### connection
+
+`any`
+
+The guest connection to the host
 
 #### Returns
 

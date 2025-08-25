@@ -10,12 +10,12 @@ OF ANY KIND, either express or implied. See the License for the specific languag
 governing permissions and limitations under the License.
 */
 
-type TranslationMessage = {
+export type TranslationMessage = {
   id: string;
   value: string;
 }
 
-type TranslationItem = {
+export type TranslationItem = {
   id: string;
   messages: TranslationMessage[];
 }

@@ -6,13 +6,13 @@
 
 # Type Alias: TranslationRequest
 
-> **TranslationRequest**: \{ `items`: `TranslationItem`[]; `sourceLocale`: `string`; `targetLocales`: `string`[]; \}
+> **TranslationRequest**: \{ `items`: [`TranslationItem`](TranslationItem.md)[]; `sourceLocale`: `string`; `targetLocales`: `string`[]; \}
 
 ## Type declaration
 
 ### items
 
-> **items**: `TranslationItem`[]
+> **items**: [`TranslationItem`](TranslationItem.md)[]
 
 ### sourceLocale
 

@@ -49,5 +49,7 @@
 - [Product](type-aliases/Product.md)
 - [SectionGenerationContext](type-aliases/SectionGenerationContext.md)
 - [Toggle](type-aliases/Toggle.md)
+- [TranslationItem](type-aliases/TranslationItem.md)
+- [TranslationMessage](type-aliases/TranslationMessage.md)
 - [TranslationRequest](type-aliases/TranslationRequest.md)
 - [TranslationResponse](type-aliases/TranslationResponse.md)

@@ -59,21 +59,12 @@ describe('SelectContentExtensionService', () => {
     selectionLimit: 10
   };
 
-  describe('constructor', () => {
-    it('should create an instance with connection', () => {
-      const mockConnection = createMockConnection();
-      const service = new SelectContentExtensionService(mockConnection);
-      expect(service).toBeInstanceOf(SelectContentExtensionService);
-    });
-  });
-
   describe('sync', () => {
     it('should sync selected assets successfully', async () => {
       const mockSync = jest.fn().mockResolvedValue(mockSyncResponse);
       const mockConnection = createMockConnection(mockSync);
-      const service = new SelectContentExtensionService(mockConnection);
 
-      const result = await service.sync();
+      const result = await SelectContentExtensionService.sync(mockConnection);
       
       expect(mockSync).toHaveBeenCalled();
       expect(result).toEqual(mockSyncResponse);
@@ -84,23 +75,20 @@ describe('SelectContentExtensionService', () => {
     it('should throw SelectContentExtensionServiceError on API failure', async () => {
       const mockSync = jest.fn().mockRejectedValue(new Error('API Error'));
       const mockConnection = createMockConnection(mockSync);
-      const service = new SelectContentExtensionService(mockConnection);
 
-      await expect(service.sync())
+      await expect(SelectContentExtensionService.sync(mockConnection))
         .rejects
         .toThrow(Error);
-      await expect(service.sync())
+      await expect(SelectContentExtensionService.sync(mockConnection))
         .rejects
         .toThrow('API Error');
     });
 
     it('should throw SelectContentExtensionServiceError if connection is missing', async () => {
       // @ts-ignore Testing null case explicitly
-      const service = new SelectContentExtensionService(null);
-
-      expect(() => service.sync())
+      expect(() => SelectContentExtensionService.sync(null))
         .toThrow(SelectContentExtensionServiceError);
-      expect(() => service.sync())
+      expect(() => SelectContentExtensionService.sync(null))
         .toThrow('Connection is required to sync selected assets');
     });
 
@@ -111,9 +99,8 @@ describe('SelectContentExtensionService', () => {
       };
       const mockSync = jest.fn().mockResolvedValue(emptyResponse);
       const mockConnection = createMockConnection(mockSync);
-      const service = new SelectContentExtensionService(mockConnection);
 
-      const result = await service.sync();
+      const result = await SelectContentExtensionService.sync(mockConnection);
       
       expect(result.selectedAssets).toHaveLength(0);
       expect(result.selectionLimit).toBe(5);
@@ -124,11 +111,10 @@ describe('SelectContentExtensionService', () => {
     it('should set selected assets successfully', () => {
       const mockSetSelectedAssets = jest.fn();
       const mockConnection = createMockConnection(undefined, mockSetSelectedAssets);
-      const service = new SelectContentExtensionService(mockConnection);
       const extensionId = 'test-extension-id';
       const assets = [mockAsset];
 
-      service.setSelectedAssets(extensionId, assets);
+      SelectContentExtensionService.setSelectedAssets(mockConnection, extensionId, assets);
 
       expect(mockSetSelectedAssets).toHaveBeenCalledWith(extensionId, assets);
       expect(mockSetSelectedAssets).toHaveBeenCalledTimes(1);
@@ -136,24 +122,22 @@ describe('SelectContentExtensionService', () => {
 
     it('should throw SelectContentExtensionServiceError if connection is missing', () => {
       // @ts-ignore Testing null case explicitly
-      const service = new SelectContentExtensionService(null);
       const extensionId = 'test-extension-id';
       const assets = [mockAsset];
 
-      expect(() => service.setSelectedAssets(extensionId, assets))
+      expect(() => SelectContentExtensionService.setSelectedAssets(null, extensionId, assets))
         .toThrow(SelectContentExtensionServiceError);
-      expect(() => service.setSelectedAssets(extensionId, assets))
+      expect(() => SelectContentExtensionService.setSelectedAssets(null, extensionId, assets))
         .toThrow('Connection is required to set selected assets');
     });
 
     it('should handle empty assets array', () => {
       const mockSetSelectedAssets = jest.fn();
       const mockConnection = createMockConnection(undefined, mockSetSelectedAssets);
-      const service = new SelectContentExtensionService(mockConnection);
       const extensionId = 'test-extension-id';
       const assets: Asset[] = [];
 
-      service.setSelectedAssets(extensionId, assets);
+      SelectContentExtensionService.setSelectedAssets(mockConnection, extensionId, assets);
 
       expect(mockSetSelectedAssets).toHaveBeenCalledWith(extensionId, assets);
     });
@@ -161,11 +145,10 @@ describe('SelectContentExtensionService', () => {
     it('should handle empty extensionId', () => {
       const mockSetSelectedAssets = jest.fn();
       const mockConnection = createMockConnection(undefined, mockSetSelectedAssets);
-      const service = new SelectContentExtensionService(mockConnection);
       const extensionId = '';
       const assets = [mockAsset];
 
-      service.setSelectedAssets(extensionId, assets);
+      SelectContentExtensionService.setSelectedAssets(mockConnection, extensionId, assets);
 
       expect(mockSetSelectedAssets).toHaveBeenCalledWith(extensionId, assets);
     });
@@ -173,14 +156,13 @@ describe('SelectContentExtensionService', () => {
     it('should handle multiple assets', () => {
       const mockSetSelectedAssets = jest.fn();
       const mockConnection = createMockConnection(undefined, mockSetSelectedAssets);
-      const service = new SelectContentExtensionService(mockConnection);
       const extensionId = 'test-extension-id';
       const multipleAssets = [
         mockAsset,
         { ...mockAsset, id: 'asset456', name: 'Test Asset 2' }
       ];
 
-      service.setSelectedAssets(extensionId, multipleAssets);
+      SelectContentExtensionService.setSelectedAssets(mockConnection, extensionId, multipleAssets);
 
       expect(mockSetSelectedAssets).toHaveBeenCalledWith(extensionId, multipleAssets);
     });

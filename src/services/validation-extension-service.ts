@@ -12,7 +12,6 @@ governing permissions and limitations under the License.
 
 import { Experience } from "../types/experience/Experience";
 
-import { GuestUI } from "@adobe/uix-guest";
 import { VirtualApi } from "@adobe/uix-core";
 import { GenerationContext } from "../types/generationContext/GenerationContext";
 
@@ -44,7 +43,7 @@ export class ValidationExtensionService {
  * @throws Error if connection is missing
  */
   static open(
-    connection: GuestUI<ValidationExtensionApi>,
+    connection: any,
     extensionId: string
   ): void {
     if (!connection) {
@@ -66,7 +65,7 @@ export class ValidationExtensionService {
    * @throws Error if connection is missing
    */
   static async getExperiences(
-    connection: GuestUI<ValidationExtensionApi>,
+    connection: any,
   ): Promise<Experience[]> {
     if (!connection) {
       throw new ValidationExtensionServiceError("Connection is required to get experiences");
@@ -87,7 +86,7 @@ export class ValidationExtensionService {
    * @throws Error if connection is missing
    */
   static async getGenerationContext(
-    connection: GuestUI<ValidationExtensionApi>
+    connection: any,
   ): Promise<GenerationContext> {
     if (!connection) {
       throw new ValidationExtensionServiceError("Connection is required to get generation context");

@@ -12,7 +12,6 @@ governing permissions and limitations under the License.
 
 import { VirtualApi } from "@adobe/uix-core";
 import { Asset } from "../types/asset/Asset";
-import { GuestUI } from "@adobe/uix-guest";
 
 export interface SelectContentExtensionApi extends VirtualApi {
   api: {
@@ -31,23 +30,20 @@ export class SelectContentExtensionServiceError extends Error {
 }
 
 export class SelectContentExtensionService {
-  private readonly connection: GuestUI<SelectContentExtensionApi>;
-
-  constructor(connection: GuestUI<SelectContentExtensionApi>) {
-    this.connection = connection;
-  }
-
   /**
    * Sync the selected assets
+   * @param connection - The guest connection to the host
    * @returns the current selected assets and the total count of left assets
    */
-  sync(): Promise<{ selectedAssets: Asset[], selectionLimit: number }> {
-    if (!this.connection) {
+  static sync(
+    connection: any,
+  ): Promise<{ selectedAssets: Asset[], selectionLimit: number }> {
+    if (!connection) {
       throw new SelectContentExtensionServiceError("Connection is required to sync selected assets");
     }
 
     // @ts-ignore Remote API is handled through postMessage
-    return this.connection.host.api.selectContentExtension.sync();
+    return connection.host.api.selectContentExtension.sync();
   }
 
   /**
@@ -55,16 +51,17 @@ export class SelectContentExtensionService {
    * @param extensionId - the extension id of the content select content add ons
    * @param assets - the selected assets
    */
-  setSelectedAssets(
+  static setSelectedAssets(
+    connection: any,
     extensionId: string,
     assets: Asset[],
-  ) {
-    if (!this.connection) {
+  ): void {
+    if (!connection) {
       throw new SelectContentExtensionServiceError("Connection is required to set selected assets");
     }
 
     // @ts-ignore Remote API is handled through postMessage
-    return this.connection.host.api.selectContentExtension.setSelectedAssets(
+    return connection.host.api.selectContentExtension.setSelectedAssets(
       extensionId,
       assets,
     );

@@ -10,7 +10,6 @@ OF ANY KIND, either express or implied. See the License for the specific languag
 governing permissions and limitations under the License.
 */
 
-import { GuestUI } from "@adobe/uix-guest";
 import { VirtualApi } from "@adobe/uix-core";
 import { GenerationContext, AdditionalContext } from "../types/generationContext/GenerationContext";
 
@@ -43,7 +42,7 @@ export class PromptExtensionService {
    * @throws Error if connection is missing
    */
   static open(
-    connection: GuestUI<PromptExtensionApi>,
+    connection: any,
     extensionId: string
   ): void {
     if (!connection) {
@@ -64,7 +63,7 @@ export class PromptExtensionService {
    * @throws Error if connection is missing
    */
   static close(
-    connection: GuestUI<PromptExtensionApi>
+    connection: any,
   ): void {
     if (!connection) {
       throw new PromptExtensionServiceError("Connection is required to close prompt extension");
@@ -85,7 +84,7 @@ export class PromptExtensionService {
    * @throws Error if connection is missing
    */
   static async getGenerationContext(
-    connection: GuestUI<PromptExtensionApi>
+    connection: any,
   ): Promise<GenerationContext> {
     if (!connection) {
       throw new PromptExtensionServiceError("Connection is required to get generation context");
@@ -106,7 +105,7 @@ export class PromptExtensionService {
    * @throws Error if connection is missing
    */
   static updateAdditionalContext(
-    connection: GuestUI<PromptExtensionApi>,
+    connection: any,
     context: AdditionalContext<any>
   ): void {
     if (!connection) {
