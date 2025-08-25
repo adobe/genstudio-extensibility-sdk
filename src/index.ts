@@ -10,34 +10,5 @@ OF ANY KIND, either express or implied. See the License for the specific languag
 governing permissions and limitations under the License.
 */
 
-export * from "./types/asset/Asset";
-export * from "./types/account/Account";
-export * from "./types/app/App";
-export * from "./types/app/AppMetadata";
-export * from "./types/channel/Channel";
-export * from "./types/generationContext/GenerationContext";
-export * from "./types/experience/Experience";
-export {
-  ExperienceService,
-  ExperienceError,
-  RightPanelApi,
-} from "./types/experience/ExperienceService";
-export {
-  GenerationContextService,
-  GenerationContextError,
-  CreateApi,
-} from "./types/generationContext/GenerationContextService";
-
-export {
-  ExtensionRegistrationService,
-  ExtensionRegistrationError,
-} from "./types/extensionRegistration/ExtensionRegistration";
-
-export {
-  LocaleCode,
-  Locale,
-  TranslationRequest,
-  TranslationResponse,
-} from "./types/translation";
-
+export * from "./types";
 export * from "./services";

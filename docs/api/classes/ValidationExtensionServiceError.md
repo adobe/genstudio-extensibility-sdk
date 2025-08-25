@@ -2,9 +2,9 @@
 
 ***
 
-[@adobe/genstudio-extensibility-sdk](../globals.md) / ExperienceError
+[@adobe/genstudio-extensibility-sdk](../globals.md) / ValidationExtensionServiceError
 
-# Class: ExperienceError
+# Class: ValidationExtensionServiceError
 
 ## Extends
 
@@ -12,9 +12,9 @@
 
 ## Constructors
 
-### new ExperienceError()
+### new ValidationExtensionServiceError()
 
-> **new ExperienceError**(`message`: `string`): [`ExperienceError`](ExperienceError.md)
+> **new ValidationExtensionServiceError**(`message`: `string`): [`ValidationExtensionServiceError`](ValidationExtensionServiceError.md)
 
 #### Parameters
 
@@ -24,7 +24,7 @@
 
 #### Returns
 
-[`ExperienceError`](ExperienceError.md)
+[`ValidationExtensionServiceError`](ValidationExtensionServiceError.md)
 
 #### Overrides
 

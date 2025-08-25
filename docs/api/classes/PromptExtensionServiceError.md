@@ -2,9 +2,9 @@
 
 ***
 
-[@adobe/genstudio-extensibility-sdk](../globals.md) / GenerationContextError
+[@adobe/genstudio-extensibility-sdk](../globals.md) / PromptExtensionServiceError
 
-# Class: GenerationContextError
+# Class: PromptExtensionServiceError
 
 ## Extends
 
@@ -12,9 +12,9 @@
 
 ## Constructors
 
-### new GenerationContextError()
+### new PromptExtensionServiceError()
 
-> **new GenerationContextError**(`message`: `string`): [`GenerationContextError`](GenerationContextError.md)
+> **new PromptExtensionServiceError**(`message`: `string`): [`PromptExtensionServiceError`](PromptExtensionServiceError.md)
 
 #### Parameters
 
@@ -24,7 +24,7 @@
 
 #### Returns
 
-[`GenerationContextError`](GenerationContextError.md)
+[`PromptExtensionServiceError`](PromptExtensionServiceError.md)
 
 #### Overrides
 
