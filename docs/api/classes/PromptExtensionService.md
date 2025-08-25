@@ -12,13 +12,7 @@ Manages prompt extension functionality
 
 ### new PromptExtensionService()
 
-> **new PromptExtensionService**(`connection`: `GuestUI`\<[`PromptExtensionApi`](../interfaces/PromptExtensionApi.md)\>): [`PromptExtensionService`](PromptExtensionService.md)
-
-#### Parameters
-
-##### connection
-
-`GuestUI`\<[`PromptExtensionApi`](../interfaces/PromptExtensionApi.md)\>
+> **new PromptExtensionService**(): [`PromptExtensionService`](PromptExtensionService.md)
 
 #### Returns
 
@@ -28,9 +22,17 @@ Manages prompt extension functionality
 
 ### close()
 
-> **close**(): `void`
+> `static` **close**(`connection`: `GuestUI`\<[`PromptExtensionApi`](../interfaces/PromptExtensionApi.md)\>): `void`
 
 Closes the prompt extension
+
+#### Parameters
+
+##### connection
+
+`GuestUI`\<[`PromptExtensionApi`](../interfaces/PromptExtensionApi.md)\>
+
+The guest connection to the host
 
 #### Returns
 
@@ -44,9 +46,17 @@ Error if connection is missing
 
 ### getGenerationContext()
 
-> **getGenerationContext**(): `Promise`\<[`GenerationContext`](../type-aliases/GenerationContext.md)\>
+> `static` **getGenerationContext**(`connection`: `GuestUI`\<[`PromptExtensionApi`](../interfaces/PromptExtensionApi.md)\>): `Promise`\<[`GenerationContext`](../type-aliases/GenerationContext.md)\>
 
 Gets the generation context from the prompt extension
+
+#### Parameters
+
+##### connection
+
+`GuestUI`\<[`PromptExtensionApi`](../interfaces/PromptExtensionApi.md)\>
+
+The guest connection to the host
 
 #### Returns
 
@@ -62,11 +72,17 @@ Error if connection is missing
 
 ### open()
 
-> **open**(`extensionId`: `string`): `void`
+> `static` **open**(`connection`: `GuestUI`\<[`PromptExtensionApi`](../interfaces/PromptExtensionApi.md)\>, `extensionId`: `string`): `void`
 
 Opens the prompt extension
 
 #### Parameters
+
+##### connection
+
+`GuestUI`\<[`PromptExtensionApi`](../interfaces/PromptExtensionApi.md)\>
+
+The guest connection to the host
 
 ##### extensionId
 
@@ -86,11 +102,17 @@ Error if connection is missing
 
 ### updateAdditionalContext()
 
-> **updateAdditionalContext**(`context`: [`AdditionalContext`](../type-aliases/AdditionalContext.md)\<`any`\>): `void`
+> `static` **updateAdditionalContext**(`connection`: `GuestUI`\<[`PromptExtensionApi`](../interfaces/PromptExtensionApi.md)\>, `context`: [`AdditionalContext`](../type-aliases/AdditionalContext.md)\<`any`\>): `void`
 
 Updates the additional context in the prompt extension
 
 #### Parameters
+
+##### connection
+
+`GuestUI`\<[`PromptExtensionApi`](../interfaces/PromptExtensionApi.md)\>
+
+The guest connection to the host
 
 ##### context
 

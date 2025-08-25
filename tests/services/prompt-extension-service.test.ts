@@ -61,35 +61,26 @@ describe('PromptExtensionService', () => {
     ]
   };
 
-  describe('constructor', () => {
-    it('should create an instance with connection', () => {
-      const mockConnection = createMockConnection();
-      const service = new PromptExtensionService(mockConnection);
-      expect(service).toBeInstanceOf(PromptExtensionService);
-    });
-  });
-
   describe('open', () => {
     it('should open prompt extension successfully', () => {
       const mockOpen = jest.fn();
       const mockConnection = createMockConnection(mockOpen);
-      const service = new PromptExtensionService(mockConnection);
       const extensionId = 'test-extension-id';
 
-      service.open(extensionId);
+      PromptExtensionService.open(mockConnection, extensionId);
 
       expect(mockOpen).toHaveBeenCalledWith(extensionId);
       expect(mockOpen).toHaveBeenCalledTimes(1);
     });
 
     it('should throw PromptExtensionServiceError if connection is missing', () => {
-      // @ts-ignore Testing null case explicitly
-      const service = new PromptExtensionService(null);
       const extensionId = 'test-extension-id';
 
-      expect(() => service.open(extensionId))
+      // @ts-ignore Testing null case explicitly
+      expect(() => PromptExtensionService.open(null, extensionId))
         .toThrow(PromptExtensionServiceError);
-      expect(() => service.open(extensionId))
+      // @ts-ignore Testing null case explicitly
+      expect(() => PromptExtensionService.open(null, extensionId))
         .toThrow('Connection is required to open prompt extension');
     });
 
@@ -98,22 +89,20 @@ describe('PromptExtensionService', () => {
         throw new Error('API Error');
       });
       const mockConnection = createMockConnection(mockOpen);
-      const service = new PromptExtensionService(mockConnection);
       const extensionId = 'test-extension-id';
 
-      expect(() => service.open(extensionId))
+      expect(() => PromptExtensionService.open(mockConnection, extensionId))
         .toThrow(PromptExtensionServiceError);
-      expect(() => service.open(extensionId))
+      expect(() => PromptExtensionService.open(mockConnection, extensionId))
         .toThrow('Failed to open prompt extension');
     });
 
     it('should handle empty extensionId', () => {
       const mockOpen = jest.fn();
       const mockConnection = createMockConnection(mockOpen);
-      const service = new PromptExtensionService(mockConnection);
       const extensionId = '';
 
-      service.open(extensionId);
+      PromptExtensionService.open(mockConnection, extensionId);
 
       expect(mockOpen).toHaveBeenCalledWith(extensionId);
     });
@@ -123,9 +112,8 @@ describe('PromptExtensionService', () => {
     it('should close prompt extension successfully', () => {
       const mockClose = jest.fn();
       const mockConnection = createMockConnection(undefined, mockClose);
-      const service = new PromptExtensionService(mockConnection);
 
-      service.close();
+      PromptExtensionService.close(mockConnection);
 
       expect(mockClose).toHaveBeenCalled();
       expect(mockClose).toHaveBeenCalledTimes(1);
@@ -133,11 +121,10 @@ describe('PromptExtensionService', () => {
 
     it('should throw PromptExtensionServiceError if connection is missing', () => {
       // @ts-ignore Testing null case explicitly
-      const service = new PromptExtensionService(null);
-
-      expect(() => service.close())
+      expect(() => PromptExtensionService.close(null))
         .toThrow(PromptExtensionServiceError);
-      expect(() => service.close())
+      // @ts-ignore Testing null case explicitly
+      expect(() => PromptExtensionService.close(null))
         .toThrow('Connection is required to close prompt extension');
     });
 
@@ -146,11 +133,10 @@ describe('PromptExtensionService', () => {
         throw new Error('API Error');
       });
       const mockConnection = createMockConnection(undefined, mockClose);
-      const service = new PromptExtensionService(mockConnection);
 
-      expect(() => service.close())
+      expect(() => PromptExtensionService.close(mockConnection))
         .toThrow(PromptExtensionServiceError);
-      expect(() => service.close())
+      expect(() => PromptExtensionService.close(mockConnection))
         .toThrow('Failed to close prompt extension');
     });
   });
@@ -159,9 +145,8 @@ describe('PromptExtensionService', () => {
     it('should get generation context successfully', async () => {
       const mockGetGenerationContext = jest.fn().mockResolvedValue(mockGenerationContext);
       const mockConnection = createMockConnection(undefined, undefined, mockGetGenerationContext);
-      const service = new PromptExtensionService(mockConnection);
       
-      const result = await service.getGenerationContext();
+      const result = await PromptExtensionService.getGenerationContext(mockConnection);
       
       expect(mockGetGenerationContext).toHaveBeenCalled();
       expect(result).toEqual(mockGenerationContext);
@@ -172,24 +157,22 @@ describe('PromptExtensionService', () => {
     it('should throw PromptExtensionServiceError on API failure', async () => {
       const mockGetGenerationContext = jest.fn().mockRejectedValue(new Error('API Error'));
       const mockConnection = createMockConnection(undefined, undefined, mockGetGenerationContext);
-      const service = new PromptExtensionService(mockConnection);
 
-      await expect(service.getGenerationContext())
+      await expect(PromptExtensionService.getGenerationContext(mockConnection))
         .rejects
         .toThrow(PromptExtensionServiceError);
-      await expect(service.getGenerationContext())
+      await expect(PromptExtensionService.getGenerationContext(mockConnection))
         .rejects
         .toThrow('Failed to get generation context from prompt extension');
     });
 
     it('should throw PromptExtensionServiceError if connection is missing', async () => {
       // @ts-ignore Testing null case explicitly
-      const service = new PromptExtensionService(null);
-
-      await expect(service.getGenerationContext())
+      await expect(PromptExtensionService.getGenerationContext(null))
         .rejects
         .toThrow(PromptExtensionServiceError);
-      await expect(service.getGenerationContext())
+      // @ts-ignore Testing null case explicitly
+      await expect(PromptExtensionService.getGenerationContext(null))
         .rejects
         .toThrow('Connection is required to get generation context');
     });
@@ -199,9 +182,8 @@ describe('PromptExtensionService', () => {
     it('should update additional context successfully', () => {
       const mockUpdateAdditionalContext = jest.fn();
       const mockConnection = createMockConnection(undefined, undefined, undefined, mockUpdateAdditionalContext);
-      const service = new PromptExtensionService(mockConnection);
 
-      service.updateAdditionalContext(mockAdditionalContext);
+      PromptExtensionService.updateAdditionalContext(mockConnection, mockAdditionalContext);
 
       expect(mockUpdateAdditionalContext).toHaveBeenCalledWith(mockAdditionalContext);
       expect(mockUpdateAdditionalContext).toHaveBeenCalledTimes(1);
@@ -209,11 +191,10 @@ describe('PromptExtensionService', () => {
 
     it('should throw PromptExtensionServiceError if connection is missing', () => {
       // @ts-ignore Testing null case explicitly
-      const service = new PromptExtensionService(null);
-
-      expect(() => service.updateAdditionalContext(mockAdditionalContext))
+      expect(() => PromptExtensionService.updateAdditionalContext(null, mockAdditionalContext))
         .toThrow(PromptExtensionServiceError);
-      expect(() => service.updateAdditionalContext(mockAdditionalContext))
+      // @ts-ignore Testing null case explicitly
+      expect(() => PromptExtensionService.updateAdditionalContext(null, mockAdditionalContext))
         .toThrow('Connection is required to update additional context');
     });
 
@@ -222,18 +203,16 @@ describe('PromptExtensionService', () => {
         throw new Error('API Error');
       });
       const mockConnection = createMockConnection(undefined, undefined, undefined, mockUpdateAdditionalContext);
-      const service = new PromptExtensionService(mockConnection);
 
-      expect(() => service.updateAdditionalContext(mockAdditionalContext))
+      expect(() => PromptExtensionService.updateAdditionalContext(mockConnection, mockAdditionalContext))
         .toThrow(PromptExtensionServiceError);
-      expect(() => service.updateAdditionalContext(mockAdditionalContext))
+      expect(() => PromptExtensionService.updateAdditionalContext(mockConnection, mockAdditionalContext))
         .toThrow('Failed to update additional context in prompt extension');
     });
 
     it('should handle different types of additional context', () => {
       const mockUpdateAdditionalContext = jest.fn();
       const mockConnection = createMockConnection(undefined, undefined, undefined, mockUpdateAdditionalContext);
-      const service = new PromptExtensionService(mockConnection);
 
       const differentContext: AdditionalContext<any> = {
         extensionId: "different-extension",
@@ -246,7 +225,7 @@ describe('PromptExtensionService', () => {
         ]
       };
 
-      service.updateAdditionalContext(differentContext);
+      PromptExtensionService.updateAdditionalContext(mockConnection, differentContext);
 
       expect(mockUpdateAdditionalContext).toHaveBeenCalledWith(differentContext);
     });

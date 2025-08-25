@@ -37,27 +37,23 @@ export class ValidationExtensionServiceError extends Error {
  * Manages experience data conversion and retrieval
  */
 export class ValidationExtensionService {
-  private readonly connection: GuestUI<ValidationExtensionApi>;
-
-  constructor(connection: GuestUI<ValidationExtensionApi>) {
-    this.connection = connection;
-  }
-
   /**
  * Opens the validation extension
+ * @param connection - The guest connection to the host
  * @param extensionId - The ID of the extension to open
  * @throws Error if connection is missing
  */
-  open(
+  static open(
+    connection: GuestUI<ValidationExtensionApi>,
     extensionId: string
   ): void {
-    if (!this.connection) {
+    if (!connection) {
       throw new ValidationExtensionServiceError("Connection is required to open validation extension");
     }
 
     try {
       // @ts-ignore Remote API is handled through postMessage
-      this.connection.host.api.validationExtension.open(extensionId);
+      connection.host.api.validationExtension.open(extensionId);
     } catch (error) {
       throw new ValidationExtensionServiceError("Failed to open validation extension");
     }
@@ -65,17 +61,20 @@ export class ValidationExtensionService {
 
   /**
    * Fetches experiences from the connection
+   * @param connection - The guest connection to the host
    * @returns Promise<Experience[]> Array of converted experiences
    * @throws Error if connection is missing
    */
-  async getExperiences(): Promise<Experience[]> {
-    if (!this.connection) {
+  static async getExperiences(
+    connection: GuestUI<ValidationExtensionApi>,
+  ): Promise<Experience[]> {
+    if (!connection) {
       throw new ValidationExtensionServiceError("Connection is required to get experiences");
     }
 
     try {
       // @ts-ignore Remote API is handled through postMessage
-      return await this.connection.host.api.validationExtension.getExperiences();
+      return await connection.host.api.validationExtension.getExperiences();
     } catch (error) {
       throw new ValidationExtensionServiceError("Failed to fetch experiences from host");
     }
@@ -83,17 +82,20 @@ export class ValidationExtensionService {
 
   /**
    * Gets the generation context from the connection
+   * @param connection - The guest connection to the host
    * @returns The generation context
    * @throws Error if connection is missing
    */
-  async getGenerationContext(): Promise<GenerationContext> {
-    if (!this.connection) {
+  static async getGenerationContext(
+    connection: GuestUI<ValidationExtensionApi>
+  ): Promise<GenerationContext> {
+    if (!connection) {
       throw new ValidationExtensionServiceError("Connection is required to get generation context");
     }
 
     try {
       // @ts-ignore Remote API is handled through postMessage
-      return await this.connection.host.api.validationExtension.getGenerationContext();
+      return await connection.host.api.validationExtension.getGenerationContext();
     } catch (error) {
       throw new ValidationExtensionServiceError("Failed to get generation context");
     }
