@@ -6,34 +6,22 @@
 
 # Type Alias: Template
 
-> **Template**: \{ `createdAt`: `string`; `createdBy`: `string`; `description`: `string`; `id`: `string`; `name`: `string`; `updatedAt`: `string`; `updatedBy`: `string`; \}
+> **Template**: \{ `content`: `string`; `id`: `string`; `mapping`: [`Mapping`](Mapping.md); `title`: `string`; \}
 
 ## Type declaration
 
-### createdAt
+### content
 
-> **createdAt**: `string`
-
-### createdBy
-
-> **createdBy**: `string`
-
-### description
-
-> **description**: `string`
+> **content**: `string`
 
 ### id
 
 > **id**: `string`
 
-### name
+### mapping
 
-> **name**: `string`
+> **mapping**: [`Mapping`](Mapping.md)
 
-### updatedAt
+### title
 
-> **updatedAt**: `string`
-
-### updatedBy
-
-> **updatedBy**: `string`
+> **title**: `string`

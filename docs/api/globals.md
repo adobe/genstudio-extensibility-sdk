@@ -47,6 +47,7 @@
 - [Locale](type-aliases/Locale.md)
 - [LocaleCode](type-aliases/LocaleCode.md)
 - [LocalesResponse](type-aliases/LocalesResponse.md)
+- [Mapping](type-aliases/Mapping.md)
 - [Persona](type-aliases/Persona.md)
 - [Product](type-aliases/Product.md)
 - [SectionGenerationContext](type-aliases/SectionGenerationContext.md)
