@@ -44,7 +44,6 @@
 - [GenerationContext](type-aliases/GenerationContext.md)
 - [Locale](type-aliases/Locale.md)
 - [LocaleCode](type-aliases/LocaleCode.md)
-- [LocalesResponse](type-aliases/LocalesResponse.md)
 - [Persona](type-aliases/Persona.md)
 - [Product](type-aliases/Product.md)
 - [SectionGenerationContext](type-aliases/SectionGenerationContext.md)
