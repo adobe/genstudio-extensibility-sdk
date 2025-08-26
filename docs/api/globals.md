@@ -43,6 +43,7 @@
 - [ExperienceMetadata](type-aliases/ExperienceMetadata.md)
 - [ExternalAssetSelection](type-aliases/ExternalAssetSelection.md)
 - [GenerationContext](type-aliases/GenerationContext.md)
+- [ImportTemplateExtensionRegistration](type-aliases/ImportTemplateExtensionRegistration.md)
 - [Locale](type-aliases/Locale.md)
 - [LocaleCode](type-aliases/LocaleCode.md)
 - [LocalesResponse](type-aliases/LocalesResponse.md)

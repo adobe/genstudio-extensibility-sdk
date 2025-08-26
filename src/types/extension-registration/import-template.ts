@@ -10,5 +10,14 @@ OF ANY KIND, either express or implied. See the License for the specific languag
 governing permissions and limitations under the License.
 */
 
-export * from "./Template";
-export * from "./FieldRoles";
+import { App, Toggle } from "../app/App";
+
+export type ImportTemplateExtensionRegistration = {
+  id: string;
+  methods: {
+    importTemplateExtension: {
+      getToggles: (id: string) => Promise<Toggle[]>;
+      getApps: (id: string) => App[]
+    }
+  }
+};

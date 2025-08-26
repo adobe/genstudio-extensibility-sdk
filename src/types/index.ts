@@ -16,6 +16,7 @@ export * from "./app/AppMetadata";
 export * from "./asset/Asset";
 export * from "./channel/Channel";
 export * from "./experience/Experience";
+export * from "./extension-registration";
 export * from "./generationContext/GenerationContext";
 export * from "./template";
 export * from "./translation";
