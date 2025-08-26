@@ -10,16 +10,8 @@ OF ANY KIND, either express or implied. See the License for the specific languag
 governing permissions and limitations under the License.
 */
 
-import type { infer as ZodInfer } from "zod";
-import { localeCodeSchema } from "./schemas";
+import {z} from 'zod';
 
-export type LocaleCode = ZodInfer<typeof localeCodeSchema>;
-
-export type Locale = {
-  code: LocaleCode;
-  label: string;
-}
-
-export type LocalesResponse = {
-  locales: Locale[];
-}
+export const localeCodeSchema = z
+  .string()
+  .regex(/^[a-z]{2}[a-zA-Z0-9\-_]*$/);
