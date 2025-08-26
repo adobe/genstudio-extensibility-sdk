@@ -11,21 +11,20 @@
 
 ## Classes
 
-- [ExperienceError](classes/ExperienceError.md)
-- [~~ExperienceService~~](classes/ExperienceService.md)
-- [ExtensionRegistrationError](classes/ExtensionRegistrationError.md)
-- [ExtensionRegistrationService](classes/ExtensionRegistrationService.md)
-- [GenerationContextError](classes/GenerationContextError.md)
-- [GenerationContextService](classes/GenerationContextService.md)
-- [ValidationService](classes/ValidationService.md)
-- [ValidationServiceError](classes/ValidationServiceError.md)
+- [PromptExtensionService](classes/PromptExtensionService.md)
+- [PromptExtensionServiceError](classes/PromptExtensionServiceError.md)
+- [SelectContentExtensionService](classes/SelectContentExtensionService.md)
+- [SelectContentExtensionServiceError](classes/SelectContentExtensionServiceError.md)
+- [ValidationExtensionService](classes/ValidationExtensionService.md)
+- [ValidationExtensionServiceError](classes/ValidationExtensionServiceError.md)
 
 ## Interfaces
 
-- [CreateApi](interfaces/CreateApi.md)
 - [Experience](interfaces/Experience.md)
 - [ExperienceField](interfaces/ExperienceField.md)
-- [RightPanelApi](interfaces/RightPanelApi.md)
+- [PromptExtensionApi](interfaces/PromptExtensionApi.md)
+- [SelectContentExtensionApi](interfaces/SelectContentExtensionApi.md)
+- [ValidationExtensionApi](interfaces/ValidationExtensionApi.md)
 
 ## Type Aliases
 
@@ -46,10 +45,13 @@
 - [GenerationContext](type-aliases/GenerationContext.md)
 - [Locale](type-aliases/Locale.md)
 - [LocaleCode](type-aliases/LocaleCode.md)
+- [LocalesResponse](type-aliases/LocalesResponse.md)
 - [Persona](type-aliases/Persona.md)
 - [Product](type-aliases/Product.md)
 - [SectionGenerationContext](type-aliases/SectionGenerationContext.md)
 - [Template](type-aliases/Template.md)
 - [Toggle](type-aliases/Toggle.md)
+- [TranslationItem](type-aliases/TranslationItem.md)
+- [TranslationMessage](type-aliases/TranslationMessage.md)
 - [TranslationRequest](type-aliases/TranslationRequest.md)
 - [TranslationResponse](type-aliases/TranslationResponse.md)

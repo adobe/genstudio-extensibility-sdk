@@ -2,9 +2,9 @@
 
 ***
 
-[@adobe/genstudio-extensibility-sdk](../globals.md) / ExtensionRegistrationError
+[@adobe/genstudio-extensibility-sdk](../globals.md) / SelectContentExtensionServiceError
 
-# Class: ExtensionRegistrationError
+# Class: SelectContentExtensionServiceError
 
 ## Extends
 
@@ -12,9 +12,9 @@
 
 ## Constructors
 
-### new ExtensionRegistrationError()
+### new SelectContentExtensionServiceError()
 
-> **new ExtensionRegistrationError**(`message`: `string`): [`ExtensionRegistrationError`](ExtensionRegistrationError.md)
+> **new SelectContentExtensionServiceError**(`message`: `string`): [`SelectContentExtensionServiceError`](SelectContentExtensionServiceError.md)
 
 #### Parameters
 
@@ -24,7 +24,7 @@
 
 #### Returns
 
-[`ExtensionRegistrationError`](ExtensionRegistrationError.md)
+[`SelectContentExtensionServiceError`](SelectContentExtensionServiceError.md)
 
 #### Overrides
 

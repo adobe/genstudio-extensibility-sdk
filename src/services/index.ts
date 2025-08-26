@@ -10,4 +10,6 @@ OF ANY KIND, either express or implied. See the License for the specific languag
 governing permissions and limitations under the License.
 */
 
-export { ValidationService, ValidationServiceError } from "./validation-service";
+export * from "./validation-extension-service";
+export * from "./prompt-extension-service";
+export * from "./select-content-extension-service";

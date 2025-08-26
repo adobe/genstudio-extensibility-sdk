@@ -9,6 +9,13 @@ the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR REPRESENTA
 OF ANY KIND, either express or implied. See the License for the specific language
 governing permissions and limitations under the License.
 */
-/* this file defines types and interfaces that are considered as Experience api for extension consumers */
 
+export * from "./account/Account";
+export * from "./app/App";
+export * from "./app/AppMetadata";
+export * from "./asset/Asset";
+export * from "./channel/Channel";
+export * from "./experience/Experience";
+export * from "./generationContext/GenerationContext";
 export * from "./template";
+export * from "./translation";

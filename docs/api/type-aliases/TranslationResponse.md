@@ -6,7 +6,7 @@
 
 # Type Alias: TranslationResponse
 
-> **TranslationResponse**: \{ `error`: `string`; `results`: `Record`\<`string`, `TranslationItem`[]\>; `status`: `number`; \}
+> **TranslationResponse**: \{ `error`: `string`; `results`: `Record`\<`string`, [`TranslationItem`](TranslationItem.md)[]\>; `status`: `number`; \}
 
 ## Type declaration
 
@@ -16,7 +16,7 @@
 
 ### results
 
-> **results**: `Record`\<`string`, `TranslationItem`[]\>
+> **results**: `Record`\<`string`, [`TranslationItem`](TranslationItem.md)[]\>
 
 ### status
 

@@ -11,7 +11,7 @@ governing permissions and limitations under the License.
 */
 
 import {z} from 'zod';
-import { localeCodeSchema } from '../../../src/types/translation/locales';
+import { localeCodeSchema } from '../../../src/types/translation/schemas';
 
 describe('Locale Types', () => {
   describe('LocaleCode', () => {

@@ -10,24 +10,8 @@ OF ANY KIND, either express or implied. See the License for the specific languag
 governing permissions and limitations under the License.
 */
 
-export type TranslationMessage = {
-  id: string;
-  value: string;
-}
+import {z} from 'zod';
 
-export type TranslationItem = {
-  id: string;
-  messages: TranslationMessage[];
-}
-
-export type TranslationRequest = {
-  sourceLocale: string;
-  targetLocales: string[];
-  items: TranslationItem[];
-}
-
-export type TranslationResponse = {
-  status: number;
-  error?: string | undefined;
-  results: Record<string, TranslationItem[]>;
-}
+export const localeCodeSchema = z
+  .string()
+  .regex(/^[a-z]{2}[a-zA-Z0-9\-_]*$/);
