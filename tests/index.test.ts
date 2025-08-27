@@ -43,6 +43,7 @@ import {
   AssetMetadata,
   ExternalAssetSelection,
   Locale,
+  Template,
   LocaleCode,
   LocalesResponse,
   TranslationRequest,
@@ -393,6 +394,26 @@ describe("SDK Exports", () => {
       };
       expect(translationResponse.status).toBe(200);
       expect(translationResponse.results["es-ES"]).toBeDefined();
+    });
+  });
+
+  it("should export Template types", () => {
+    const template: Template = {
+      id: "test",
+      title: "test",
+      content: "test",
+      mapping: {
+        "externalBody": "body",
+        "externalHeader": "header",
+      },
+    };
+
+    expect(template.id).toBe("test");
+    expect(template.title).toBe("test");
+    expect(template.content).toBe("test");
+    expect(template.mapping).toEqual({
+      "externalBody": "body",
+      "externalHeader": "header",
     });
   });
 });

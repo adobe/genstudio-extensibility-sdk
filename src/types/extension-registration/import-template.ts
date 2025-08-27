@@ -10,13 +10,14 @@ OF ANY KIND, either express or implied. See the License for the specific languag
 governing permissions and limitations under the License.
 */
 
-export * from "./account/Account";
-export * from "./app/App";
-export * from "./app/AppMetadata";
-export * from "./asset/Asset";
-export * from "./channel/Channel";
-export * from "./experience/Experience";
-export * from "./extension-registration";
-export * from "./generationContext/GenerationContext";
-export * from "./template";
-export * from "./translation";
+import { App, Toggle } from "../app/App";
+
+export type ImportTemplateExtensionRegistration = {
+  id: string;
+  methods: {
+    importTemplateExtension: {
+      getToggles: (id: string) => Promise<Toggle[]>;
+      getApps: (id: string) => App[]
+    }
+  }
+};
