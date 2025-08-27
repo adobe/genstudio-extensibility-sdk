@@ -44,7 +44,6 @@ import {
   ExternalAssetSelection,
   Locale,
   Template,
-  EmailFieldRole,
   LocaleCode,
   LocalesResponse,
   TranslationRequest,
@@ -401,43 +400,20 @@ describe("SDK Exports", () => {
   it("should export Template types", () => {
     const template: Template = {
       id: "test",
-      name: "test",
-      description: "test",
-      createdAt: "2021-01-01",
-      updatedAt: "2021-01-01",
-      createdBy: "test",
-      updatedBy: "test",
+      title: "test",
+      content: "test",
+      mapping: {
+        "externalBody": "body",
+        "externalHeader": "header",
+      },
     };
 
     expect(template.id).toBe("test");
-    expect(template.name).toBe("test");
-    expect(template.description).toBe("test");
-    expect(template.createdAt).toBe("2021-01-01");
-    expect(template.updatedAt).toBe("2021-01-01");
-    expect(template.createdBy).toBe("test");
-    expect(template.updatedBy).toBe("test");
-  });
-
-  it("should export EmailFieldRole types", () => {
-    const preHeader: EmailFieldRole = EmailFieldRole.PRE_HEADER;
-    expect(preHeader).toBe(EmailFieldRole.PRE_HEADER);
-
-    const headline: EmailFieldRole = EmailFieldRole.HEADLINE;
-    expect(headline).toBe(EmailFieldRole.HEADLINE);
-
-    const subHeadline: EmailFieldRole = EmailFieldRole.SUB_HEADLINE;
-    expect(subHeadline).toBe(EmailFieldRole.SUB_HEADLINE);
-
-    const body: EmailFieldRole = EmailFieldRole.BODY;
-    expect(body).toBe(EmailFieldRole.BODY);
-
-    const cta: EmailFieldRole = EmailFieldRole.CTA;
-    expect(cta).toBe(EmailFieldRole.CTA);
-
-    const image: EmailFieldRole = EmailFieldRole.IMAGE;
-    expect(image).toBe(EmailFieldRole.IMAGE);
-
-    const link: EmailFieldRole = EmailFieldRole.LINK;
-    expect(link).toBe(EmailFieldRole.LINK);
+    expect(template.title).toBe("test");
+    expect(template.content).toBe("test");
+    expect(template.mapping).toEqual({
+      "externalBody": "body",
+      "externalHeader": "header",
+    });
   });
 });

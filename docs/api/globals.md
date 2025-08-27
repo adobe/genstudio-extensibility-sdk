@@ -7,7 +7,6 @@
 ## Enumerations
 
 - [AdditionalContextTypes](enumerations/AdditionalContextTypes.md)
-- [EmailFieldRole](enumerations/EmailFieldRole.md)
 
 ## Classes
 
