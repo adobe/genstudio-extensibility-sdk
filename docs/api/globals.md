@@ -10,6 +10,8 @@
 
 ## Classes
 
+- [ImportTemplateExtensionService](classes/ImportTemplateExtensionService.md)
+- [ImportTemplateExtensionServiceError](classes/ImportTemplateExtensionServiceError.md)
 - [PromptExtensionService](classes/PromptExtensionService.md)
 - [PromptExtensionServiceError](classes/PromptExtensionServiceError.md)
 - [SelectContentExtensionService](classes/SelectContentExtensionService.md)
@@ -21,6 +23,7 @@
 
 - [Experience](interfaces/Experience.md)
 - [ExperienceField](interfaces/ExperienceField.md)
+- [ImportTemplateExtensionApi](interfaces/ImportTemplateExtensionApi.md)
 - [PromptExtensionApi](interfaces/PromptExtensionApi.md)
 - [SelectContentExtensionApi](interfaces/SelectContentExtensionApi.md)
 - [ValidationExtensionApi](interfaces/ValidationExtensionApi.md)
