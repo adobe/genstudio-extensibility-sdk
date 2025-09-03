@@ -14,3 +14,4 @@ export * from "./validation-extension-service";
 export * from "./prompt-extension-service";
 export * from "./select-content-extension-service";
 export * from "./import-template-extension-service";
+export * from "./extension-auth";
