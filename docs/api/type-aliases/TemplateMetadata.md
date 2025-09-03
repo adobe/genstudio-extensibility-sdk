@@ -14,6 +14,10 @@
 
 > **source**: `string`
 
+Source of the template
+
 ### url?
 
 > `optional` **url**: `string`
+
+URL of the template

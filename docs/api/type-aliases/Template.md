@@ -14,18 +14,28 @@
 
 > **content**: `string`
 
+Raw HTML content of the template
+
 ### id
 
 > **id**: `string`
+
+Unique identifier for the template
 
 ### mapping
 
 > **mapping**: [`Mapping`](Mapping.md)
 
+Mapping of Handlebars variables to GenStudio variables
+
 ### metadata?
 
 > `optional` **metadata**: [`TemplateMetadata`](TemplateMetadata.md)
 
+Metadata about the template
+
 ### title
 
 > **title**: `string`
+
+Title of the template
