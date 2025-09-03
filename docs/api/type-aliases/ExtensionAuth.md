@@ -8,16 +8,24 @@
 
 > **ExtensionAuth**: \{ `apiKey`: `string`; `imsOrgId`: `string`; `imsToken`: `string`; \}
 
+Extension Auth object received from GenStudio
+
 ## Type declaration
 
 ### apiKey
 
 > **apiKey**: `string`
 
+API Key
+
 ### imsOrgId
 
 > **imsOrgId**: `string`
 
+IMS Organization ID
+
 ### imsToken
 
 > **imsToken**: `string`
+
+IMS User Bearer Token

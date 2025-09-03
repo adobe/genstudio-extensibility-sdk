@@ -19,6 +19,11 @@ export class ExtensionAuthError extends Error {
   }
 }
 
+/**
+ * Get the extension auth from the connection.
+ * @param connection - The connection to get the extension auth from.
+ * @returns {ExtensionAuth} The extension auth.
+ */
 export const getExtensionAuth = (connection: any): ExtensionAuth => {
   if (!connection) {
     throw new ExtensionAuthError("Connection is required to get extension auth");

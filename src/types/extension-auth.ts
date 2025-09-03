@@ -10,8 +10,20 @@ OF ANY KIND, either express or implied. See the License for the specific languag
 governing permissions and limitations under the License.
 */
 
+/**
+ * Extension Auth object received from GenStudio
+ */
 export type ExtensionAuth = {
+  /**
+   * IMS Organization ID
+   */
   imsOrgId: string;
+  /**
+   * IMS User Bearer Token
+   */
   imsToken: string;
+  /**
+   * API Key
+   */
   apiKey: string;
 };
