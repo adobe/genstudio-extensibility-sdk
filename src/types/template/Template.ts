@@ -17,6 +17,8 @@ export type TemplateMetadata = {
     source: string;
     /** URL of the template */
     url?: string;
+    /** Additional metadata */
+    [key: string]: any;
 };
 
 export type Template = {

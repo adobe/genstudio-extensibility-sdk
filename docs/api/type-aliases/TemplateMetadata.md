@@ -6,9 +6,13 @@
 
 # Type Alias: TemplateMetadata
 
-> **TemplateMetadata**: \{ `source`: `string`; `url`: `string`; \}
+> **TemplateMetadata**: \{ `[key: string]`: `any`;  `source`: `string`; `url`: `string`; \}
 
 ## Type declaration
+
+## Index Signature
+
+\[`key`: `string`\]: `any`
 
 ### source
 
