@@ -1,17 +1,16 @@
-# genstudio-extensibility-sdk
-GenStudio Extensibility SDK
+# GenStudio UI Extensibility SDK
+
+- [Globals](./api/globals.md)
 
 **This repo is still WIP. Please use caution and reach out to GS team before using**
 
-## API Documentation
-Please refer to the [API Documentation](https://opensource.adobe.com/genstudio-extensibility-sdk/) for more information.
 ## Usage
 ```
-npm install @adobe/genstudio-extensibility-sdk
+npm install @adobe/genstudio-uix-sdk
 ```
 ## Import
 ```ts
-import { Experience, ExperienceField } from '@adobe/genstudio-extensibility-sdk'
+import { Experience, ExperienceField } from '@adobe/genstudio-uix-sdk'
 
 const experienceFields = new Map<string, ExperienceField>([
       [

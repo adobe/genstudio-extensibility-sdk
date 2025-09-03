@@ -9,6 +9,24 @@ the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR REPRESENTA
 OF ANY KIND, either express or implied. See the License for the specific language
 governing permissions and limitations under the License.
 */
+/* this file defines types and interfaces that are considered as Channels api for extension consumers */
 
-export * from "./types";
-export * from "./services";
+export const Email: Channel = {
+  id: "email",
+  name: "Email",
+};
+
+export const Meta: Channel = {
+  id: "meta",
+  name: "Meta",
+};
+
+export const Display: Channel = {
+  id: "display",
+  name: "Display",
+};
+
+export type Channel = {
+  id: string;
+  name: string;
+};

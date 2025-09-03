@@ -1,0 +1,21 @@
+{
+    "entryPoints": [
+        "src/index.ts"
+    ],
+    "out": "./docs/api",
+    "hideGenerator": true,
+    "disableSources": true,
+    "navigationLinks": {
+        "Home": "https://opensource.adobe.com/genstudio-extensibility-sdk/"
+    },
+    "expandObjects": true,
+    "expandParameters": true,
+    "plugin": [
+        "typedoc-plugin-zod",
+        "typedoc-plugin-markdown"
+    ],
+    "excludeNotDocumented": true,
+    "excludeNotDocumentedKinds": [
+        "Variable"
+    ]
+}

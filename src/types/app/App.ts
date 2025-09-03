@@ -10,5 +10,21 @@ OF ANY KIND, either express or implied. See the License for the specific languag
 governing permissions and limitations under the License.
 */
 
-export * from "./types";
-export * from "./services";
+import { AppMetadata } from "./AppMetadata";
+
+/**
+ * App is a type that represents an app which contains a url toteh guest application and metadata.
+ */
+export type App = {
+  metadata: AppMetadata;
+  url: string;
+};
+
+/**
+ * Toggle is a type that represents a toggle which contains a metadata and a function to be called when the toggle is clicked.
+ * In most cases the toggle will be used to open a dialog or a panel which is of an App type.
+ */
+export type Toggle = {
+  metadata: AppMetadata;
+  onClick: () => void;
+};

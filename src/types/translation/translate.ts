@@ -10,5 +10,24 @@ OF ANY KIND, either express or implied. See the License for the specific languag
 governing permissions and limitations under the License.
 */
 
-export * from "./types";
-export * from "./services";
+export type TranslationMessage = {
+  id: string;
+  value: string;
+}
+
+export type TranslationItem = {
+  id: string;
+  messages: TranslationMessage[];
+}
+
+export type TranslationRequest = {
+  sourceLocale: string;
+  targetLocales: string[];
+  items: TranslationItem[];
+}
+
+export type TranslationResponse = {
+  status: number;
+  error?: string | undefined;
+  results: Record<string, TranslationItem[]>;
+}

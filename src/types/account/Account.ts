@@ -10,5 +10,12 @@ OF ANY KIND, either express or implied. See the License for the specific languag
 governing permissions and limitations under the License.
 */
 
-export * from "./types";
-export * from "./services";
+/* this file defines types and interfaces that are considered as api for extension consumers */
+
+/**
+ * Represents an Account entity in the AppMetaData.
+ */
+export type Account = {
+  id: string;
+  name: string;
+};

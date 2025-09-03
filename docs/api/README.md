@@ -1,3 +1,7 @@
+**@adobe/genstudio-extensibility-sdk**
+
+***
+
 # genstudio-extensibility-sdk
 GenStudio Extensibility SDK
 
@@ -47,8 +51,8 @@ const experience: Experience = {
 
 ## Contributing
 
-Contributions are welcomed! Read the [Contributing Guide](./.github/CONTRIBUTING.md) for more information.
+Contributions are welcomed! Read the [Contributing Guide](_media/CONTRIBUTING.md) for more information.
 
 ## Licensing
 
-This project is licensed under the Apache V2 License. See [LICENSE](./LICENSE) for more information.
+This project is licensed under the Apache V2 License. See [LICENSE](_media/LICENSE) for more information.

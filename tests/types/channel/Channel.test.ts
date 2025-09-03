@@ -10,5 +10,16 @@ OF ANY KIND, either express or implied. See the License for the specific languag
 governing permissions and limitations under the License.
 */
 
-export * from "./types";
-export * from "./services";
+import { Channel } from "../../../src/types/channel/Channel";
+
+describe("contract", () => {
+  it("should define Channel", () => {
+    const channel: Channel = {
+      id: "Email",
+      name: "Email",
+    };
+    expect(channel).toBeDefined();
+    expect(channel.id).toBe("Email");
+    expect(channel.name).toBe("Email");
+  });
+});

@@ -10,5 +10,8 @@ OF ANY KIND, either express or implied. See the License for the specific languag
 governing permissions and limitations under the License.
 */
 
-export * from "./types";
-export * from "./services";
+import {z} from 'zod';
+
+export const localeCodeSchema = z
+  .string()
+  .regex(/^[a-z]{2}[a-zA-Z0-9\-_]*$/);

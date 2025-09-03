@@ -10,5 +10,16 @@ OF ANY KIND, either express or implied. See the License for the specific languag
 governing permissions and limitations under the License.
 */
 
-export * from "./types";
-export * from "./services";
+import { Account } from "../../../src/types/account/Account";
+
+describe("Account", () => {
+  it("should create an Account with required properties", () => {
+    const account: Account = {
+      id: "account-123",
+      name: "Test Account",
+    };
+
+    expect(account.id).toBe("account-123");
+    expect(account.name).toBe("Test Account");
+  });
+});
