@@ -6,7 +6,7 @@
 
 # Type Alias: Template
 
-> **Template**: \{ `content`: `string`; `id`: `string`; `mapping`: [`Mapping`](Mapping.md); `title`: `string`; \}
+> **Template**: \{ `content`: `string`; `id`: `string`; `mapping`: [`Mapping`](Mapping.md); `metadata`: [`TemplateMetadata`](TemplateMetadata.md); `title`: `string`; \}
 
 ## Type declaration
 
@@ -21,6 +21,10 @@
 ### mapping
 
 > **mapping**: [`Mapping`](Mapping.md)
+
+### metadata?
+
+> `optional` **metadata**: [`TemplateMetadata`](TemplateMetadata.md)
 
 ### title
 

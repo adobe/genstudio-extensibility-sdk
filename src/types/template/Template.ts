@@ -12,9 +12,15 @@ governing permissions and limitations under the License.
 
 export type Mapping = Record<string, string>;
 
+export type TemplateMetadata = {
+    source: string;
+    url?: string;
+};
+
 export type Template = {
     id: string;
     title: string;
     content: string;
     mapping: Mapping;
-}
+    metadata?: TemplateMetadata;
+};
