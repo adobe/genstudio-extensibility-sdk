@@ -10,6 +10,7 @@
 
 ## Classes
 
+- [ExtensionAuthError](classes/ExtensionAuthError.md)
 - [ImportTemplateExtensionService](classes/ImportTemplateExtensionService.md)
 - [ImportTemplateExtensionServiceError](classes/ImportTemplateExtensionServiceError.md)
 - [PromptExtensionService](classes/PromptExtensionService.md)
@@ -43,6 +44,7 @@
 - [Channel](type-aliases/Channel.md)
 - [Claim](type-aliases/Claim.md)
 - [ExperienceMetadata](type-aliases/ExperienceMetadata.md)
+- [ExtensionAuth](type-aliases/ExtensionAuth.md)
 - [ExternalAssetSelection](type-aliases/ExternalAssetSelection.md)
 - [GenerationContext](type-aliases/GenerationContext.md)
 - [ImportTemplateExtensionRegistration](type-aliases/ImportTemplateExtensionRegistration.md)
@@ -59,3 +61,7 @@
 - [TranslationMessage](type-aliases/TranslationMessage.md)
 - [TranslationRequest](type-aliases/TranslationRequest.md)
 - [TranslationResponse](type-aliases/TranslationResponse.md)
+
+## Functions
+
+- [getExtensionAuth](functions/getExtensionAuth.md)
