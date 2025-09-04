@@ -10,26 +10,29 @@ OF ANY KIND, either express or implied. See the License for the specific languag
 governing permissions and limitations under the License.
 */
 
-export type Mapping = Record<string, string>;
+export type EmailRoles = "headline" | "sub_headline" | "body" | "cta" | "other";
+export type Roles = EmailRoles;
+
+export type Mapping = Record<string, Roles>;
 
 export type TemplateMetadata = {
-    /** Source of the template */
-    source: string;
-    /** URL of the template */
-    url?: string;
-    /** Additional metadata */
-    [key: string]: any;
+  /** Source of the template */
+  source: string;
+  /** URL of the template */
+  url?: string;
+  /** Additional metadata */
+  [key: string]: any;
 };
 
 export type Template = {
-    /** Unique identifier for the template */
-    id: string;
-    /** Title of the template */
-    title: string;
-    /** Raw HTML content of the template */
-    content: string;
-    /** Mapping of Handlebars variables to GenStudio variables */
-    mapping: Mapping;
-    /** Metadata about the template */
-    metadata?: TemplateMetadata;
+  /** Unique identifier for the template */
+  id: string;
+  /** Title of the template */
+  title: string;
+  /** Raw HTML content of the template */
+  content: string;
+  /** Mapping of Handlebars variables to GenStudio roles */
+  mapping: Mapping;
+  /** Metadata about the template */
+  metadata?: TemplateMetadata;
 };
