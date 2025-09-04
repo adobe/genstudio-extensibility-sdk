@@ -10,25 +10,28 @@ OF ANY KIND, either express or implied. See the License for the specific languag
 governing permissions and limitations under the License.
 */
 
-import { ImportTemplateExtensionService, ImportTemplateExtensionServiceError, ImportTemplateExtensionApi } from '../../src/services/import-template-extension-service';
-import { GuestUI } from '@adobe/uix-guest';
-import { Template } from '../../src/types';
+import {
+  ImportTemplateExtensionService,
+  ImportTemplateExtensionServiceError,
+  ImportTemplateExtensionApi,
+} from "../../src/services/import-template-extension-service";
+import { GuestUI } from "@adobe/uix-guest";
+import { Template } from "../../src/types";
 
-const createMockConnection = (
-  setSelectedTemplateMock?: jest.Mock
-) => ({
-  host: {
-    api: {
-      importTemplateExtension: {
-        setSelectedTemplate: setSelectedTemplateMock || jest.fn()
-      }
-    }
-  }
-} as unknown as GuestUI<ImportTemplateExtensionApi>);
+const createMockConnection = (setSelectedTemplateMock?: jest.Mock) =>
+  ({
+    host: {
+      api: {
+        importTemplateExtension: {
+          setSelectedTemplate: setSelectedTemplateMock || jest.fn(),
+        },
+      },
+    },
+  } as unknown as GuestUI<ImportTemplateExtensionApi>);
 
-describe('ImportTemplateExtensionService', () => {
+describe("ImportTemplateExtensionService", () => {
   beforeEach(() => {
-    jest.spyOn(console, 'error').mockImplementation(() => {});
+    jest.spyOn(console, "error").mockImplementation(() => {});
   });
 
   afterEach(() => {
@@ -36,60 +39,91 @@ describe('ImportTemplateExtensionService', () => {
   });
 
   const mockTemplate: Template = {
-    id: 'tpl-123',
-    title: 'Test Template',
-    content: 'Hello, {{name}}',
+    id: "tpl-123",
+    title: "Test Template",
+    content: "Hello, {{name}}",
     mapping: {
-      name: 'user.name'
-    }
+      name: { role: "headline", groupName: "user" },
+    },
   };
 
-  describe('setSelectedTemplate', () => {
-    it('should set selected template successfully', () => {
+  describe("setSelectedTemplate", () => {
+    it("should set selected template successfully", () => {
       const mockSetSelectedTemplate = jest.fn();
       const mockConnection = createMockConnection(mockSetSelectedTemplate);
-      const extensionId = 'test-extension-id';
+      const extensionId = "test-extension-id";
 
-      ImportTemplateExtensionService.setSelectedTemplate(mockConnection, extensionId, mockTemplate);
+      ImportTemplateExtensionService.setSelectedTemplate(
+        mockConnection,
+        extensionId,
+        mockTemplate,
+      );
 
-      expect(mockSetSelectedTemplate).toHaveBeenCalledWith(extensionId, mockTemplate);
+      expect(mockSetSelectedTemplate).toHaveBeenCalledWith(
+        extensionId,
+        mockTemplate,
+      );
       expect(mockSetSelectedTemplate).toHaveBeenCalledTimes(1);
     });
 
-    it('should throw ImportTemplateExtensionServiceError if connection is missing', () => {
-      const extensionId = 'test-extension-id';
+    it("should throw ImportTemplateExtensionServiceError if connection is missing", () => {
+      const extensionId = "test-extension-id";
 
-      expect(() => ImportTemplateExtensionService.setSelectedTemplate(null, extensionId, mockTemplate))
-        .toThrow(ImportTemplateExtensionServiceError);
+      expect(() =>
+        ImportTemplateExtensionService.setSelectedTemplate(
+          null,
+          extensionId,
+          mockTemplate,
+        ),
+      ).toThrow(ImportTemplateExtensionServiceError);
 
-      expect(() => ImportTemplateExtensionService.setSelectedTemplate(null, extensionId, mockTemplate))
-        .toThrow('Connection is required to set selected template');
+      expect(() =>
+        ImportTemplateExtensionService.setSelectedTemplate(
+          null,
+          extensionId,
+          mockTemplate,
+        ),
+      ).toThrow("Connection is required to set selected template");
     });
 
-    it('should handle empty extensionId', () => {
+    it("should handle empty extensionId", () => {
       const mockSetSelectedTemplate = jest.fn();
       const mockConnection = createMockConnection(mockSetSelectedTemplate);
-      const extensionId = '';
+      const extensionId = "";
 
-      ImportTemplateExtensionService.setSelectedTemplate(mockConnection, extensionId, mockTemplate);
+      ImportTemplateExtensionService.setSelectedTemplate(
+        mockConnection,
+        extensionId,
+        mockTemplate,
+      );
 
-      expect(mockSetSelectedTemplate).toHaveBeenCalledWith(extensionId, mockTemplate);
+      expect(mockSetSelectedTemplate).toHaveBeenCalledWith(
+        extensionId,
+        mockTemplate,
+      );
     });
 
-    it('should handle minimal template mapping', () => {
+    it("should handle minimal template mapping", () => {
       const mockSetSelectedTemplate = jest.fn();
       const mockConnection = createMockConnection(mockSetSelectedTemplate);
-      const extensionId = 'test-extension-id';
+      const extensionId = "test-extension-id";
       const minimalTemplate: Template = {
-        id: 'tpl-456',
-        title: 'Empty Mapping',
-        content: 'Static content',
-        mapping: {}
+        id: "tpl-456",
+        title: "Empty Mapping",
+        content: "Static content",
+        mapping: {},
       };
 
-      ImportTemplateExtensionService.setSelectedTemplate(mockConnection, extensionId, minimalTemplate);
+      ImportTemplateExtensionService.setSelectedTemplate(
+        mockConnection,
+        extensionId,
+        minimalTemplate,
+      );
 
-      expect(mockSetSelectedTemplate).toHaveBeenCalledWith(extensionId, minimalTemplate);
+      expect(mockSetSelectedTemplate).toHaveBeenCalledWith(
+        extensionId,
+        minimalTemplate,
+      );
     });
   });
 });
