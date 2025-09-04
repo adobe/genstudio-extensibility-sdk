@@ -14,7 +14,7 @@ export type EmailRole = "headline" | "sub_headline" | "body" | "cta" | "other";
 export type Role = EmailRole;
 export type MappingItem = {
   role: Role;
-  groupName: string;
+  groupName?: string;
 };
 export type Mapping = Record<string, MappingItem>;
 

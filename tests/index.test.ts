@@ -399,8 +399,8 @@ describe("SDK Exports", () => {
       title: "test",
       content: "test",
       mapping: {
-        externalBody: { role: "body", groupName: "external" },
-        externalHeader: { role: "headline", groupName: "external" },
+        externalBody: { role: "body", groupName: "pod1" },
+        externalHeader: { role: "headline", groupName: "pod1" },
       },
     };
 
@@ -408,8 +408,8 @@ describe("SDK Exports", () => {
     expect(template.title).toBe("test");
     expect(template.content).toBe("test");
     expect(template.mapping).toEqual({
-      externalBody: { role: "body", groupName: "external" },
-      externalHeader: { role: "headline", groupName: "external" },
+      externalBody: { role: "body", groupName: "pod1" },
+      externalHeader: { role: "headline", groupName: "pod1" },
     });
   });
 });

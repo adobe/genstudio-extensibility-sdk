@@ -43,7 +43,7 @@ describe("ImportTemplateExtensionService", () => {
     title: "Test Template",
     content: "Hello, {{name}}",
     mapping: {
-      name: { role: "headline", groupName: "user" },
+      name: { role: "headline", groupName: "pod1" },
     },
   };
 
