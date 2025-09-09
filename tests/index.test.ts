@@ -402,6 +402,9 @@ describe("SDK Exports", () => {
         externalBody: "body",
         externalHeader: "headline",
       },
+      metadata: {
+        source: "test",
+      },
     };
 
     expect(template.id).toBe("test");
@@ -410,6 +413,9 @@ describe("SDK Exports", () => {
     expect(template.mapping).toEqual({
       externalBody: "body",
       externalHeader: "headline",
+    });
+    expect(template.metadata).toEqual({
+      source: "test",
     });
   });
 });
