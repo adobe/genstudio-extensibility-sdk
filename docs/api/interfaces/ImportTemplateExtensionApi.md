@@ -18,21 +18,17 @@
 
 ### api
 
-> **api**: \{ `importTemplateExtension`: \{ `setSelectedTemplate`: (`extensionId`: `string`, `template`: [`Template`](../type-aliases/Template.md)) => `void`; \}; \}
+> **api**: \{ `importTemplateExtension`: \{ `setSelectedTemplate`: (`template`: [`Template`](../type-aliases/Template.md)) => `void`; \}; \}
 
 #### importTemplateExtension
 
-> **importTemplateExtension**: \{ `setSelectedTemplate`: (`extensionId`: `string`, `template`: [`Template`](../type-aliases/Template.md)) => `void`; \}
+> **importTemplateExtension**: \{ `setSelectedTemplate`: (`template`: [`Template`](../type-aliases/Template.md)) => `void`; \}
 
 ##### importTemplateExtension.setSelectedTemplate()
 
-> **setSelectedTemplate**: (`extensionId`: `string`, `template`: [`Template`](../type-aliases/Template.md)) => `void`
+> **setSelectedTemplate**: (`template`: [`Template`](../type-aliases/Template.md)) => `void`
 
 ###### Parameters
-
-###### extensionId
-
-`string`
 
 ###### template
 

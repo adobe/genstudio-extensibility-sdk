@@ -20,7 +20,7 @@
 
 ### setSelectedTemplate()
 
-> `static` **setSelectedTemplate**(`connection`: `any`, `extensionId`: `string`, `template`: [`Template`](../type-aliases/Template.md)): `void`
+> `static` **setSelectedTemplate**(`connection`: `any`, `template`: [`Template`](../type-aliases/Template.md)): `void`
 
 Set the selected template
 
@@ -29,12 +29,6 @@ Set the selected template
 ##### connection
 
 `any`
-
-##### extensionId
-
-`string`
-
-the extension id of the import template add ons
 
 ##### template
 
