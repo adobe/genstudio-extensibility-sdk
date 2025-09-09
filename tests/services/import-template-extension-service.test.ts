@@ -97,5 +97,18 @@ describe("ImportTemplateExtensionService", () => {
 
       expect(mockSetSelectedTemplate).toHaveBeenCalledWith(minimalTemplate);
     });
+
+    it("should forward undefined template without error", () => {
+      const mockSetSelectedTemplate = jest.fn();
+      const mockConnection = createMockConnection(mockSetSelectedTemplate);
+
+      ImportTemplateExtensionService.setSelectedTemplate(
+        mockConnection,
+        undefined,
+      );
+
+      expect(mockSetSelectedTemplate).toHaveBeenCalledWith(undefined);
+      expect(mockSetSelectedTemplate).toHaveBeenCalledTimes(1);
+    });
   });
 });

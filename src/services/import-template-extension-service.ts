@@ -35,13 +35,17 @@ export class ImportTemplateExtensionService {
    */
   static setSelectedTemplate(
     connection: any,
-    template: Template,
+    template: Template | undefined,
   ): void {
     if (!connection) {
-      throw new ImportTemplateExtensionServiceError("Connection is required to set selected template");
+      throw new ImportTemplateExtensionServiceError(
+        "Connection is required to set selected template",
+      );
     }
 
     // @ts-ignore Remote API is handled through postMessage
-    return connection.host.api.importTemplateExtension.setSelectedTemplate(template);
+    return connection.host.api.importTemplateExtension.setSelectedTemplate(
+      template,
+    );
   }
 }
