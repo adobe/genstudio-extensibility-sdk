@@ -20,7 +20,7 @@
 
 ### setSelectedTemplate()
 
-> `static` **setSelectedTemplate**(`connection`: `any`, `template`: [`Template`](../type-aliases/Template.md)): `void`
+> `static` **setSelectedTemplate**(`connection`: `any`, `template`: `undefined` \| [`Template`](../type-aliases/Template.md)): `void`
 
 Set the selected template
 
@@ -32,9 +32,9 @@ Set the selected template
 
 ##### template
 
-[`Template`](../type-aliases/Template.md)
-
 the selected template
+
+`undefined` | [`Template`](../type-aliases/Template.md)
 
 #### Returns
 
