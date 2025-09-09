@@ -51,79 +51,51 @@ describe("ImportTemplateExtensionService", () => {
     it("should set selected template successfully", () => {
       const mockSetSelectedTemplate = jest.fn();
       const mockConnection = createMockConnection(mockSetSelectedTemplate);
-      const extensionId = "test-extension-id";
 
       ImportTemplateExtensionService.setSelectedTemplate(
         mockConnection,
-        extensionId,
         mockTemplate,
       );
 
-      expect(mockSetSelectedTemplate).toHaveBeenCalledWith(
-        extensionId,
-        mockTemplate,
-      );
+      expect(mockSetSelectedTemplate).toHaveBeenCalledWith(mockTemplate);
       expect(mockSetSelectedTemplate).toHaveBeenCalledTimes(1);
     });
 
     it("should throw ImportTemplateExtensionServiceError if connection is missing", () => {
-      const extensionId = "test-extension-id";
-
       expect(() =>
-        ImportTemplateExtensionService.setSelectedTemplate(
-          null,
-          extensionId,
-          mockTemplate,
-        ),
+        ImportTemplateExtensionService.setSelectedTemplate(null, mockTemplate),
       ).toThrow(ImportTemplateExtensionServiceError);
-
       expect(() =>
-        ImportTemplateExtensionService.setSelectedTemplate(
-          null,
-          extensionId,
-          mockTemplate,
-        ),
+        ImportTemplateExtensionService.setSelectedTemplate(null, mockTemplate),
       ).toThrow("Connection is required to set selected template");
     });
 
     it("should handle empty extensionId", () => {
       const mockSetSelectedTemplate = jest.fn();
       const mockConnection = createMockConnection(mockSetSelectedTemplate);
-      const extensionId = "";
-
       ImportTemplateExtensionService.setSelectedTemplate(
         mockConnection,
-        extensionId,
         mockTemplate,
       );
 
-      expect(mockSetSelectedTemplate).toHaveBeenCalledWith(
-        extensionId,
-        mockTemplate,
-      );
+      expect(mockSetSelectedTemplate).toHaveBeenCalledWith(mockTemplate);
     });
 
     it("should handle minimal template mapping", () => {
       const mockSetSelectedTemplate = jest.fn();
       const mockConnection = createMockConnection(mockSetSelectedTemplate);
-      const extensionId = "test-extension-id";
       const minimalTemplate: Template = {
         id: "tpl-456",
         title: "Empty Mapping",
         content: "Static content",
         mapping: {},
       };
-
       ImportTemplateExtensionService.setSelectedTemplate(
         mockConnection,
-        extensionId,
         minimalTemplate,
       );
 
-      expect(mockSetSelectedTemplate).toHaveBeenCalledWith(
-        extensionId,
-        minimalTemplate,
-      );
+      expect(mockSetSelectedTemplate).toHaveBeenCalledWith(minimalTemplate);
     });
   });
 });
