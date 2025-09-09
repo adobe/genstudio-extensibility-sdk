@@ -10,25 +10,28 @@ OF ANY KIND, either express or implied. See the License for the specific languag
 governing permissions and limitations under the License.
 */
 
-import { ImportTemplateExtensionService, ImportTemplateExtensionServiceError, ImportTemplateExtensionApi } from '../../src/services/import-template-extension-service';
-import { GuestUI } from '@adobe/uix-guest';
-import { Template } from '../../src/types';
+import {
+  ImportTemplateExtensionService,
+  ImportTemplateExtensionServiceError,
+  ImportTemplateExtensionApi,
+} from "../../src/services/import-template-extension-service";
+import { GuestUI } from "@adobe/uix-guest";
+import { Template } from "../../src/types";
 
-const createMockConnection = (
-  setSelectedTemplateMock?: jest.Mock
-) => ({
-  host: {
-    api: {
-      importTemplateExtension: {
-        setSelectedTemplate: setSelectedTemplateMock || jest.fn()
-      }
-    }
-  }
-} as unknown as GuestUI<ImportTemplateExtensionApi>);
+const createMockConnection = (setSelectedTemplateMock?: jest.Mock) =>
+  ({
+    host: {
+      api: {
+        importTemplateExtension: {
+          setSelectedTemplate: setSelectedTemplateMock || jest.fn(),
+        },
+      },
+    },
+  } as unknown as GuestUI<ImportTemplateExtensionApi>);
 
-describe('ImportTemplateExtensionService', () => {
+describe("ImportTemplateExtensionService", () => {
   beforeEach(() => {
-    jest.spyOn(console, 'error').mockImplementation(() => {});
+    jest.spyOn(console, "error").mockImplementation(() => {});
   });
 
   afterEach(() => {
@@ -36,50 +39,61 @@ describe('ImportTemplateExtensionService', () => {
   });
 
   const mockTemplate: Template = {
-    id: 'tpl-123',
-    title: 'Test Template',
-    content: 'Hello, {{name}}',
+    id: "tpl-123",
+    title: "Test Template",
+    content: "Hello, {{name}}",
     mapping: {
-      name: 'user.name'
-    }
+      name: "headline",
+    },
   };
 
-  describe('setSelectedTemplate', () => {
-    it('should set selected template successfully', () => {
+  describe("setSelectedTemplate", () => {
+    it("should set selected template successfully", () => {
       const mockSetSelectedTemplate = jest.fn();
       const mockConnection = createMockConnection(mockSetSelectedTemplate);
 
-      ImportTemplateExtensionService.setSelectedTemplate(mockConnection, mockTemplate);
+      ImportTemplateExtensionService.setSelectedTemplate(
+        mockConnection,
+        mockTemplate,
+      );
 
       expect(mockSetSelectedTemplate).toHaveBeenCalledWith(mockTemplate);
       expect(mockSetSelectedTemplate).toHaveBeenCalledTimes(1);
     });
 
-    it('should throw ImportTemplateExtensionServiceError if connection is missing', () => {
-      expect(() => ImportTemplateExtensionService.setSelectedTemplate(null, mockTemplate))
-        .toThrow(ImportTemplateExtensionServiceError);
-      expect(() => ImportTemplateExtensionService.setSelectedTemplate(null, mockTemplate))
-        .toThrow('Connection is required to set selected template');
+    it("should throw ImportTemplateExtensionServiceError if connection is missing", () => {
+      expect(() =>
+        ImportTemplateExtensionService.setSelectedTemplate(null, mockTemplate),
+      ).toThrow(ImportTemplateExtensionServiceError);
+      expect(() =>
+        ImportTemplateExtensionService.setSelectedTemplate(null, mockTemplate),
+      ).toThrow("Connection is required to set selected template");
     });
 
-    it('should handle empty extensionId', () => {
+    it("should handle empty extensionId", () => {
       const mockSetSelectedTemplate = jest.fn();
       const mockConnection = createMockConnection(mockSetSelectedTemplate);
-      ImportTemplateExtensionService.setSelectedTemplate(mockConnection, mockTemplate);
+      ImportTemplateExtensionService.setSelectedTemplate(
+        mockConnection,
+        mockTemplate,
+      );
 
       expect(mockSetSelectedTemplate).toHaveBeenCalledWith(mockTemplate);
     });
 
-    it('should handle minimal template mapping', () => {
+    it("should handle minimal template mapping", () => {
       const mockSetSelectedTemplate = jest.fn();
       const mockConnection = createMockConnection(mockSetSelectedTemplate);
       const minimalTemplate: Template = {
-        id: 'tpl-456',
-        title: 'Empty Mapping',
-        content: 'Static content',
-        mapping: {}
+        id: "tpl-456",
+        title: "Empty Mapping",
+        content: "Static content",
+        mapping: {},
       };
-      ImportTemplateExtensionService.setSelectedTemplate(mockConnection, minimalTemplate);
+      ImportTemplateExtensionService.setSelectedTemplate(
+        mockConnection,
+        minimalTemplate,
+      );
 
       expect(mockSetSelectedTemplate).toHaveBeenCalledWith(minimalTemplate);
     });

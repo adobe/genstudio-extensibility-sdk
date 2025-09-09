@@ -26,7 +26,7 @@ Unique identifier for the template
 
 > **mapping**: [`Mapping`](Mapping.md)
 
-Mapping of Handlebars variables to GenStudio variables
+Mapping of Handlebars variables to GenStudio roles
 
 ### metadata?
 

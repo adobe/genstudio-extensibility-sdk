@@ -368,9 +368,7 @@ describe("SDK Exports", () => {
         items: [
           {
             id: "test",
-            messages: [
-              { id: "msg1", value: "Hello" },
-            ],
+            messages: [{ id: "msg1", value: "Hello" }],
           },
         ],
       };
@@ -385,9 +383,7 @@ describe("SDK Exports", () => {
           "es-ES": [
             {
               id: "test",
-              messages: [
-                { id: "msg1", value: "Hola" },
-              ],
+              messages: [{ id: "msg1", value: "Hola" }],
             },
           ],
         },
@@ -403,8 +399,8 @@ describe("SDK Exports", () => {
       title: "test",
       content: "test",
       mapping: {
-        "externalBody": "body",
-        "externalHeader": "header",
+        externalBody: "body",
+        externalHeader: "headline",
       },
     };
 
@@ -412,8 +408,8 @@ describe("SDK Exports", () => {
     expect(template.title).toBe("test");
     expect(template.content).toBe("test");
     expect(template.mapping).toEqual({
-      "externalBody": "body",
-      "externalHeader": "header",
+      externalBody: "body",
+      externalHeader: "headline",
     });
   });
 });
