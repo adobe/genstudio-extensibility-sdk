@@ -34,5 +34,5 @@ export type Template = {
   /** Mapping of Handlebars variables to GenStudio roles */
   mapping: Mapping;
   /** Metadata about the template */
-  metadata?: TemplateMetadata;
+  metadata: TemplateMetadata;
 };
