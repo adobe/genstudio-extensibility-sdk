@@ -28,9 +28,9 @@ Unique identifier for the template
 
 Mapping of Handlebars variables to GenStudio roles
 
-### metadata?
+### metadata
 
-> `optional` **metadata**: [`TemplateMetadata`](TemplateMetadata.md)
+> **metadata**: [`TemplateMetadata`](TemplateMetadata.md)
 
 Metadata about the template
 

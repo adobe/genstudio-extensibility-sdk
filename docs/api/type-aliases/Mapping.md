@@ -6,4 +6,4 @@
 
 # Type Alias: Mapping
 
-> **Mapping**: `Record`\<`string`, [`Roles`](Roles.md)\>
+> **Mapping**: `Record`\<`string`, [`Role`](Role.md)\>
