@@ -16,7 +16,7 @@ import { Template } from "../types";
 export interface ImportTemplateExtensionApi extends VirtualApi {
   api: {
     importTemplateExtension: {
-      setSelectedTemplate: (extensionId: string, template: Template) => void;
+      setSelectedTemplate: (template: Template) => void;
     };
   };
 }
@@ -31,12 +31,10 @@ export class ImportTemplateExtensionServiceError extends Error {
 export class ImportTemplateExtensionService {
   /**
    * Set the selected template
-   * @param extensionId - the extension id of the import template add ons
    * @param template - the selected template
    */
   static setSelectedTemplate(
     connection: any,
-    extensionId: string,
     template: Template,
   ): void {
     if (!connection) {
@@ -44,9 +42,6 @@ export class ImportTemplateExtensionService {
     }
 
     // @ts-ignore Remote API is handled through postMessage
-    return connection.host.api.importTemplateExtension.setSelectedTemplate(
-      extensionId,
-      template,
-    );
+    return connection.host.api.importTemplateExtension.setSelectedTemplate(template);
   }
 }
