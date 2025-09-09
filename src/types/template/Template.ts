@@ -10,13 +10,10 @@ OF ANY KIND, either express or implied. See the License for the specific languag
 governing permissions and limitations under the License.
 */
 
-export type EmailRole = "headline" | "sub_headline" | "body" | "cta" | "other";
-export type Role = EmailRole;
-export type MappingItem = {
-  role: Role;
-  groupName?: string;
-};
-export type Mapping = Record<string, MappingItem>;
+export type EmailRoles = "headline" | "sub_headline" | "body" | "cta" | "other";
+export type Roles = EmailRoles;
+
+export type Mapping = Record<string, Roles>;
 
 export type TemplateMetadata = {
   /** Source of the template */
