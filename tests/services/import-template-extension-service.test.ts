@@ -45,6 +45,9 @@ describe("ImportTemplateExtensionService", () => {
     mapping: {
       name: "headline",
     },
+    metadata: {
+      source: "test",
+    },
   };
 
   describe("setSelectedTemplate", () => {
@@ -89,6 +92,9 @@ describe("ImportTemplateExtensionService", () => {
         title: "Empty Mapping",
         content: "Static content",
         mapping: {},
+        metadata: {
+          source: "test",
+        },
       };
       ImportTemplateExtensionService.setSelectedTemplate(
         mockConnection,
