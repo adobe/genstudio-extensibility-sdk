@@ -14,15 +14,6 @@ export type EmailRole = "headline" | "sub_headline" | "body" | "cta" | "other";
 export type Role = EmailRole;
 export type Mapping = Record<string, Role>;
 
-export type TemplateMetadata = {
-  /** Source of the template */
-  source: string;
-  /** URL of the template */
-  url?: string;
-  /** Additional metadata */
-  [key: string]: any;
-};
-
 export type Template = {
   /** Unique identifier for the template */
   id: string;
@@ -32,6 +23,10 @@ export type Template = {
   content: string;
   /** Mapping of Handlebars variables to GenStudio roles */
   mapping: Mapping;
-  /** Metadata about the template */
-  metadata: TemplateMetadata;
+  /** Source of the template */
+  source: string;
+  /** URL of the template */
+  url?: string;
+  /** Additional metadata */
+  additionalMetadata?: Record<string, any>;
 };
