@@ -58,7 +58,6 @@
 - [Role](type-aliases/Role.md)
 - [SectionGenerationContext](type-aliases/SectionGenerationContext.md)
 - [Template](type-aliases/Template.md)
-- [TemplateMetadata](type-aliases/TemplateMetadata.md)
 - [Toggle](type-aliases/Toggle.md)
 - [TranslationItem](type-aliases/TranslationItem.md)
 - [TranslationMessage](type-aliases/TranslationMessage.md)

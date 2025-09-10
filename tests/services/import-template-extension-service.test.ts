@@ -45,8 +45,9 @@ describe("ImportTemplateExtensionService", () => {
     mapping: {
       name: "headline",
     },
-    metadata: {
-      source: "test",
+    source: "test",
+    additionalMetadata: {
+      other: "value",
     },
   };
 
@@ -92,8 +93,9 @@ describe("ImportTemplateExtensionService", () => {
         title: "Empty Mapping",
         content: "Static content",
         mapping: {},
-        metadata: {
-          source: "test",
+        source: "test",
+        additionalMetadata: {
+          other: "value",
         },
       };
       ImportTemplateExtensionService.setSelectedTemplate(

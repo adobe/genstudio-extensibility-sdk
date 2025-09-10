@@ -6,9 +6,15 @@
 
 # Type Alias: Template
 
-> **Template**: \{ `content`: `string`; `id`: `string`; `mapping`: [`Mapping`](Mapping.md); `metadata`: [`TemplateMetadata`](TemplateMetadata.md); `title`: `string`; \}
+> **Template**: \{ `additionalMetadata`: `Record`\<`string`, `any`\>; `content`: `string`; `id`: `string`; `mapping`: [`Mapping`](Mapping.md); `source`: `string`; `title`: `string`; `url`: `string`; \}
 
 ## Type declaration
+
+### additionalMetadata?
+
+> `optional` **additionalMetadata**: `Record`\<`string`, `any`\>
+
+Additional metadata
 
 ### content
 
@@ -28,14 +34,20 @@ Unique identifier for the template
 
 Mapping of Handlebars variables to GenStudio roles
 
-### metadata
+### source
 
-> **metadata**: [`TemplateMetadata`](TemplateMetadata.md)
+> **source**: `string`
 
-Metadata about the template
+Source of the template
 
 ### title
 
 > **title**: `string`
 
 Title of the template
+
+### url?
+
+> `optional` **url**: `string`
+
+URL of the template
