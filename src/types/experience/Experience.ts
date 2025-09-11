@@ -11,6 +11,8 @@ governing permissions and limitations under the License.
 */
 /* this file defines types and interfaces that are considered as Experience api for extension consumers */
 
+import { Template } from "../template";
+
 /**
  * Represents an Experience entity in the system.
  * An Experience is a container for various fields that define its characteristics.
@@ -36,5 +38,6 @@ export interface ExperienceField {
 
 export type ExperienceMetadata = {
     locale?: string;
+    template?: Template;
     [key: string]: any;
 }
