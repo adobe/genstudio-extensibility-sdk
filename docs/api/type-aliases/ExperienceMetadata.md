@@ -6,7 +6,7 @@
 
 # Type Alias: ExperienceMetadata
 
-> **ExperienceMetadata**: \{ `[key: string]`: `any`;  `locale`: `string`; `template`: [`Template`](Template.md); \}
+> **ExperienceMetadata**: \{ `[key: string]`: `any`;  `locale`: `string`; \}
 
 ## Type declaration
 
@@ -17,7 +17,3 @@
 ### locale?
 
 > `optional` **locale**: `string`
-
-### template?
-
-> `optional` **template**: [`Template`](Template.md)

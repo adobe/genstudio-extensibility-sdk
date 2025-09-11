@@ -22,6 +22,9 @@ export interface Experience {
     id: string;
     /** Collection of experience fields stored as key-value pairs */
     experienceFields: Record<string, ExperienceField>;
+    /** Template associated with the experience */
+    template?: Template;
+    /** Metadata associated with the experience */
     metadata?: ExperienceMetadata;
 }
 
@@ -38,6 +41,5 @@ export interface ExperienceField {
 
 export type ExperienceMetadata = {
     locale?: string;
-    template?: Template;
     [key: string]: any;
 }

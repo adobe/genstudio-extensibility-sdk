@@ -30,3 +30,13 @@ Unique identifier for the experience
 ### metadata?
 
 > `optional` **metadata**: [`ExperienceMetadata`](../type-aliases/ExperienceMetadata.md)
+
+Metadata associated with the experience
+
+***
+
+### template?
+
+> `optional` **template**: [`Template`](../type-aliases/Template.md)
+
+Template associated with the experience
