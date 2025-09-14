@@ -10,4 +10,5 @@ updates:
       - dependency-name: "*"
         update-types: ["version-update:semver-major"]
     commit-message:
-      include: "scope"
+      prefix: "chore(deps)"
+      prefix-development: "chore(dev-deps)"
