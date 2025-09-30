@@ -30,5 +30,5 @@ export type Template = {
   /** Additional metadata */
   additionalMetadata?: Record<string, any>;
   /** Keywords for searching */
-  keywords: string[];
+  keywords?: string[];
 };
