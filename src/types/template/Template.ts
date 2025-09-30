@@ -29,4 +29,6 @@ export type Template = {
   url?: string;
   /** Additional metadata */
   additionalMetadata?: Record<string, any>;
+  /** Keywords for searching */
+  keywords: string[];
 };
