@@ -10,29 +10,44 @@ OF ANY KIND, either express or implied. See the License for the specific languag
 governing permissions and limitations under the License.
 */
 
-import { Channel } from "../channel/Channel";
-
 /**
- * Represents an Asset entity in the Experience.
+ * Represents a GenStudio Asset entity in the Experience.
  */
 export type Asset = {
-  id: string; // External Asset ID
-  assetId?: string; // GenStudio Asset ID
+  /** The unique identifier of the asset. */
+  id: string;
+  /** the mimetype detected from the asset */
+  mimeType: string;
+  /** the name of the asset */
   name: string;
-  signedUrl: string;
-  source: string;
-  sourceUrl: string;
-  extensionId: string;
-  iconUrl?: string;
-  metadata?: AssetMetadata;
+  /** the size of the asset in bytes */
+  size: number;
+  /** Extension information */
+  extensionInfo: ExtensionInfo;
+  /** the source of the asset */
+  externalAssetInfo: ExternalAssetInfo;
+  /** Metadata for the asset */
+  additionalMetadata?: Record<string, any>;
+  /** keywords for the asset */
+  keywords?: string[];
 };
 
-export type AssetMetadata = {
-  channels: Channel[];
-  timeframe: string[];
-  region: string[];
-  language: string[];
-  keywords: string[];
+export type ExternalAssetInfo = {
+  /** the source url of the asset */
+  sourceUrl: string;
+  /** the signed url of the asset for download */
+  signedUrl: string;
+  /** the signed thumbnail url of the asset for download and display */
+  signedThumbnailUrl: string;
+};
+
+export type ExtensionInfo = {
+  /** the id of the extension */
+  id: string;
+  /** the name of the extension */
+  name: string;
+  /** the icon url of the extension */
+  iconUrl?: string;
 };
 
 export type ExternalAssetSelection = {

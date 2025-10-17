@@ -6,7 +6,7 @@
 
 # Type Alias: Template
 
-> **Template**: \{ `additionalMetadata`: `Record`\<`string`, `any`\>; `content`: `string`; `id`: `string`; `mapping`: [`Mapping`](Mapping.md); `source`: `string`; `title`: `string`; `url`: `string`; \}
+> **Template**: \{ `additionalMetadata`: `Record`\<`string`, `any`\>; `content`: `string`; `id`: `string`; `keywords`: `string`[]; `mapping`: [`Mapping`](Mapping.md); `source`: `string`; `title`: `string`; `url`: `string`; \}
 
 ## Type declaration
 
@@ -27,6 +27,12 @@ Raw HTML content of the template
 > **id**: `string`
 
 Unique identifier for the template
+
+### keywords?
+
+> `optional` **keywords**: `string`[]
+
+Keywords for searching
 
 ### mapping
 
