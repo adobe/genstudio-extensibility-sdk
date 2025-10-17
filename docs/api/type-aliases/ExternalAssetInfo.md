@@ -14,10 +14,16 @@
 
 > **signedThumbnailUrl**: `string`
 
+the signed thumbnail url of the asset for download and display
+
 ### signedUrl
 
 > **signedUrl**: `string`
 
+the signed url of the asset for download
+
 ### sourceUrl
 
 > **sourceUrl**: `string`
+
+the source url of the asset

@@ -14,10 +14,16 @@
 
 > `optional` **iconUrl**: `string`
 
+the icon url of the extension
+
 ### id
 
 > **id**: `string`
 
+the id of the extension
+
 ### name
 
 > **name**: `string`
+
+the name of the extension

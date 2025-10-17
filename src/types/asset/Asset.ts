@@ -33,14 +33,20 @@ export type Asset = {
 };
 
 export type ExternalAssetInfo = {
+  /** the source url of the asset */
   sourceUrl: string;
+  /** the signed url of the asset for download */
   signedUrl: string;
+  /** the signed thumbnail url of the asset for download and display */
   signedThumbnailUrl: string;
 };
 
 export type ExtensionInfo = {
+  /** the id of the extension */
   id: string;
+  /** the name of the extension */
   name: string;
+  /** the icon url of the extension */
   iconUrl?: string;
 };
 
