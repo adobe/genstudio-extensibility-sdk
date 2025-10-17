@@ -10,11 +10,7 @@ OF ANY KIND, either express or implied. See the License for the specific languag
 governing permissions and limitations under the License.
 */
 
-import {
-  Asset,
-  AssetMetadata,
-  ExternalAssetSelection,
-} from "../../../src/types/asset/Asset";
+import { Asset, ExternalAssetSelection } from "../../../src/types/asset/Asset";
 import { Email, Meta } from "../../../src/types/channel/Channel";
 
 describe("Asset", () => {
@@ -22,114 +18,101 @@ describe("Asset", () => {
     const asset: Asset = {
       id: "asset-123",
       name: "Test Asset",
-      signedUrl: "https://example.com/assets/test.jpg",
-      sourceUrl: "https://example.com/assets/test.jpg",
-      source: "bynder",
-      extensionId: "test-extension-id",
-      assetId: "asset-123",
+      mimeType: "image/jpeg",
+      size: 1024,
+      externalAssetInfo: {
+        sourceUrl: "https://example.com/assets/test.jpg",
+        signedUrl: "https://example.com/assets/test.jpg",
+        signedThumbnailUrl: "https://example.com/assets/test-thumb.jpg",
+      },
+      extensionInfo: {
+        id: "test-extension-id",
+        name: "Test Extension",
+      },
     };
 
     expect(asset.id).toBe("asset-123");
     expect(asset.name).toBe("Test Asset");
-    expect(asset.signedUrl).toBe("https://example.com/assets/test.jpg");
-    expect(asset.sourceUrl).toBe("https://example.com/assets/test.jpg");
-    expect(asset.source).toBe("bynder");
-    expect(asset.metadata).toBeUndefined();
-    expect(asset.assetId).toBe("asset-123");
+    expect(asset.mimeType).toBe("image/jpeg");
+    expect(asset.size).toBe(1024);
+    expect(asset.externalAssetInfo.sourceUrl).toBe(
+      "https://example.com/assets/test.jpg",
+    );
+    expect(asset.externalAssetInfo.signedUrl).toBe(
+      "https://example.com/assets/test.jpg",
+    );
+    expect(asset.externalAssetInfo.signedThumbnailUrl).toBe(
+      "https://example.com/assets/test-thumb.jpg",
+    );
+    expect(asset.extensionInfo.id).toBe("test-extension-id");
+    expect(asset.extensionInfo.name).toBe("Test Extension");
   });
 
-  it("should support optional metadata", () => {
-    const metadata: AssetMetadata = {
-      channels: [Email, Meta],
-      timeframe: ["2023-Q1", "2023-Q2"],
-      region: ["NA", "EMEA"],
-      language: ["en-US", "fr-FR"],
-      keywords: ["product", "marketing"],
-    };
-
+  it("should support optional additionalMetadata, keywords and icon", () => {
     const asset: Asset = {
-      id: "asset-123",
-      name: "Test Asset with Metadata",
-      signedUrl: "https://example.com/assets/test.jpg",
-      sourceUrl: "https://example.com/assets/test.jpg",
-      source: "bynder",
-      extensionId: "test-extension-id",
-      metadata,
-    };
-
-    expect(asset.metadata).toBeDefined();
-    expect(asset.metadata?.channels).toContain(Email);
-    expect(asset.metadata?.channels).toContain(Meta);
-    expect(asset.metadata?.timeframe).toEqual(["2023-Q1", "2023-Q2"]);
-    expect(asset.metadata?.region).toEqual(["NA", "EMEA"]);
-    expect(asset.metadata?.language).toEqual(["en-US", "fr-FR"]);
-    expect(asset.metadata?.keywords).toEqual(["product", "marketing"]);
-  });
-});
-
-describe("AssetMetadata", () => {
-  it("should create AssetMetadata with all properties", () => {
-    const metadata: AssetMetadata = {
-      channels: [Email, Meta],
-      timeframe: ["2023-Q1", "2023-Q2"],
-      region: ["NA", "EMEA"],
-      language: ["en-US", "fr-FR"],
+      id: "asset-456",
+      name: "Rich Asset",
+      mimeType: "image/png",
+      size: 2048,
+      externalAssetInfo: {
+        sourceUrl: "https://aem.test/asset.png",
+        signedUrl: "https://aem.test/asset.png?sig=abc",
+        signedThumbnailUrl: "https://aem.test/asset-thumb.png?sig=abc",
+      },
+      extensionInfo: {
+        id: "test-extension-id",
+        name: "My Extension",
+        iconUrl: "https://example.com/icon.png",
+      },
+      additionalMetadata: {
+        channels: [Email, Meta],
+        any: "value",
+      },
       keywords: ["product", "marketing"],
     };
 
-    expect(metadata.channels).toHaveLength(2);
-    expect(metadata.channels[0]).toBe(Email);
-    expect(metadata.channels[1]).toBe(Meta);
-    expect(metadata.timeframe).toEqual(["2023-Q1", "2023-Q2"]);
-    expect(metadata.region).toEqual(["NA", "EMEA"]);
-    expect(metadata.language).toEqual(["en-US", "fr-FR"]);
-    expect(metadata.keywords).toEqual(["product", "marketing"]);
-  });
-
-  it("should allow empty arrays for metadata properties", () => {
-    const metadata: AssetMetadata = {
-      channels: [],
-      timeframe: [],
-      region: [],
-      language: [],
-      keywords: [],
-    };
-
-    expect(metadata.channels).toHaveLength(0);
-    expect(metadata.timeframe).toHaveLength(0);
-    expect(metadata.region).toHaveLength(0);
-    expect(metadata.language).toHaveLength(0);
-    expect(metadata.keywords).toHaveLength(0);
+    expect(asset.additionalMetadata).toBeDefined();
+    expect(asset.keywords).toEqual(["product", "marketing"]);
+    expect(asset.extensionInfo.iconUrl).toBe("https://example.com/icon.png");
   });
 });
 
 describe("ExternalAssetSelection", () => {
   it("should create an ExternalAssetSelection with required properties", () => {
-    const asset: ExternalAssetSelection = {
+    const selection: ExternalAssetSelection = {
       extensionId: "extension-123",
       assets: [
         {
           id: "asset-123",
           name: "Test Asset",
-          signedUrl: "https://example.com/assets/test.jpg",
-          sourceUrl: "https://example.com/assets/test.jpg",
-          source: "bynder",
-          extensionId: "test-extension-id",
-          assetId: "asset-123",
+          mimeType: "image/jpeg",
+          size: 1024,
+          externalAssetInfo: {
+            sourceUrl: "https://example.com/assets/test.jpg",
+            signedUrl: "https://example.com/assets/test.jpg",
+            signedThumbnailUrl: "https://example.com/assets/test-thumb.jpg",
+          },
+          extensionInfo: {
+            id: "test-extension-id",
+            name: "Test Extension",
+          },
         },
       ],
     };
 
-    expect(asset.extensionId).toBe("extension-123");
-    expect(asset.assets[0].id).toBe("asset-123");
-    expect(asset.assets[0].name).toBe("Test Asset");
-    expect(asset.assets[0].signedUrl).toBe(
+    expect(selection.extensionId).toBe("extension-123");
+    expect(selection.assets[0].id).toBe("asset-123");
+    expect(selection.assets[0].name).toBe("Test Asset");
+    expect(selection.assets[0].externalAssetInfo.signedUrl).toBe(
       "https://example.com/assets/test.jpg",
     );
-    expect(asset.assets[0].sourceUrl).toBe(
+    expect(selection.assets[0].externalAssetInfo.sourceUrl).toBe(
       "https://example.com/assets/test.jpg",
     );
-    expect(asset.assets[0].source).toBe("bynder");
-    expect(asset.assets[0].assetId).toBe("asset-123");
+    expect(selection.assets[0].externalAssetInfo.signedThumbnailUrl).toBe(
+      "https://example.com/assets/test-thumb.jpg",
+    );
+    expect(selection.assets[0].extensionInfo.id).toBe("test-extension-id");
+    expect(selection.assets[0].extensionInfo.name).toBe("Test Extension");
   });
 });

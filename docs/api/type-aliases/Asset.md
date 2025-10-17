@@ -6,44 +6,56 @@
 
 # Type Alias: Asset
 
-> **Asset**: \{ `assetId`: `string`; `extensionId`: `string`; `iconUrl`: `string`; `id`: `string`; `metadata`: [`AssetMetadata`](AssetMetadata.md); `name`: `string`; `signedUrl`: `string`; `source`: `string`; `sourceUrl`: `string`; \}
+> **Asset**: \{ `additionalMetadata`: `Record`\<`string`, `any`\>; `extensionInfo`: [`ExtensionInfo`](ExtensionInfo.md); `externalAssetInfo`: [`ExternalAssetInfo`](ExternalAssetInfo.md); `id`: `string`; `keywords`: `string`[]; `mimeType`: `string`; `name`: `string`; `size`: `number`; \}
 
-Represents an Asset entity in the Experience.
+Represents a GenStudio Asset entity in the Experience.
 
 ## Type declaration
 
-### assetId?
+### additionalMetadata?
 
-> `optional` **assetId**: `string`
+> `optional` **additionalMetadata**: `Record`\<`string`, `any`\>
 
-### extensionId
+Metadata for the asset
 
-> **extensionId**: `string`
+### extensionInfo
 
-### iconUrl?
+> **extensionInfo**: [`ExtensionInfo`](ExtensionInfo.md)
 
-> `optional` **iconUrl**: `string`
+Extension information
+
+### externalAssetInfo
+
+> **externalAssetInfo**: [`ExternalAssetInfo`](ExternalAssetInfo.md)
+
+the source of the asset
 
 ### id
 
 > **id**: `string`
 
-### metadata?
+The unique identifier of the asset.
 
-> `optional` **metadata**: [`AssetMetadata`](AssetMetadata.md)
+### keywords?
+
+> `optional` **keywords**: `string`[]
+
+keywords for the asset
+
+### mimeType
+
+> **mimeType**: `string`
+
+the mimetype detected from the asset
 
 ### name
 
 > **name**: `string`
 
-### signedUrl
+the name of the asset
 
-> **signedUrl**: `string`
+### size
 
-### source
+> **size**: `number`
 
-> **source**: `string`
-
-### sourceUrl
-
-> **sourceUrl**: `string`
+the size of the asset in bytes

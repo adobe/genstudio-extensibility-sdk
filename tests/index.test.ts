@@ -40,7 +40,6 @@ import {
   SectionGenerationContext,
   Account,
   Asset,
-  AssetMetadata,
   ExternalAssetSelection,
   Locale,
   Template,
@@ -295,25 +294,20 @@ describe("SDK Exports", () => {
       const asset: Asset = {
         id: "test",
         name: "test",
-        signedUrl: "https://example.com/asset.jpg",
-        source: "test",
-        sourceUrl: "https://example.com/source.jpg",
-        extensionId: "test-extension",
+        mimeType: "image/jpeg",
+        size: 100,
+        externalAssetInfo: {
+          sourceUrl: "https://example.com/source.jpg",
+          signedUrl: "https://example.com/asset.jpg",
+          signedThumbnailUrl: "https://example.com/asset-thumb.jpg",
+        },
+        extensionInfo: {
+          id: "test-extension",
+          name: "Test Extension",
+        },
       };
       expect(asset.id).toBe("test");
       expect(asset.name).toBe("test");
-    });
-
-    it("should export AssetMetadata types", () => {
-      const assetMetadata: AssetMetadata = {
-        channels: [Email, Meta, Display],
-        timeframe: ["2024-01-01", "2024-12-31"],
-        region: ["US", "EU"],
-        language: ["en", "es"],
-        keywords: ["test", "asset"],
-      };
-      expect(assetMetadata.channels.length).toBe(3);
-      expect(assetMetadata.keywords.length).toBe(2);
     });
 
     it("should export ExternalAssetSelection types", () => {
@@ -323,10 +317,17 @@ describe("SDK Exports", () => {
           {
             id: "test",
             name: "test",
-            signedUrl: "https://example.com/asset.jpg",
-            source: "test",
-            sourceUrl: "https://example.com/source.jpg",
-            extensionId: "test-extension",
+            mimeType: "image/jpeg",
+            size: 100,
+            externalAssetInfo: {
+              sourceUrl: "https://example.com/source.jpg",
+              signedUrl: "https://example.com/asset.jpg",
+              signedThumbnailUrl: "https://example.com/asset-thumb.jpg",
+            },
+            extensionInfo: {
+              id: "test-extension",
+              name: "Test Extension",
+            },
           },
         ],
       };
