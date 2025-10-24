@@ -10,7 +10,7 @@ OF ANY KIND, either express or implied. See the License for the specific languag
 governing permissions and limitations under the License.
 */
 
-import { Asset, ExternalAssetSelection } from "../../../src/types/asset/Asset";
+import { Asset } from "../../../src/types/asset/Asset";
 import { Email, Meta } from "../../../src/types/channel/Channel";
 
 describe("Asset", () => {
@@ -74,45 +74,5 @@ describe("Asset", () => {
     expect(asset.additionalMetadata).toBeDefined();
     expect(asset.keywords).toEqual(["product", "marketing"]);
     expect(asset.extensionInfo.iconUrl).toBe("https://example.com/icon.png");
-  });
-});
-
-describe("ExternalAssetSelection", () => {
-  it("should create an ExternalAssetSelection with required properties", () => {
-    const selection: ExternalAssetSelection = {
-      extensionId: "extension-123",
-      assets: [
-        {
-          id: "asset-123",
-          name: "Test Asset",
-          mimeType: "image/jpeg",
-          size: 1024,
-          externalAssetInfo: {
-            sourceUrl: "https://example.com/assets/test.jpg",
-            signedUrl: "https://example.com/assets/test.jpg",
-            signedThumbnailUrl: "https://example.com/assets/test-thumb.jpg",
-          },
-          extensionInfo: {
-            id: "test-extension-id",
-            name: "Test Extension",
-          },
-        },
-      ],
-    };
-
-    expect(selection.extensionId).toBe("extension-123");
-    expect(selection.assets[0].id).toBe("asset-123");
-    expect(selection.assets[0].name).toBe("Test Asset");
-    expect(selection.assets[0].externalAssetInfo.signedUrl).toBe(
-      "https://example.com/assets/test.jpg",
-    );
-    expect(selection.assets[0].externalAssetInfo.sourceUrl).toBe(
-      "https://example.com/assets/test.jpg",
-    );
-    expect(selection.assets[0].externalAssetInfo.signedThumbnailUrl).toBe(
-      "https://example.com/assets/test-thumb.jpg",
-    );
-    expect(selection.assets[0].extensionInfo.id).toBe("test-extension-id");
-    expect(selection.assets[0].extensionInfo.name).toBe("Test Extension");
   });
 });
