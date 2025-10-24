@@ -40,7 +40,6 @@ import {
   SectionGenerationContext,
   Account,
   Asset,
-  ExternalAssetSelection,
   Locale,
   Template,
   LocaleCode,
@@ -308,31 +307,6 @@ describe("SDK Exports", () => {
       };
       expect(asset.id).toBe("test");
       expect(asset.name).toBe("test");
-    });
-
-    it("should export ExternalAssetSelection types", () => {
-      const externalAssetSelection: ExternalAssetSelection = {
-        extensionId: "test-extension",
-        assets: [
-          {
-            id: "test",
-            name: "test",
-            mimeType: "image/jpeg",
-            size: 100,
-            externalAssetInfo: {
-              sourceUrl: "https://example.com/source.jpg",
-              signedUrl: "https://example.com/asset.jpg",
-              signedThumbnailUrl: "https://example.com/asset-thumb.jpg",
-            },
-            extensionInfo: {
-              id: "test-extension",
-              name: "Test Extension",
-            },
-          },
-        ],
-      };
-      expect(externalAssetSelection.extensionId).toBe("test-extension");
-      expect(externalAssetSelection.assets.length).toBe(1);
     });
   });
 

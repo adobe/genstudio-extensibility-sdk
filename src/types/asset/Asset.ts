@@ -49,8 +49,3 @@ export type ExtensionInfo = {
   /** the icon url of the extension */
   iconUrl?: string;
 };
-
-export type ExternalAssetSelection = {
-  extensionId: string;
-  assets: Asset[];
-};
