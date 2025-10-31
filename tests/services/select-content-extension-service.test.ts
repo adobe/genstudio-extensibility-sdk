@@ -73,7 +73,10 @@ describe("SelectContentExtensionService", () => {
       const mockSync = jest.fn().mockResolvedValue(mockSyncResponse);
       const mockConnection = createMockConnection(mockSync);
 
-      const result = await SelectContentExtensionService.sync(mockConnection);
+      const result = await SelectContentExtensionService.sync(
+        mockConnection,
+        "test-extension-id",
+      );
 
       expect(mockSync).toHaveBeenCalled();
       expect(result).toEqual(mockSyncResponse);
@@ -86,21 +89,21 @@ describe("SelectContentExtensionService", () => {
       const mockConnection = createMockConnection(mockSync);
 
       await expect(
-        SelectContentExtensionService.sync(mockConnection),
+        SelectContentExtensionService.sync(mockConnection, "test-extension-id"),
       ).rejects.toThrow(Error);
       await expect(
-        SelectContentExtensionService.sync(mockConnection),
+        SelectContentExtensionService.sync(mockConnection, "test-extension-id"),
       ).rejects.toThrow("API Error");
     });
 
     it("should throw SelectContentExtensionServiceError if connection is missing", async () => {
       // @ts-ignore Testing null case explicitly
-      expect(() => SelectContentExtensionService.sync(null)).toThrow(
-        SelectContentExtensionServiceError,
-      );
-      expect(() => SelectContentExtensionService.sync(null)).toThrow(
-        "Connection is required to sync selected assets",
-      );
+      expect(() =>
+        SelectContentExtensionService.sync(null, "test-extension-id"),
+      ).toThrow(SelectContentExtensionServiceError);
+      expect(() =>
+        SelectContentExtensionService.sync(null, "test-extension-id"),
+      ).toThrow("Connection is required to sync selected assets");
     });
 
     it("should handle empty selected assets array", async () => {
@@ -109,9 +112,12 @@ describe("SelectContentExtensionService", () => {
         selectionLimit: 5,
       };
       const mockSync = jest.fn().mockResolvedValue(emptyResponse);
-      const mockConnection = createMockConnection(mockSync);
+      const mockConnection = createMockConnection(mockSync, jest.fn());
 
-      const result = await SelectContentExtensionService.sync(mockConnection);
+      const result = await SelectContentExtensionService.sync(
+        mockConnection,
+        "test-extension-id",
+      );
 
       expect(result.selectedAssets).toHaveLength(0);
       expect(result.selectionLimit).toBe(5);
