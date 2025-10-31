@@ -50,7 +50,7 @@ the selected assets
 
 ### sync()
 
-> `static` **sync**(`connection`: `any`): `Promise`\<\{ `selectedAssets`: [`Asset`](../type-aliases/Asset.md)[]; `selectionLimit`: `number`; \}\>
+> `static` **sync**(`connection`: `any`, `extensionId`: `string`): `Promise`\<\{ `selectedAssets`: [`Asset`](../type-aliases/Asset.md)[]; `selectionLimit`: `number`; \}\>
 
 Sync the selected assets
 
@@ -61,6 +61,10 @@ Sync the selected assets
 `any`
 
 The guest connection to the host
+
+##### extensionId
+
+`string`
 
 #### Returns
 
