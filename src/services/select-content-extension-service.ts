@@ -16,7 +16,7 @@ import { Asset } from "../types/asset/Asset";
 export interface SelectContentExtensionApi extends VirtualApi {
   api: {
     selectContentExtension: {
-      sync: () => Promise<{ selectedAssets: Asset[], selectionLimit: number }>;
+      sync: () => Promise<{ selectedAssets: Asset[]; selectionLimit: number }>;
       setSelectedAssets: (extensionId: string, assets: Asset[]) => void;
     };
   };
@@ -37,13 +37,16 @@ export class SelectContentExtensionService {
    */
   static sync(
     connection: any,
-  ): Promise<{ selectedAssets: Asset[], selectionLimit: number }> {
+    extensionId: string,
+  ): Promise<{ selectedAssets: Asset[]; selectionLimit: number }> {
     if (!connection) {
-      throw new SelectContentExtensionServiceError("Connection is required to sync selected assets");
+      throw new SelectContentExtensionServiceError(
+        "Connection is required to sync selected assets",
+      );
     }
 
     // @ts-ignore Remote API is handled through postMessage
-    return connection.host.api.selectContentExtension.sync();
+    return connection.host.api.selectContentExtension.sync(extensionId);
   }
 
   /**
@@ -57,7 +60,9 @@ export class SelectContentExtensionService {
     assets: Asset[],
   ): void {
     if (!connection) {
-      throw new SelectContentExtensionServiceError("Connection is required to set selected assets");
+      throw new SelectContentExtensionServiceError(
+        "Connection is required to set selected assets",
+      );
     }
 
     // @ts-ignore Remote API is handled through postMessage
