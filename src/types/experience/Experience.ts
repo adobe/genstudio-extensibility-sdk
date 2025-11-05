@@ -18,14 +18,14 @@ import { Template } from "../template";
  * An Experience is a container for various fields that define its characteristics.
  */
 export interface Experience {
-    /** Unique identifier for the experience */
-    id: string;
-    /** Collection of experience fields stored as key-value pairs */
-    experienceFields: Record<string, ExperienceField>;
-    /** Template associated with the experience */
-    template?: Template;
-    /** Metadata associated with the experience */
-    metadata?: ExperienceMetadata;
+  /** Unique identifier for the experience */
+  id: string;
+  /** Collection of experience fields stored as key-value pairs */
+  experienceFields: Record<string, ExperienceField>;
+  /** Template associated with the experience */
+  template?: Template;
+  /** Metadata associated with the experience */
+  metadata?: ExperienceMetadata;
 }
 
 /**
@@ -33,13 +33,17 @@ export interface Experience {
  * Each field contains a name and corresponding value.
  */
 export interface ExperienceField {
-    /** Name of the experience field */
-    fieldName: string;
-    /** Value associated with the experience field */
-    fieldValue: string;
+  /** Name of the experience field */
+  fieldName: string;
+  /** Value associated with the experience field */
+  fieldValue: string;
+  /** Keywords for the experience field */
+  keywords?: string[];
+  /** Additional metadata for the experience field */
+  additionalMetadata?: Record<string, any>;
 }
 
 export type ExperienceMetadata = {
-    locale?: string;
-    [key: string]: any;
-}
+  locale?: string;
+  [key: string]: any;
+};
