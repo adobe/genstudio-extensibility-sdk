@@ -66,6 +66,7 @@ describe("SelectContentExtensionService", () => {
   const mockSyncResponse = {
     selectedAssets: [mockAsset],
     selectionLimit: 10,
+    allowedFileTypes: ["image/jpeg", "image/png"],
   };
 
   describe("sync", () => {
@@ -82,6 +83,7 @@ describe("SelectContentExtensionService", () => {
       expect(result).toEqual(mockSyncResponse);
       expect(result.selectedAssets).toHaveLength(1);
       expect(result.selectionLimit).toBe(10);
+      expect(result.allowedFileTypes).toEqual(["image/jpeg", "image/png"]);
     });
 
     it("should throw SelectContentExtensionServiceError on API failure", async () => {
