@@ -38,7 +38,11 @@ export class SelectContentExtensionService {
   static sync(
     connection: any,
     extensionId: string,
-  ): { selectedAssets: Asset[]; selectionLimit: number } {
+  ): {
+    selectedAssets: Asset[];
+    selectionLimit: number;
+    allowedFileTypes: string[];
+  } {
     if (!connection) {
       throw new SelectContentExtensionServiceError(
         "Connection is required to sync selected assets",

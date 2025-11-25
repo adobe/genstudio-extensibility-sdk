@@ -50,7 +50,7 @@ the selected assets
 
 ### sync()
 
-> `static` **sync**(`connection`: `any`, `extensionId`: `string`): \{ `selectedAssets`: [`Asset`](../type-aliases/Asset.md)[]; `selectionLimit`: `number`; \}
+> `static` **sync**(`connection`: `any`, `extensionId`: `string`): \{ `allowedFileTypes`: `string`[]; `selectedAssets`: [`Asset`](../type-aliases/Asset.md)[]; `selectionLimit`: `number`; \}
 
 Sync the selected assets
 
@@ -68,9 +68,13 @@ The guest connection to the host
 
 #### Returns
 
-\{ `selectedAssets`: [`Asset`](../type-aliases/Asset.md)[]; `selectionLimit`: `number`; \}
+\{ `allowedFileTypes`: `string`[]; `selectedAssets`: [`Asset`](../type-aliases/Asset.md)[]; `selectionLimit`: `number`; \}
 
 the current selected assets and the total count of left assets
+
+##### allowedFileTypes
+
+> **allowedFileTypes**: `string`[]
 
 ##### selectedAssets
 
