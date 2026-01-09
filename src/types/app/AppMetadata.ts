@@ -32,7 +32,7 @@ export type AppOptions = {
   };
   selectContent?: {
     /**
-     * Indicates that the provided content is protected by CORS.
+     * Indicates that the provided content is protected by CORS. Defaults to true.
      * When enabled in horizon canvas mode, the extension pre-uploads the content using an aio action rather than through the browser.
      * Enabling will introduce a delay in the content selection process. (~5s)
      */
