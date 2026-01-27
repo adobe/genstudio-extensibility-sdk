@@ -6,11 +6,19 @@
     "node": ">=20.0.0",
     "npm": ">=9.0.0"
   },
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
+  "main": "./dist/cjs/index.js",
+  "module": "./dist/esm/index.js",
+  "types": "./dist/index.d.ts",
   "files": [
     "dist"
   ],
+  "exports": {
+    ".": {
+      "import": "./dist/esm/index.js",
+      "require": "./dist/cjs/index.js",
+      "types": "./dist/esm/index.d.ts"
+    }
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/adobe/genstudio-extensibility-sdk.git"
@@ -25,7 +33,7 @@
   "scripts": {
     "test": "jest",
     "test:coverage": "jest --coverage",
-    "build": "tsc",
+    "build": "rm -rf dist && tsc -p tsconfig.esm.json && tsc -p tsconfig.cjs.json",
     "semantic-release": "semantic-release",
     "clean": "rm -rf dist docs/api",
     "docs": "rm -rf docs/api && typedoc -githubPages false"
