@@ -22,8 +22,8 @@
 
 ## Interfaces
 
-- [~~Experience~~](interfaces/Experience.md)
-- [~~ExperienceField~~](interfaces/ExperienceField.md)
+- [Experience](interfaces/Experience.md)
+- [ExperienceField](interfaces/ExperienceField.md)
 - [ImportTemplateExtensionApi](interfaces/ImportTemplateExtensionApi.md)
 - [PromptExtensionApi](interfaces/PromptExtensionApi.md)
 - [SelectContentExtensionApi](interfaces/SelectContentExtensionApi.md)
@@ -43,7 +43,7 @@
 - [Channel](type-aliases/Channel.md)
 - [Claim](type-aliases/Claim.md)
 - [EmailRole](type-aliases/EmailRole.md)
-- [~~ExperienceMetadata~~](type-aliases/ExperienceMetadata.md)
+- [ExperienceMetadata](type-aliases/ExperienceMetadata.md)
 - [ExtensionAuth](type-aliases/ExtensionAuth.md)
 - [ExtensionInfo](type-aliases/ExtensionInfo.md)
 - [ExternalAssetInfo](type-aliases/ExternalAssetInfo.md)

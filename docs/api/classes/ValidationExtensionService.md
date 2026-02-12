@@ -20,7 +20,7 @@ Manages experience data conversion and retrieval
 
 ## Methods
 
-### ~~getExperiences()~~
+### getExperiences()
 
 > `static` **getExperiences**(`connection`: `any`): `Promise`\<[`Experience`](../interfaces/Experience.md)[]\>
 
@@ -44,37 +44,7 @@ Promise<Experience[]> Array of converted experiences
 
 Error if connection is missing
 
-#### Deprecated
-
-Only used in HTML canvas. In non-HTML canvas, variants are
-flattened into Experience and returned. Use getExperiencesWithVariants instead.
-
-***
-
-### getExperiencesWithVariants()
-
-> `static` **getExperiencesWithVariants**(`connection`: `any`): `Promise`\<`ExperienceWithVariant`[]\>
-
-Fetches experiences with variants from the connection.
-Note: Does not work with HTML canvas.
-
-#### Parameters
-
-##### connection
-
-`any`
-
-The guest connection to the host
-
-#### Returns
-
-`Promise`\<`ExperienceWithVariant`[]\>
-
-Promise<ExperienceWithVariant[]> Array of experiences with their variants
-
-#### Throws
-
-Error if connection is missing
+In non-HTML canvas, variants are flattened into Experience and returned. Use getExperiencesWithVariants instead.
 
 ***
 

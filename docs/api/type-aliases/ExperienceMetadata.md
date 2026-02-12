@@ -4,7 +4,7 @@
 
 [@adobe/genstudio-extensibility-sdk](../globals.md) / ExperienceMetadata
 
-# Type Alias: ~~ExperienceMetadata~~
+# Type Alias: ExperienceMetadata
 
 > **ExperienceMetadata**: \{ `[key: string]`: `any`;  `locale`: `string`; \}
 
@@ -16,10 +16,6 @@ Metadata associated with an Experience.
 
 \[`key`: `string`\]: `any`
 
-### ~~locale?~~
+### locale?
 
 > `optional` **locale**: `string`
-
-## Deprecated
-
-Only used to support HTML canvas. Use ExperienceWithVariant instead.

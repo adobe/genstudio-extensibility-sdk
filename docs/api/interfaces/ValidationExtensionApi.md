@@ -18,11 +18,19 @@
 
 ### api
 
-> **api**: \{ `validationExtension`: \{ `getExperiences`: () => `Promise`\<[`Experience`](Experience.md)[]\>; `getGenerationContext`: () => `Promise`\<[`GenerationContext`](../type-aliases/GenerationContext.md)\>; `open`: (`extensionId`: `string`) => `void`; \}; \}
+> **api**: \{ `validationExtension`: \{ `getCanvasType`: () => `Promise`\<`string`\>; `getExperiences`: () => `Promise`\<[`Experience`](Experience.md)[]\>; `getGenerationContext`: () => `Promise`\<[`GenerationContext`](../type-aliases/GenerationContext.md)\>; `open`: (`extensionId`: `string`) => `void`; \}; \}
 
 #### validationExtension
 
-> **validationExtension**: \{ `getExperiences`: () => `Promise`\<[`Experience`](Experience.md)[]\>; `getGenerationContext`: () => `Promise`\<[`GenerationContext`](../type-aliases/GenerationContext.md)\>; `open`: (`extensionId`: `string`) => `void`; \}
+> **validationExtension**: \{ `getCanvasType`: () => `Promise`\<`string`\>; `getExperiences`: () => `Promise`\<[`Experience`](Experience.md)[]\>; `getGenerationContext`: () => `Promise`\<[`GenerationContext`](../type-aliases/GenerationContext.md)\>; `open`: (`extensionId`: `string`) => `void`; \}
+
+##### validationExtension.getCanvasType()
+
+> **getCanvasType**: () => `Promise`\<`string`\>
+
+###### Returns
+
+`Promise`\<`string`\>
 
 ##### validationExtension.getExperiences()
 

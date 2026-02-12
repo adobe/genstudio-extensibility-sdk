@@ -4,18 +4,14 @@
 
 [@adobe/genstudio-extensibility-sdk](../globals.md) / ExperienceField
 
-# Interface: ~~ExperienceField~~
+# Interface: ExperienceField
 
 Represents a field within an Experience.
 Each field contains a name and corresponding value.
 
-## Deprecated
-
-Only used to support HTML canvas. Use ExperienceWithVariant instead.
-
 ## Properties
 
-### ~~additionalMetadata?~~
+### additionalMetadata?
 
 > `optional` **additionalMetadata**: `Record`\<`string`, `any`\>
 
@@ -23,7 +19,7 @@ Additional metadata for the experience field
 
 ***
 
-### ~~fieldName~~
+### fieldName
 
 > **fieldName**: `string`
 
@@ -31,7 +27,7 @@ Name of the experience field
 
 ***
 
-### ~~fieldValue~~
+### fieldValue
 
 > **fieldValue**: `string`
 
@@ -39,7 +35,7 @@ Value associated with the experience field
 
 ***
 
-### ~~keywords?~~
+### keywords?
 
 > `optional` **keywords**: `string`[]
 

@@ -22,6 +22,7 @@ export interface ValidationExtensionApi extends VirtualApi {
       open: (extensionId: string) => void;
       getExperiences: () => Promise<Experience[]>;
       getGenerationContext: () => Promise<GenerationContext>;
+      getCanvasType: () => Promise<string>;
     };
   };
 }
@@ -66,8 +67,7 @@ export class ValidationExtensionService {
    * @returns Promise<Experience[]> Array of converted experiences
    * @throws Error if connection is missing
    *
-   * @deprecated Only used in HTML canvas. In non-HTML canvas, variants are
-   * flattened into Experience and returned. Use getExperiencesWithVariants instead.
+   * In non-HTML canvas, variants are flattened into Experience and returned. Use getExperiencesWithVariants instead.
    */
   static async getExperiences(connection: any): Promise<Experience[]> {
     if (!connection) {
@@ -79,32 +79,6 @@ export class ValidationExtensionService {
     try {
       // @ts-ignore Remote API is handled through postMessage
       return await connection.host.api.validationExtension.getExperiences();
-    } catch (error) {
-      throw new ValidationExtensionServiceError(
-        "Failed to fetch experiences from host",
-      );
-    }
-  }
-
-  /**
-   * Fetches experiences with variants from the connection.
-   * Note: Does not work with HTML canvas.
-   * @param connection - The guest connection to the host
-   * @returns Promise<ExperienceWithVariant[]> Array of experiences with their variants
-   * @throws Error if connection is missing
-   */
-  static async getExperiencesWithVariants(
-    connection: any,
-  ): Promise<ExperienceWithVariant[]> {
-    if (!connection) {
-      throw new ValidationExtensionServiceError(
-        "Connection is required to get experiences",
-      );
-    }
-
-    try {
-      // @ts-ignore Remote API is handled through postMessage
-      return await connection.host.api.validationExtension.getExperiencesWithVariants();
     } catch (error) {
       throw new ValidationExtensionServiceError(
         "Failed to fetch experiences from host",
