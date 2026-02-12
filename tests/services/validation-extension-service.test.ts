@@ -14,15 +14,24 @@ import { ValidationExtensionService, ValidationExtensionServiceError, Validation
 import { GuestUI } from '@adobe/uix-guest';
 import { GenerationContext } from '../../src/types/generationContext/GenerationContext';
 
-const createMockConnection = (
-  getExperiencesMock?: jest.Mock, 
-  getGenerationContextMock?: jest.Mock,
-  openMock?: jest.Mock
-) => ({
+type ConnectionMocks = {
+  getExperiencesMock?: jest.Mock;
+  getExperiencesWithVariantsMock?: jest.Mock;
+  getGenerationContextMock?: jest.Mock;
+  openMock?: jest.Mock;
+};
+
+const createMockConnection = ({
+  getExperiencesMock,
+  getExperiencesWithVariantsMock,
+  getGenerationContextMock,
+  openMock
+}: ConnectionMocks = {}) => ({
   host: {
     api: {
       validationExtension: {
         getExperiences: getExperiencesMock || jest.fn(),
+        getExperiencesWithVariants: getExperiencesWithVariantsMock || jest.fn(),
         getGenerationContext: getGenerationContextMock || jest.fn(),
         open: openMock || jest.fn()
       }
@@ -62,10 +71,35 @@ describe('ValidationExtensionService', () => {
     userPrompt: "test-user-prompt"
   };
 
+  const mockExperienceWithVariant = {
+    id: "exp123",
+    metadata: {
+      experienceInfo: { title: "Test Experience" },
+      channels: ["email"]
+    },
+    variants: {
+      default: {
+        metadata: {
+          width: 1200,
+          height: 628,
+          knownAspectRatio: "1.91:1"
+        },
+        fields: {
+          headline: {
+            value: "Hello world",
+            roleName: "headline",
+            roleType: "text",
+            keywords: ["greeting"]
+          }
+        }
+      }
+    }
+  };
+
   describe('getExperiences', () => {
     it('should fetch experiences', async () => {
       const mockGetExperiences = jest.fn().mockResolvedValue([mockRawExperience]);
-      const mockConnection = createMockConnection(mockGetExperiences, undefined, undefined);
+      const mockConnection = createMockConnection({ getExperiencesMock: mockGetExperiences });
 
       const results = await ValidationExtensionService.getExperiences(mockConnection);
       
@@ -82,7 +116,7 @@ describe('ValidationExtensionService', () => {
 
     it('should throw ExperienceError on API failure', async () => {
       const mockGetExperiences = jest.fn().mockRejectedValue(new Error('API Error'));
-      const mockConnection = createMockConnection(mockGetExperiences, undefined, undefined);
+      const mockConnection = createMockConnection({ getExperiencesMock: mockGetExperiences });
 
       await expect(ValidationExtensionService.getExperiences(mockConnection))
         .rejects
@@ -104,10 +138,59 @@ describe('ValidationExtensionService', () => {
     });
   });
 
+  describe('getExperiencesWithVariants', () => {
+    it('should fetch experiences with variants', async () => {
+      const mockGetExperiencesWithVariants = jest.fn().mockResolvedValue([
+        mockExperienceWithVariant
+      ]);
+      const mockConnection = createMockConnection({
+        getExperiencesWithVariantsMock: mockGetExperiencesWithVariants
+      });
+
+      const results = await ValidationExtensionService.getExperiencesWithVariants(mockConnection);
+
+      expect(mockGetExperiencesWithVariants).toHaveBeenCalled();
+      results.forEach(result => {
+        expect(result.id).toBeDefined();
+        expect(result.metadata).toBeDefined();
+        expect(typeof result.metadata).toBe('object');
+        expect(result.variants).toBeDefined();
+        expect(typeof result.variants).toBe('object');
+      });
+    });
+
+    it('should throw ExperienceError on API failure', async () => {
+      const mockGetExperiencesWithVariants = jest.fn().mockRejectedValue(new Error('API Error'));
+      const mockConnection = createMockConnection({
+        getExperiencesWithVariantsMock: mockGetExperiencesWithVariants
+      });
+
+      await expect(ValidationExtensionService.getExperiencesWithVariants(mockConnection))
+        .rejects
+        .toThrow(ValidationExtensionServiceError);
+      await expect(ValidationExtensionService.getExperiencesWithVariants(mockConnection))
+        .rejects
+        .toThrow('Failed to fetch experiences from host');
+    });
+
+    it('should throw ExperienceError if connection is missing', async () => {
+      // @ts-ignore Testing null case explicitly
+      await expect(ValidationExtensionService.getExperiencesWithVariants(null))
+        .rejects
+        .toThrow(ValidationExtensionServiceError);
+      // @ts-ignore Testing null case explicitly
+      await expect(ValidationExtensionService.getExperiencesWithVariants(null))
+        .rejects
+        .toThrow('Connection is required to get experiences');
+    });
+  });
+
   describe("getGenerationContext", () => {
     it("should get generation context", async () => {
       const mockGetGenerationContext = jest.fn().mockResolvedValue(mockGenerationContext);
-      const mockConnection = createMockConnection(undefined, mockGetGenerationContext, undefined);
+      const mockConnection = createMockConnection({
+        getGenerationContextMock: mockGetGenerationContext
+      });
       const generationContext = await ValidationExtensionService.getGenerationContext(mockConnection);
       expect(generationContext).toEqual(mockGenerationContext);
     });
@@ -121,7 +204,9 @@ describe('ValidationExtensionService', () => {
 
     it("should throw ExperienceError on API failure", async () => {
       const mockGetGenerationContext = jest.fn().mockRejectedValue(new Error('API Error'));
-      const mockConnection = createMockConnection(undefined, mockGetGenerationContext, undefined);
+      const mockConnection = createMockConnection({
+        getGenerationContextMock: mockGetGenerationContext
+      });
       await expect(ValidationExtensionService.getGenerationContext(mockConnection))
         .rejects
         .toThrow(new ValidationExtensionServiceError('Failed to get generation context'));
@@ -131,7 +216,7 @@ describe('ValidationExtensionService', () => {
   describe('open', () => {
     it('should open validation extension successfully', () => {
       const mockOpen = jest.fn();
-      const mockConnection = createMockConnection(undefined, undefined, mockOpen);
+      const mockConnection = createMockConnection({ openMock: mockOpen });
       const extensionId = 'test-extension-id';
 
       ValidationExtensionService.open(mockConnection, extensionId);
@@ -155,7 +240,7 @@ describe('ValidationExtensionService', () => {
       const mockOpen = jest.fn().mockImplementation(() => {
         throw new Error('API Error');
       });
-      const mockConnection = createMockConnection(undefined, undefined, mockOpen);
+      const mockConnection = createMockConnection({ openMock: mockOpen });
       const extensionId = 'test-extension-id';
 
       expect(() => ValidationExtensionService.open(mockConnection, extensionId))
@@ -166,7 +251,7 @@ describe('ValidationExtensionService', () => {
 
     it('should handle empty extensionId', () => {
       const mockOpen = jest.fn();
-      const mockConnection = createMockConnection(undefined, undefined, mockOpen);
+      const mockConnection = createMockConnection({ openMock: mockOpen });
       const extensionId = '';
 
       ValidationExtensionService.open(mockConnection, extensionId);

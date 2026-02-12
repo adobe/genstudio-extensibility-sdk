@@ -16,6 +16,8 @@ import { Template } from "../template";
 /**
  * Represents an Experience entity in the system.
  * An Experience is a container for various fields that define its characteristics.
+ *
+ * @deprecated Only used to support HTML canvas. Use ExperienceWithVariant instead.
  */
 export interface Experience {
   /** Unique identifier for the experience */
@@ -31,6 +33,8 @@ export interface Experience {
 /**
  * Represents a field within an Experience.
  * Each field contains a name and corresponding value.
+ *
+ * @deprecated Only used to support HTML canvas. Use ExperienceWithVariant instead.
  */
 export interface ExperienceField {
   /** Name of the experience field */
@@ -43,6 +47,11 @@ export interface ExperienceField {
   additionalMetadata?: Record<string, any>;
 }
 
+/**
+ * Metadata associated with an Experience.
+ *
+ * @deprecated Only used to support HTML canvas. Use ExperienceWithVariant instead.
+ */
 export type ExperienceMetadata = {
   locale?: string;
   [key: string]: any;

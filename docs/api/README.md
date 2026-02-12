@@ -9,6 +9,8 @@ GenStudio Extensibility SDK
 
 ## API Documentation
 Please refer to the [API Documentation](https://opensource.adobe.com/genstudio-extensibility-sdk/) for more information.
+## Changelog
+See versioned change logs in [docs/changelog](_media/README.md).
 ## Usage
 ```
 npm install @adobe/genstudio-extensibility-sdk

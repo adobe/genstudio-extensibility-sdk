@@ -6,9 +6,21 @@
 
 # Type Alias: AppOptions
 
-> **AppOptions**: \{ `validation`: \{ `autoOpenApp`: `boolean`; `autoRefreshApp`: `boolean`; `singleExperienceViewMode`: `boolean`; \}; \}
+> **AppOptions**: \{ `selectContent`: \{ `cors`: `boolean`; \}; `validation`: \{ `autoOpenApp`: `boolean`; `autoRefreshApp`: `boolean`; `singleExperienceViewMode`: `boolean`; \}; \}
 
 ## Type declaration
+
+### selectContent?
+
+> `optional` **selectContent**: \{ `cors`: `boolean`; \}
+
+#### selectContent.cors
+
+> **cors**: `boolean`
+
+Indicates that the provided content is protected by CORS. Defaults to true.
+When enabled in horizon canvas mode, the extension pre-uploads the content using an aio action rather than through the browser.
+Enabling will introduce a delay in the content selection process. (~5s)
 
 ### validation?
 

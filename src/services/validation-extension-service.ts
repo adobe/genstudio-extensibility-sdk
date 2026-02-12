@@ -14,6 +14,7 @@ import { Experience } from "../types/experience/Experience";
 
 import { VirtualApi } from "@adobe/uix-core";
 import { GenerationContext } from "../types/generationContext/GenerationContext";
+import { ExperienceWithVariant } from "../types/experience/ExperienceWithVariant";
 
 export interface ValidationExtensionApi extends VirtualApi {
   api: {
@@ -37,24 +38,25 @@ export class ValidationExtensionServiceError extends Error {
  */
 export class ValidationExtensionService {
   /**
- * Opens the validation extension
- * @param connection - The guest connection to the host
- * @param extensionId - The ID of the extension to open
- * @throws Error if connection is missing
- */
-  static open(
-    connection: any,
-    extensionId: string
-  ): void {
+   * Opens the validation extension
+   * @param connection - The guest connection to the host
+   * @param extensionId - The ID of the extension to open
+   * @throws Error if connection is missing
+   */
+  static open(connection: any, extensionId: string): void {
     if (!connection) {
-      throw new ValidationExtensionServiceError("Connection is required to open validation extension");
+      throw new ValidationExtensionServiceError(
+        "Connection is required to open validation extension",
+      );
     }
 
     try {
       // @ts-ignore Remote API is handled through postMessage
       connection.host.api.validationExtension.open(extensionId);
     } catch (error) {
-      throw new ValidationExtensionServiceError("Failed to open validation extension");
+      throw new ValidationExtensionServiceError(
+        "Failed to open validation extension",
+      );
     }
   }
 
@@ -63,19 +65,50 @@ export class ValidationExtensionService {
    * @param connection - The guest connection to the host
    * @returns Promise<Experience[]> Array of converted experiences
    * @throws Error if connection is missing
+   *
+   * @deprecated Only used in HTML canvas. In non-HTML canvas, variants are
+   * flattened into Experience and returned. Use getExperiencesWithVariants instead.
    */
-  static async getExperiences(
-    connection: any,
-  ): Promise<Experience[]> {
+  static async getExperiences(connection: any): Promise<Experience[]> {
     if (!connection) {
-      throw new ValidationExtensionServiceError("Connection is required to get experiences");
+      throw new ValidationExtensionServiceError(
+        "Connection is required to get experiences",
+      );
     }
 
     try {
       // @ts-ignore Remote API is handled through postMessage
       return await connection.host.api.validationExtension.getExperiences();
     } catch (error) {
-      throw new ValidationExtensionServiceError("Failed to fetch experiences from host");
+      throw new ValidationExtensionServiceError(
+        "Failed to fetch experiences from host",
+      );
+    }
+  }
+
+  /**
+   * Fetches experiences with variants from the connection.
+   * Note: Does not work with HTML canvas.
+   * @param connection - The guest connection to the host
+   * @returns Promise<ExperienceWithVariant[]> Array of experiences with their variants
+   * @throws Error if connection is missing
+   */
+  static async getExperiencesWithVariants(
+    connection: any,
+  ): Promise<ExperienceWithVariant[]> {
+    if (!connection) {
+      throw new ValidationExtensionServiceError(
+        "Connection is required to get experiences",
+      );
+    }
+
+    try {
+      // @ts-ignore Remote API is handled through postMessage
+      return await connection.host.api.validationExtension.getExperiencesWithVariants();
+    } catch (error) {
+      throw new ValidationExtensionServiceError(
+        "Failed to fetch experiences from host",
+      );
     }
   }
 
@@ -89,14 +122,18 @@ export class ValidationExtensionService {
     connection: any,
   ): Promise<GenerationContext> {
     if (!connection) {
-      throw new ValidationExtensionServiceError("Connection is required to get generation context");
+      throw new ValidationExtensionServiceError(
+        "Connection is required to get generation context",
+      );
     }
 
     try {
       // @ts-ignore Remote API is handled through postMessage
       return await connection.host.api.validationExtension.getGenerationContext();
     } catch (error) {
-      throw new ValidationExtensionServiceError("Failed to get generation context");
+      throw new ValidationExtensionServiceError(
+        "Failed to get generation context",
+      );
     }
   }
 }
