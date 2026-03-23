@@ -10,9 +10,14 @@ OF ANY KIND, either express or implied. See the License for the specific languag
 governing permissions and limitations under the License.
 */
 
-export * from "./validation-extension-service";
-export * from "./prompt-extension-service";
-export * from "./select-content-extension-service";
-export * from "./import-template-extension-service";
-export * from "./extension-auth";
-export * from "./swap-field-extension-service";
+/**
+ * Context for an inline field extension swap operation.
+ */
+export type SwapFieldContext = {
+  /** Unique identifier of the experience containing the field */
+  experienceId: string;
+  /** Reference key of the field to swap */
+  fieldName: string;
+  /** Current text value of the field */
+  currentValue: string;
+};
