@@ -53,19 +53,17 @@ export type ExperienceMetadata = {
 
 /**
  * Payload describing a single field update to apply on the canvas.
- * For non-HTML canvas, omit variantId.
- * For HTML canvas, provide variantId to target a specific variant.
  */
 export type FieldUpdate = {
   /** ID of the experience containing the field to update */
   experienceId: string;
+  /**
+   * ID of the experience variant to update.
+   * Required for Horizon canvas (ExperienceWithVariant); omit for HTML canvas
+   */
+  variantId?: string;
   /** Name of the field to update (matches fieldName / VariantField key) */
   fieldName: string;
   /** The new value to write into the field */
   value: string;
-  /**
-   * ID of the variant to update.
-   * Required for HTML canvas (ExperienceWithVariant); omit for non-HTML canvas (Experience).
-   */
-  variantId?: string;
 };
