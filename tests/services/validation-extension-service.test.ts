@@ -255,13 +255,13 @@ describe("ValidationExtensionService", () => {
   describe("updateField", () => {
     const mockFieldUpdateNonHtml: FieldUpdate = {
       experienceId: "exp123",
-      field: "headline",
+      name: "headline",
       value: "New headline text",
     };
 
     const mockFieldUpdateHtml: FieldUpdate = {
       experienceId: "exp123",
-      field: "headline",
+      name: "headline",
       value: "New headline text",
     };
 
@@ -309,7 +309,7 @@ describe("ValidationExtensionService", () => {
       expect(mockUpdateField).toHaveBeenCalledTimes(1);
       expect(mockUpdateField).toHaveBeenCalledWith({
         experienceId: "exp123",
-        field: "headline",
+        name: "headline",
         value: "New headline text",
       });
     });
