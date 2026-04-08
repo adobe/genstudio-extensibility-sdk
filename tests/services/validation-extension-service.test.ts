@@ -255,18 +255,17 @@ describe("ValidationExtensionService", () => {
   describe("updateField", () => {
     const mockFieldUpdateNonHtml: FieldUpdate = {
       experienceId: "exp123",
-      fieldName: "headline",
+      field: "headline",
       value: "New headline text",
     };
 
     const mockFieldUpdateHtml: FieldUpdate = {
       experienceId: "exp123",
-      fieldName: "headline",
+      field: "headline",
       value: "New headline text",
-      variantId: "default",
     };
 
-    it("should call updateField with non-HTML canvas payload (no variantId)", () => {
+    it("should call updateField with the correct payload", () => {
       const mockUpdateField = jest.fn();
       const mockConnection = createMockConnection({ updateFieldMock: mockUpdateField });
 
@@ -274,16 +273,6 @@ describe("ValidationExtensionService", () => {
 
       expect(mockUpdateField).toHaveBeenCalledWith(mockFieldUpdateNonHtml);
       expect(mockUpdateField).toHaveBeenCalledTimes(1);
-    });
-
-    it("should call updateField with HTML canvas payload (with variantId)", () => {
-      const mockUpdateField = jest.fn();
-      const mockConnection = createMockConnection({ updateFieldMock: mockUpdateField });
-
-      ValidationExtensionService.updateField(mockConnection, mockFieldUpdateHtml);
-
-      expect(mockUpdateField).toHaveBeenCalledWith(mockFieldUpdateHtml);
-      expect(mockUpdateField.mock.calls[0][0].variantId).toBe("default");
     });
 
     it("should throw ValidationExtensionServiceError if connection is missing", () => {
@@ -320,7 +309,7 @@ describe("ValidationExtensionService", () => {
       expect(mockUpdateField).toHaveBeenCalledTimes(1);
       expect(mockUpdateField).toHaveBeenCalledWith({
         experienceId: "exp123",
-        fieldName: "headline",
+        field: "headline",
         value: "New headline text",
       });
     });

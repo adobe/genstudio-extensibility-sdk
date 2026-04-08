@@ -57,13 +57,8 @@ export type ExperienceMetadata = {
 export type FieldUpdate = {
   /** ID of the experience containing the field to update */
   experienceId: string;
-  /**
-   * ID of the experience variant to update.
-   * Required for Horizon canvas (ExperienceWithVariant); omit for HTML canvas
-   */
-  variantId?: string;
   /** Name of the field to update (matches fieldName / VariantField key) */
-  fieldName: string;
+  field: string;
   /** The new value to write into the field */
   value: string;
 };
