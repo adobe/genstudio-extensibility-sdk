@@ -131,6 +131,3 @@ The field update payload describing which field to change and the new value
 #### Throws
 
 Error if connection is missing
-
-For non-HTML canvas, omit fieldUpdate.variantId.
-For HTML canvas, provide fieldUpdate.variantId to target a specific variant.

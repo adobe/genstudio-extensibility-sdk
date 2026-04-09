@@ -116,9 +116,6 @@ export class ValidationExtensionService {
    * @param connection - The guest connection to the host
    * @param fieldUpdate - The field update payload describing which field to change and the new value
    * @throws Error if connection is missing
-   *
-   * For non-HTML canvas, omit fieldUpdate.variantId.
-   * For HTML canvas, provide fieldUpdate.variantId to target a specific variant.
    */
   static updateField(connection: any, fieldUpdate: FieldUpdate): void {
     if (!connection) {
