@@ -57,7 +57,7 @@ export type ExperienceMetadata = {
 export type FieldUpdate = {
   /** ID of the experience containing the field to update */
   experienceId: string;
-  /** Name of the field to update (matches fieldName / VariantField key) */
+  /** Name of the field to update (matches fieldName key) */
   name: string;
   /** The new value to write into the field */
   value: string;
