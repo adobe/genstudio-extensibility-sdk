@@ -25,7 +25,6 @@ type ConnectionMocks = {
   getGenerationContextMock?: jest.Mock;
   openMock?: jest.Mock;
   updateFieldMock?: jest.Mock;
-  getCanvasTypeMock?: jest.Mock;
 };
 
 const createMockConnection = ({
@@ -34,7 +33,6 @@ const createMockConnection = ({
   getGenerationContextMock,
   openMock,
   updateFieldMock,
-  getCanvasTypeMock,
 }: ConnectionMocks = {}) =>
   ({
     host: {
@@ -46,7 +44,6 @@ const createMockConnection = ({
           getGenerationContext: getGenerationContextMock || jest.fn(),
           open: openMock || jest.fn(),
           updateField: updateFieldMock || jest.fn(),
-          getCanvasType: getCanvasTypeMock || jest.fn(),
         },
       },
     },
