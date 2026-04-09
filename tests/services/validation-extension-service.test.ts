@@ -259,12 +259,6 @@ describe("ValidationExtensionService", () => {
       value: "New headline text",
     };
 
-    const mockFieldUpdateHtml: FieldUpdate = {
-      experienceId: "exp123",
-      name: "headline",
-      value: "New headline text",
-    };
-
     it("should call updateField with the correct payload", () => {
       const mockUpdateField = jest.fn();
       const mockConnection = createMockConnection({ updateFieldMock: mockUpdateField });
