@@ -18,11 +18,11 @@
 
 ### api
 
-> **api**: \{ `validationExtension`: \{ `getExperiences`: () => `Promise`\<[`Experience`](Experience.md)[]\>; `getGenerationContext`: () => `Promise`\<[`GenerationContext`](../type-aliases/GenerationContext.md)\>; `open`: (`extensionId`: `string`) => `void`; \}; \}
+> **api**: \{ `validationExtension`: \{ `getExperiences`: () => `Promise`\<[`Experience`](Experience.md)[]\>; `getGenerationContext`: () => `Promise`\<[`GenerationContext`](../type-aliases/GenerationContext.md)\>; `open`: (`extensionId`: `string`) => `void`; `updateField`: (`fieldUpdate`: [`FieldUpdate`](../type-aliases/FieldUpdate.md)) => `void`; \}; \}
 
 #### validationExtension
 
-> **validationExtension**: \{ `getExperiences`: () => `Promise`\<[`Experience`](Experience.md)[]\>; `getGenerationContext`: () => `Promise`\<[`GenerationContext`](../type-aliases/GenerationContext.md)\>; `open`: (`extensionId`: `string`) => `void`; \}
+> **validationExtension**: \{ `getExperiences`: () => `Promise`\<[`Experience`](Experience.md)[]\>; `getGenerationContext`: () => `Promise`\<[`GenerationContext`](../type-aliases/GenerationContext.md)\>; `open`: (`extensionId`: `string`) => `void`; `updateField`: (`fieldUpdate`: [`FieldUpdate`](../type-aliases/FieldUpdate.md)) => `void`; \}
 
 ##### validationExtension.getExperiences()
 
@@ -49,6 +49,20 @@
 ###### extensionId
 
 `string`
+
+###### Returns
+
+`void`
+
+##### validationExtension.updateField()
+
+> **updateField**: (`fieldUpdate`: [`FieldUpdate`](../type-aliases/FieldUpdate.md)) => `void`
+
+###### Parameters
+
+###### fieldUpdate
+
+[`FieldUpdate`](../type-aliases/FieldUpdate.md)
 
 ###### Returns
 

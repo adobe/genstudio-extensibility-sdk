@@ -101,3 +101,33 @@ The ID of the extension to open
 #### Throws
 
 Error if connection is missing
+
+***
+
+### updateField()
+
+> `static` **updateField**(`connection`: `any`, `fieldUpdate`: [`FieldUpdate`](../type-aliases/FieldUpdate.md)): `void`
+
+Updates a field value on the canvas.
+
+#### Parameters
+
+##### connection
+
+`any`
+
+The guest connection to the host
+
+##### fieldUpdate
+
+[`FieldUpdate`](../type-aliases/FieldUpdate.md)
+
+The field update payload describing which field to change and the new value
+
+#### Returns
+
+`void`
+
+#### Throws
+
+Error if connection is missing
