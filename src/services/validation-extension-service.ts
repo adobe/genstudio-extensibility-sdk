@@ -10,7 +10,7 @@ OF ANY KIND, either express or implied. See the License for the specific languag
 governing permissions and limitations under the License.
 */
 
-import { Experience } from "../types/experience/Experience";
+import { Experience, FieldUpdate } from "../types/experience/Experience";
 
 import { VirtualApi } from "@adobe/uix-core";
 import { GenerationContext } from "../types/generationContext/GenerationContext";
@@ -22,7 +22,7 @@ export interface ValidationExtensionApi extends VirtualApi {
       open: (extensionId: string) => void;
       getExperiences: () => Promise<Experience[]>;
       getGenerationContext: () => Promise<GenerationContext>;
-      getCanvasType: () => Promise<string>;
+      updateField: (fieldUpdate: FieldUpdate) => void;
     };
   };
 }
@@ -107,6 +107,29 @@ export class ValidationExtensionService {
     } catch (error) {
       throw new ValidationExtensionServiceError(
         "Failed to get generation context",
+      );
+    }
+  }
+
+  /**
+   * Updates a field value on the canvas.
+   * @param connection - The guest connection to the host
+   * @param fieldUpdate - The field update payload describing which field to change and the new value
+   * @throws Error if connection is missing
+   */
+  static updateField(connection: any, fieldUpdate: FieldUpdate): void {
+    if (!connection) {
+      throw new ValidationExtensionServiceError(
+        "Connection is required to update field",
+      );
+    }
+
+    try {
+      // @ts-ignore Remote API is handled through postMessage
+      connection.host.api.validationExtension.updateField(fieldUpdate);
+    } catch (error) {
+      throw new ValidationExtensionServiceError(
+        "Failed to update field",
       );
     }
   }

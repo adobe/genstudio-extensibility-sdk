@@ -47,6 +47,7 @@
 - [ExtensionAuth](type-aliases/ExtensionAuth.md)
 - [ExtensionInfo](type-aliases/ExtensionInfo.md)
 - [ExternalAssetInfo](type-aliases/ExternalAssetInfo.md)
+- [FieldUpdate](type-aliases/FieldUpdate.md)
 - [GenerationContext](type-aliases/GenerationContext.md)
 - [ImportTemplateExtensionRegistration](type-aliases/ImportTemplateExtensionRegistration.md)
 - [Locale](type-aliases/Locale.md)

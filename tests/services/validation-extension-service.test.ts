@@ -17,12 +17,14 @@ import {
 } from "../../src/services";
 import { GuestUI } from "@adobe/uix-guest";
 import { GenerationContext } from "../../src/types/generationContext/GenerationContext";
+import { FieldUpdate } from "../../src/types/experience/Experience";
 
 type ConnectionMocks = {
   getExperiencesMock?: jest.Mock;
   getExperiencesWithVariantsMock?: jest.Mock;
   getGenerationContextMock?: jest.Mock;
   openMock?: jest.Mock;
+  updateFieldMock?: jest.Mock;
 };
 
 const createMockConnection = ({
@@ -30,6 +32,7 @@ const createMockConnection = ({
   getExperiencesWithVariantsMock,
   getGenerationContextMock,
   openMock,
+  updateFieldMock,
 }: ConnectionMocks = {}) =>
   ({
     host: {
@@ -40,6 +43,7 @@ const createMockConnection = ({
             getExperiencesWithVariantsMock || jest.fn(),
           getGenerationContext: getGenerationContextMock || jest.fn(),
           open: openMock || jest.fn(),
+          updateField: updateFieldMock || jest.fn(),
         },
       },
     },
@@ -242,6 +246,63 @@ describe("ValidationExtensionService", () => {
       ValidationExtensionService.open(mockConnection, extensionId);
 
       expect(mockOpen).toHaveBeenCalledWith(extensionId);
+    });
+  });
+
+  describe("updateField", () => {
+    const mockFieldUpdateNonHtml: FieldUpdate = {
+      experienceId: "exp123",
+      name: "headline",
+      value: "New headline text",
+    };
+
+    it("should call updateField with the correct payload", () => {
+      const mockUpdateField = jest.fn();
+      const mockConnection = createMockConnection({ updateFieldMock: mockUpdateField });
+
+      ValidationExtensionService.updateField(mockConnection, mockFieldUpdateNonHtml);
+
+      expect(mockUpdateField).toHaveBeenCalledWith(mockFieldUpdateNonHtml);
+      expect(mockUpdateField).toHaveBeenCalledTimes(1);
+    });
+
+    it("should throw ValidationExtensionServiceError if connection is missing", () => {
+      // @ts-ignore Testing null case explicitly
+      expect(() => ValidationExtensionService.updateField(null, mockFieldUpdateNonHtml)).toThrow(
+        ValidationExtensionServiceError,
+      );
+      // @ts-ignore Testing null case explicitly
+      expect(() => ValidationExtensionService.updateField(null, mockFieldUpdateNonHtml)).toThrow(
+        "Connection is required to update field",
+      );
+    });
+
+    it("should throw ValidationExtensionServiceError on API failure", () => {
+      const mockUpdateField = jest.fn().mockImplementation(() => {
+        throw new Error("API Error");
+      });
+      const mockConnection = createMockConnection({ updateFieldMock: mockUpdateField });
+
+      expect(() =>
+        ValidationExtensionService.updateField(mockConnection, mockFieldUpdateNonHtml),
+      ).toThrow(ValidationExtensionServiceError);
+      expect(() =>
+        ValidationExtensionService.updateField(mockConnection, mockFieldUpdateNonHtml),
+      ).toThrow("Failed to update field");
+    });
+
+    it("should pass the full FieldUpdate payload to the host API", () => {
+      const mockUpdateField = jest.fn();
+      const mockConnection = createMockConnection({ updateFieldMock: mockUpdateField });
+
+      ValidationExtensionService.updateField(mockConnection, mockFieldUpdateNonHtml);
+
+      expect(mockUpdateField).toHaveBeenCalledTimes(1);
+      expect(mockUpdateField).toHaveBeenCalledWith({
+        experienceId: "exp123",
+        name: "headline",
+        value: "New headline text",
+      });
     });
   });
 });
