@@ -16,7 +16,6 @@ export * from "./app/AppMetadata";
 export * from "./asset/Asset";
 export * from "./channel/Channel";
 export * from "./experience/Experience";
-export * from "./experience/SwapFieldContext";
 export * from "./extension-auth";
 export * from "./extension-registration";
 export * from "./generationContext/GenerationContext";
