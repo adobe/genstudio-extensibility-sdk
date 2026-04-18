@@ -11,7 +11,7 @@ governing permissions and limitations under the License.
 */
 
 import { VirtualApi } from "@adobe/uix-core";
-import { Experience, FieldUpdate } from "../types/experience/Experience";
+import { Experience } from "../types/experience/Experience";
 import { GenerationContext } from "../types/generationContext/GenerationContext";
 
 export interface FragmentSwapExtensionApi extends VirtualApi {
