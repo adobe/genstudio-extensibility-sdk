@@ -126,11 +126,11 @@ Error if connection is missing
 
 ***
 
-### swapFragment()
+### setSwapValue()
 
-> `static` **swapFragment**(`connection`: `any`, `value`: `string`): `void`
+> `static` **setSwapValue**(`connection`: `any`, `value`: `string`): `void`
 
-Swaps the field content with the provided value
+Sets the swap value for the field content
 
 #### Parameters
 

@@ -23,7 +23,7 @@ type ConnectionMocks = {
   closeMock?: jest.Mock;
   getExperienceMock?: jest.Mock;
   getGenerationContextMock?: jest.Mock;
-  swapFragmentMock?: jest.Mock;
+  setSwapValueMock?: jest.Mock;
 };
 
 const createMockConnection = ({
@@ -31,7 +31,7 @@ const createMockConnection = ({
   closeMock,
   getExperienceMock,
   getGenerationContextMock,
-  swapFragmentMock,
+  setSwapValueMock,
 }: ConnectionMocks = {}) =>
   ({
     host: {
@@ -41,7 +41,7 @@ const createMockConnection = ({
           close: closeMock || jest.fn(),
           getExperience: getExperienceMock || jest.fn(),
           getGenerationContext: getGenerationContextMock || jest.fn(),
-          swapFragment: swapFragmentMock || jest.fn(),
+          setSwapValue: setSwapValueMock || jest.fn(),
         },
       },
     },
@@ -257,50 +257,50 @@ describe("FragmentSwapExtensionService", () => {
     });
   });
 
-  describe("swapFragment", () => {
-    it("should call swapFragment with the correct payload", () => {
-      const mockSwapFragment = jest.fn();
-      const mockConnection = createMockConnection({ swapFragmentMock: mockSwapFragment });
+  describe("setSwapValue", () => {
+    it("should call setSwapValue with the correct payload", () => {
+      const mockSetSwapValue = jest.fn();
+      const mockConnection = createMockConnection({ setSwapValueMock: mockSetSwapValue });
 
-      FragmentSwapExtensionService.swapFragment(mockConnection, "new headline text");
+      FragmentSwapExtensionService.setSwapValue(mockConnection, "new headline text");
 
-      expect(mockSwapFragment).toHaveBeenCalledWith("new headline text");
-      expect(mockSwapFragment).toHaveBeenCalledTimes(1);
+      expect(mockSetSwapValue).toHaveBeenCalledWith("new headline text");
+      expect(mockSetSwapValue).toHaveBeenCalledTimes(1);
     });
 
     it("should throw FragmentSwapExtensionServiceError if connection is missing", () => {
       // @ts-ignore Testing null case explicitly
-      expect(() => FragmentSwapExtensionService.swapFragment(null, "new headline text")).toThrow(
+      expect(() => FragmentSwapExtensionService.setSwapValue(null, "new headline text")).toThrow(
         FragmentSwapExtensionServiceError,
       );
       // @ts-ignore Testing null case explicitly
-      expect(() => FragmentSwapExtensionService.swapFragment(null, "new headline text")).toThrow(
-        "Connection is required to swap fragment",
+      expect(() => FragmentSwapExtensionService.setSwapValue(null, "new headline text")).toThrow(
+        "Connection is required to set swap value",
       );
     });
 
     it("should throw FragmentSwapExtensionServiceError on API failure", () => {
-      const mockSwapFragment = jest.fn().mockImplementation(() => {
+      const mockSetSwapValue = jest.fn().mockImplementation(() => {
         throw new Error("API Error");
       });
-      const mockConnection = createMockConnection({ swapFragmentMock: mockSwapFragment });
+      const mockConnection = createMockConnection({ setSwapValueMock: mockSetSwapValue });
 
       expect(() =>
-        FragmentSwapExtensionService.swapFragment(mockConnection, "new headline text"),
+        FragmentSwapExtensionService.setSwapValue(mockConnection, "new headline text"),
       ).toThrow(FragmentSwapExtensionServiceError);
       expect(() =>
-        FragmentSwapExtensionService.swapFragment(mockConnection, "new headline text"),
-      ).toThrow("Failed to swap fragment");
+        FragmentSwapExtensionService.setSwapValue(mockConnection, "new headline text"),
+      ).toThrow("Failed to set swap value");
     });
 
     it("should pass the full FieldUpdate payload to the host API", () => {
-      const mockSwapFragment = jest.fn();
-      const mockConnection = createMockConnection({ swapFragmentMock: mockSwapFragment });
+      const mockSetSwapValue = jest.fn();
+      const mockConnection = createMockConnection({ setSwapValueMock: mockSetSwapValue });
 
-      FragmentSwapExtensionService.swapFragment(mockConnection, "new headline text");
+      FragmentSwapExtensionService.setSwapValue(mockConnection, "new headline text");
 
-      expect(mockSwapFragment).toHaveBeenCalledTimes(1);
-      expect(mockSwapFragment).toHaveBeenCalledWith("new headline text");
+      expect(mockSetSwapValue).toHaveBeenCalledTimes(1);
+      expect(mockSetSwapValue).toHaveBeenCalledWith("new headline text");
     });
   });
 });

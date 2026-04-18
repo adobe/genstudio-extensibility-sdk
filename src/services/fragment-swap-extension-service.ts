@@ -21,7 +21,7 @@ export interface FragmentSwapExtensionApi extends VirtualApi {
       close: () => void;
       getExperience: () => Promise<Experience>;
       getGenerationContext: () => Promise<GenerationContext>;
-      swapFragment: (fieldUpdate: FieldUpdate) => void;
+      setSwapValue: (fieldUpdate: FieldUpdate) => void;
     };
   };
 }
@@ -129,24 +129,24 @@ export class FragmentSwapExtensionService {
   }
 
   /**
-   * Swaps the field content with the provided value
+   * Sets the swap value for the field content
    * @param connection - The guest connection to the host
    * @param value - The new value to write into the field
    * @throws Error if connection is missing
    */
-  static swapFragment(connection: any, value: string): void {
+  static setSwapValue(connection: any, value: string): void {
     if (!connection) {
       throw new FragmentSwapExtensionServiceError(
-        "Connection is required to swap fragment",
+        "Connection is required to set swap value",
       );
     }
 
     try {
       // @ts-ignore Remote API is handled through postMessage
-      connection.host.api.fragmentSwapExtension.swapFragment(value);
+      connection.host.api.fragmentSwapExtension.setSwapValue(value);
     } catch (error) {
       throw new FragmentSwapExtensionServiceError(
-        "Failed to swap fragment",
+        "Failed to set swap value",
       );
     }
   }
