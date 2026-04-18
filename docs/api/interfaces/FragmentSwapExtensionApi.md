@@ -18,11 +18,11 @@
 
 ### api
 
-> **api**: \{ `fragmentSwapExtension`: \{ `close`: () => `void`; `getExperience`: () => `Promise`\<[`Experience`](Experience.md)\>; `getGenerationContext`: () => `Promise`\<[`GenerationContext`](../type-aliases/GenerationContext.md)\>; `open`: (`extensionId`: `string`) => `void`; `setSwapValue`: (`fieldUpdate`: [`FieldUpdate`](../type-aliases/FieldUpdate.md)) => `void`; \}; \}
+> **api**: \{ `fragmentSwapExtension`: \{ `close`: () => `void`; `getExperience`: () => `Promise`\<[`Experience`](Experience.md)\>; `getGenerationContext`: () => `Promise`\<[`GenerationContext`](../type-aliases/GenerationContext.md)\>; `open`: (`extensionId`: `string`) => `void`; `setSwapValue`: (`value`: `string`) => `void`; \}; \}
 
 #### fragmentSwapExtension
 
-> **fragmentSwapExtension**: \{ `close`: () => `void`; `getExperience`: () => `Promise`\<[`Experience`](Experience.md)\>; `getGenerationContext`: () => `Promise`\<[`GenerationContext`](../type-aliases/GenerationContext.md)\>; `open`: (`extensionId`: `string`) => `void`; `setSwapValue`: (`fieldUpdate`: [`FieldUpdate`](../type-aliases/FieldUpdate.md)) => `void`; \}
+> **fragmentSwapExtension**: \{ `close`: () => `void`; `getExperience`: () => `Promise`\<[`Experience`](Experience.md)\>; `getGenerationContext`: () => `Promise`\<[`GenerationContext`](../type-aliases/GenerationContext.md)\>; `open`: (`extensionId`: `string`) => `void`; `setSwapValue`: (`value`: `string`) => `void`; \}
 
 ##### fragmentSwapExtension.close()
 
@@ -64,13 +64,13 @@
 
 ##### fragmentSwapExtension.setSwapValue()
 
-> **setSwapValue**: (`fieldUpdate`: [`FieldUpdate`](../type-aliases/FieldUpdate.md)) => `void`
+> **setSwapValue**: (`value`: `string`) => `void`
 
 ###### Parameters
 
-###### fieldUpdate
+###### value
 
-[`FieldUpdate`](../type-aliases/FieldUpdate.md)
+`string`
 
 ###### Returns
 

@@ -21,7 +21,7 @@ export interface FragmentSwapExtensionApi extends VirtualApi {
       close: () => void;
       getExperience: () => Promise<Experience>;
       getGenerationContext: () => Promise<GenerationContext>;
-      setSwapValue: (fieldUpdate: FieldUpdate) => void;
+      setSwapValue: (value: string) => void;
     };
   };
 }
