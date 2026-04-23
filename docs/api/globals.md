@@ -11,6 +11,8 @@
 ## Classes
 
 - [ExtensionAuthError](classes/ExtensionAuthError.md)
+- [FragmentSwapExtensionService](classes/FragmentSwapExtensionService.md)
+- [FragmentSwapExtensionServiceError](classes/FragmentSwapExtensionServiceError.md)
 - [ImportTemplateExtensionService](classes/ImportTemplateExtensionService.md)
 - [ImportTemplateExtensionServiceError](classes/ImportTemplateExtensionServiceError.md)
 - [PromptExtensionService](classes/PromptExtensionService.md)
@@ -24,6 +26,7 @@
 
 - [Experience](interfaces/Experience.md)
 - [ExperienceField](interfaces/ExperienceField.md)
+- [FragmentSwapExtensionApi](interfaces/FragmentSwapExtensionApi.md)
 - [ImportTemplateExtensionApi](interfaces/ImportTemplateExtensionApi.md)
 - [PromptExtensionApi](interfaces/PromptExtensionApi.md)
 - [SelectContentExtensionApi](interfaces/SelectContentExtensionApi.md)
