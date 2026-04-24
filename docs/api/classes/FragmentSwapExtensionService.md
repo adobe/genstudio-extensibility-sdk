@@ -20,30 +20,6 @@ Manages swap field extension functionality for swapping field content
 
 ## Methods
 
-### close()
-
-> `static` **close**(`connection`: `any`): `void`
-
-Closes the swap field extension dialog
-
-#### Parameters
-
-##### connection
-
-`any`
-
-The guest connection to the host
-
-#### Returns
-
-`void`
-
-#### Throws
-
-Error if connection is missing
-
-***
-
 ### getExperience()
 
 > `static` **getExperience**(`connection`: `any`): `Promise`\<[`Experience`](../interfaces/Experience.md)\>
@@ -89,36 +65,6 @@ The guest connection to the host
 `Promise`\<[`GenerationContext`](../type-aliases/GenerationContext.md)\>
 
 Promise<GenerationContext> The generation context
-
-#### Throws
-
-Error if connection is missing
-
-***
-
-### open()
-
-> `static` **open**(`connection`: `any`, `extensionId`: `string`): `void`
-
-Opens the swap field extension dialog
-
-#### Parameters
-
-##### connection
-
-`any`
-
-The guest connection to the host
-
-##### extensionId
-
-`string`
-
-The ID of the extension to open
-
-#### Returns
-
-`void`
 
 #### Throws
 
