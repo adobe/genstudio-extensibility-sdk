@@ -19,16 +19,12 @@ import { GuestUI } from "@adobe/uix-guest";
 import { GenerationContext } from "../../src/types/generationContext/GenerationContext";
 
 type ConnectionMocks = {
-  openMock?: jest.Mock;
-  closeMock?: jest.Mock;
   getExperienceMock?: jest.Mock;
   getGenerationContextMock?: jest.Mock;
   setSwapValueMock?: jest.Mock;
 };
 
 const createMockConnection = ({
-  openMock,
-  closeMock,
   getExperienceMock,
   getGenerationContextMock,
   setSwapValueMock,
@@ -37,8 +33,6 @@ const createMockConnection = ({
     host: {
       api: {
         fragmentSwapExtension: {
-          open: openMock || jest.fn(),
-          close: closeMock || jest.fn(),
           getExperience: getExperienceMock || jest.fn(),
           getGenerationContext: getGenerationContextMock || jest.fn(),
           setSwapValue: setSwapValueMock || jest.fn(),
@@ -78,93 +72,6 @@ describe("FragmentSwapExtensionService", () => {
     id: "123",
     userPrompt: "test-user-prompt",
   };
-
-  describe("open", () => {
-    it("should open fragment swap extension successfully", () => {
-      const mockOpen = jest.fn();
-      const mockConnection = createMockConnection({ openMock: mockOpen });
-      const extensionId = "test-extension-id";
-
-      FragmentSwapExtensionService.open(mockConnection, extensionId);
-
-      expect(mockOpen).toHaveBeenCalledWith(extensionId);
-      expect(mockOpen).toHaveBeenCalledTimes(1);
-    });
-
-    it("should throw FragmentSwapExtensionServiceError if connection is missing", () => {
-      const extensionId = "test-extension-id";
-
-      // @ts-ignore Testing null case explicitly
-      expect(() => FragmentSwapExtensionService.open(null, extensionId)).toThrow(
-        FragmentSwapExtensionServiceError,
-      );
-      // @ts-ignore Testing null case explicitly
-      expect(() => FragmentSwapExtensionService.open(null, extensionId)).toThrow(
-        "Connection is required to open swap field extension",
-      );
-    });
-
-    it("should throw FragmentSwapExtensionServiceError on API failure", () => {
-      const mockOpen = jest.fn().mockImplementation(() => {
-        throw new Error("API Error");
-      });
-      const mockConnection = createMockConnection({ openMock: mockOpen });
-      const extensionId = "test-extension-id";
-
-      expect(() =>
-        FragmentSwapExtensionService.open(mockConnection, extensionId),
-      ).toThrow(FragmentSwapExtensionServiceError);
-      expect(() =>
-        FragmentSwapExtensionService.open(mockConnection, extensionId),
-      ).toThrow("Failed to open swap field extension");
-    });
-
-    it("should handle empty extensionId", () => {
-      const mockOpen = jest.fn();
-      const mockConnection = createMockConnection({ openMock: mockOpen });
-      const extensionId = "";
-
-      FragmentSwapExtensionService.open(mockConnection, extensionId);
-
-      expect(mockOpen).toHaveBeenCalledWith(extensionId);
-    });
-  });
-
-  describe("close", () => {
-    it("should close fragment swap extension successfully", () => {
-      const mockClose = jest.fn();
-      const mockConnection = createMockConnection({ closeMock: mockClose });
-
-      FragmentSwapExtensionService.close(mockConnection);
-
-      expect(mockClose).toHaveBeenCalledTimes(1);
-    });
-
-    it("should throw FragmentSwapExtensionServiceError if connection is missing", () => {
-      // @ts-ignore Testing null case explicitly
-      expect(() => FragmentSwapExtensionService.close(null)).toThrow(
-        FragmentSwapExtensionServiceError,
-      );
-      // @ts-ignore Testing null case explicitly
-      expect(() => FragmentSwapExtensionService.close(null)).toThrow(
-        "Connection is required to close fragment swap extension",
-      );
-    });
-
-    it("should throw FragmentSwapExtensionServiceError on API failure", () => {
-      const mockClose = jest.fn().mockImplementation(() => {
-        throw new Error("API Error");
-      });
-      const mockConnection = createMockConnection({ closeMock: mockClose });
-
-      expect(() =>
-        FragmentSwapExtensionService.close(mockConnection),
-      ).toThrow(FragmentSwapExtensionServiceError);
-      expect(() =>
-        FragmentSwapExtensionService.close(mockConnection),
-      ).toThrow("Failed to close fragment swap extension");
-    });
-  });
 
   describe("getExperience", () => {
     it("should fetch experience", async () => {
