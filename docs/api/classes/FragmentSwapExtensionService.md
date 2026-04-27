@@ -20,30 +20,6 @@ Manages swap field extension functionality for swapping field content
 
 ## Methods
 
-### close()
-
-> `static` **close**(`connection`: `any`): `void`
-
-Closes the swap field extension dialog
-
-#### Parameters
-
-##### connection
-
-`any`
-
-The guest connection to the host
-
-#### Returns
-
-`void`
-
-#### Throws
-
-Error if connection is missing
-
-***
-
 ### getExperience()
 
 > `static` **getExperience**(`connection`: `any`): `Promise`\<[`Experience`](../interfaces/Experience.md)\>
