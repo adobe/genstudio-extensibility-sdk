@@ -18,11 +18,11 @@
 
 ### api
 
-> **api**: \{ `fragmentSwapExtension`: \{ `close`: () => `void`; `getExperience`: () => `Promise`\<[`Experience`](Experience.md)\>; `getGenerationContext`: () => `Promise`\<[`GenerationContext`](../type-aliases/GenerationContext.md)\>; `open`: (`extensionId`: `string`) => `void`; `setSwapValue`: (`value`: `string`) => `void`; \}; \}
+> **api**: \{ `fragmentSwapExtension`: \{ `close`: () => `void`; `getExperience`: () => `Promise`\<[`Experience`](Experience.md)\>; `getGenerationContext`: () => `Promise`\<[`GenerationContext`](../type-aliases/GenerationContext.md)\>; `getSelectedField`: () => `Promise`\<[`FieldUpdate`](../type-aliases/FieldUpdate.md)\>; `open`: (`extensionId`: `string`) => `void`; `setSwapValue`: (`value`: `string`) => `void`; \}; \}
 
 #### fragmentSwapExtension
 
-> **fragmentSwapExtension**: \{ `close`: () => `void`; `getExperience`: () => `Promise`\<[`Experience`](Experience.md)\>; `getGenerationContext`: () => `Promise`\<[`GenerationContext`](../type-aliases/GenerationContext.md)\>; `open`: (`extensionId`: `string`) => `void`; `setSwapValue`: (`value`: `string`) => `void`; \}
+> **fragmentSwapExtension**: \{ `close`: () => `void`; `getExperience`: () => `Promise`\<[`Experience`](Experience.md)\>; `getGenerationContext`: () => `Promise`\<[`GenerationContext`](../type-aliases/GenerationContext.md)\>; `getSelectedField`: () => `Promise`\<[`FieldUpdate`](../type-aliases/FieldUpdate.md)\>; `open`: (`extensionId`: `string`) => `void`; `setSwapValue`: (`value`: `string`) => `void`; \}
 
 ##### fragmentSwapExtension.close()
 
@@ -47,6 +47,14 @@
 ###### Returns
 
 `Promise`\<[`GenerationContext`](../type-aliases/GenerationContext.md)\>
+
+##### fragmentSwapExtension.getSelectedField()
+
+> **getSelectedField**: () => `Promise`\<[`FieldUpdate`](../type-aliases/FieldUpdate.md)\>
+
+###### Returns
+
+`Promise`\<[`FieldUpdate`](../type-aliases/FieldUpdate.md)\>
 
 ##### fragmentSwapExtension.open()
 

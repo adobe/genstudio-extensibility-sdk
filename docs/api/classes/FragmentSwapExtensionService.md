@@ -96,6 +96,32 @@ Error if connection is missing
 
 ***
 
+### getSelectedField()
+
+> `static` **getSelectedField**(`connection`: `any`): `Promise`\<[`FieldUpdate`](../type-aliases/FieldUpdate.md)\>
+
+Gets the field currently being swapped, including its name and current value
+
+#### Parameters
+
+##### connection
+
+`any`
+
+The guest connection to the host
+
+#### Returns
+
+`Promise`\<[`FieldUpdate`](../type-aliases/FieldUpdate.md)\>
+
+Promise<FieldUpdate> The selected field's experienceId, name, and current value
+
+#### Throws
+
+Error if connection is missing
+
+***
+
 ### open()
 
 > `static` **open**(`connection`: `any`, `extensionId`: `string`): `void`

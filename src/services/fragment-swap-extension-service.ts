@@ -11,7 +11,7 @@ governing permissions and limitations under the License.
 */
 
 import { VirtualApi } from "@adobe/uix-core";
-import { Experience } from "../types/experience/Experience";
+import { Experience, FieldUpdate } from "../types/experience/Experience";
 import { GenerationContext } from "../types/generationContext/GenerationContext";
 
 export interface FragmentSwapExtensionApi extends VirtualApi {
@@ -21,6 +21,7 @@ export interface FragmentSwapExtensionApi extends VirtualApi {
       close: () => void;
       getExperience: () => Promise<Experience>;
       getGenerationContext: () => Promise<GenerationContext>;
+      getSelectedField: () => Promise<FieldUpdate>;
       setSwapValue: (value: string) => void;
     };
   };
@@ -124,6 +125,29 @@ export class FragmentSwapExtensionService {
     } catch (error) {
       throw new FragmentSwapExtensionServiceError(
         "Failed to get generation context from host",
+      );
+    }
+  }
+
+  /**
+   * Gets the field currently being swapped, including its name and current value
+   * @param connection - The guest connection to the host
+   * @returns Promise<FieldUpdate> The selected field's experienceId, name, and current value
+   * @throws Error if connection is missing
+   */
+  static async getSelectedField(connection: any): Promise<FieldUpdate> {
+    if (!connection) {
+      throw new FragmentSwapExtensionServiceError(
+        "Connection is required to get selected field",
+      );
+    }
+
+    try {
+      // @ts-ignore Remote API is handled through postMessage
+      return await connection.host.api.fragmentSwapExtension.getSelectedField();
+    } catch (error) {
+      throw new FragmentSwapExtensionServiceError(
+        "Failed to get selected field from host",
       );
     }
   }

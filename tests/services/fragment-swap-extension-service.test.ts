@@ -23,6 +23,7 @@ type ConnectionMocks = {
   closeMock?: jest.Mock;
   getExperienceMock?: jest.Mock;
   getGenerationContextMock?: jest.Mock;
+  getSelectedFieldMock?: jest.Mock;
   setSwapValueMock?: jest.Mock;
 };
 
@@ -31,6 +32,7 @@ const createMockConnection = ({
   closeMock,
   getExperienceMock,
   getGenerationContextMock,
+  getSelectedFieldMock,
   setSwapValueMock,
 }: ConnectionMocks = {}) =>
   ({
@@ -41,6 +43,7 @@ const createMockConnection = ({
           close: closeMock || jest.fn(),
           getExperience: getExperienceMock || jest.fn(),
           getGenerationContext: getGenerationContextMock || jest.fn(),
+          getSelectedField: getSelectedFieldMock || jest.fn(),
           setSwapValue: setSwapValueMock || jest.fn(),
         },
       },
@@ -254,6 +257,53 @@ describe("FragmentSwapExtensionService", () => {
           "Failed to get generation context from host",
         ),
       );
+    });
+  });
+
+  describe("getSelectedField", () => {
+    const mockSelectedField = {
+      experienceId: "exp123",
+      name: "headline",
+      value: "Original headline value",
+    };
+
+    it("should fetch the selected field", async () => {
+      const mockGetSelectedField = jest.fn().mockResolvedValue(mockSelectedField);
+      const mockConnection = createMockConnection({
+        getSelectedFieldMock: mockGetSelectedField,
+      });
+
+      const result = await FragmentSwapExtensionService.getSelectedField(mockConnection);
+
+      expect(mockGetSelectedField).toHaveBeenCalled();
+      expect(result).toEqual(mockSelectedField);
+    });
+
+    it("should throw FragmentSwapExtensionServiceError if connection is missing", async () => {
+      // @ts-ignore Testing null case explicitly
+      await expect(
+        FragmentSwapExtensionService.getSelectedField(null),
+      ).rejects.toThrow(FragmentSwapExtensionServiceError);
+      // @ts-ignore Testing null case explicitly
+      await expect(
+        FragmentSwapExtensionService.getSelectedField(null),
+      ).rejects.toThrow("Connection is required to get selected field");
+    });
+
+    it("should throw FragmentSwapExtensionServiceError on API failure", async () => {
+      const mockGetSelectedField = jest
+        .fn()
+        .mockRejectedValue(new Error("API Error"));
+      const mockConnection = createMockConnection({
+        getSelectedFieldMock: mockGetSelectedField,
+      });
+
+      await expect(
+        FragmentSwapExtensionService.getSelectedField(mockConnection),
+      ).rejects.toThrow(FragmentSwapExtensionServiceError);
+      await expect(
+        FragmentSwapExtensionService.getSelectedField(mockConnection),
+      ).rejects.toThrow("Failed to get selected field from host");
     });
   });
 
