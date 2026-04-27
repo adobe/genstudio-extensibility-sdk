@@ -18,11 +18,19 @@
 
 ### api
 
-> **api**: \{ `fragmentSwapExtension`: \{ `getExperience`: () => `Promise`\<[`Experience`](Experience.md)\>; `getGenerationContext`: () => `Promise`\<[`GenerationContext`](../type-aliases/GenerationContext.md)\>; `setSwapValue`: (`value`: `string`) => `void`; \}; \}
+> **api**: \{ `fragmentSwapExtension`: \{ `close`: () => `void`; `getExperience`: () => `Promise`\<[`Experience`](Experience.md)\>; `getGenerationContext`: () => `Promise`\<[`GenerationContext`](../type-aliases/GenerationContext.md)\>; `getSelectedField`: () => `Promise`\<[`FieldUpdate`](../type-aliases/FieldUpdate.md)\>; `open`: (`extensionId`: `string`) => `void`; `setSwapValue`: (`value`: `string`) => `void`; \}; \}
 
 #### fragmentSwapExtension
 
-> **fragmentSwapExtension**: \{ `getExperience`: () => `Promise`\<[`Experience`](Experience.md)\>; `getGenerationContext`: () => `Promise`\<[`GenerationContext`](../type-aliases/GenerationContext.md)\>; `setSwapValue`: (`value`: `string`) => `void`; \}
+> **fragmentSwapExtension**: \{ `close`: () => `void`; `getExperience`: () => `Promise`\<[`Experience`](Experience.md)\>; `getGenerationContext`: () => `Promise`\<[`GenerationContext`](../type-aliases/GenerationContext.md)\>; `getSelectedField`: () => `Promise`\<[`FieldUpdate`](../type-aliases/FieldUpdate.md)\>; `open`: (`extensionId`: `string`) => `void`; `setSwapValue`: (`value`: `string`) => `void`; \}
+
+##### fragmentSwapExtension.close()
+
+> **close**: () => `void`
+
+###### Returns
+
+`void`
 
 ##### fragmentSwapExtension.getExperience()
 
@@ -39,6 +47,28 @@
 ###### Returns
 
 `Promise`\<[`GenerationContext`](../type-aliases/GenerationContext.md)\>
+
+##### fragmentSwapExtension.getSelectedField()
+
+> **getSelectedField**: () => `Promise`\<[`FieldUpdate`](../type-aliases/FieldUpdate.md)\>
+
+###### Returns
+
+`Promise`\<[`FieldUpdate`](../type-aliases/FieldUpdate.md)\>
+
+##### fragmentSwapExtension.open()
+
+> **open**: (`extensionId`: `string`) => `void`
+
+###### Parameters
+
+###### extensionId
+
+`string`
+
+###### Returns
+
+`void`
 
 ##### fragmentSwapExtension.setSwapValue()
 
