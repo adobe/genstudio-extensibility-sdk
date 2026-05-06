@@ -35,14 +35,14 @@ export class SelectContentExtensionService {
    * @param connection - The guest connection to the host
    * @returns the current selected assets and the total count of left assets
    */
-  static sync(
+  static async sync(
     connection: any,
     extensionId: string,
-  ): {
+  ): Promise<{
     selectedAssets: Asset[];
     selectionLimit: number;
     allowedFileTypes: string[];
-  } {
+  }> {
     if (!connection) {
       throw new SelectContentExtensionServiceError(
         "Connection is required to sync selected assets",

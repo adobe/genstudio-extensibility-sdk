@@ -100,12 +100,12 @@ describe("SelectContentExtensionService", () => {
 
     it("should throw SelectContentExtensionServiceError if connection is missing", async () => {
       // @ts-ignore Testing null case explicitly
-      expect(() =>
+      await expect(
         SelectContentExtensionService.sync(null, "test-extension-id"),
-      ).toThrow(SelectContentExtensionServiceError);
-      expect(() =>
+      ).rejects.toThrow(SelectContentExtensionServiceError);
+      await expect(
         SelectContentExtensionService.sync(null, "test-extension-id"),
-      ).toThrow("Connection is required to sync selected assets");
+      ).rejects.toThrow("Connection is required to sync selected assets");
     });
 
     it("should handle empty selected assets array", async () => {
