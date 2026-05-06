@@ -98,36 +98,6 @@ Error if connection is missing
 
 ***
 
-### open()
-
-> `static` **open**(`connection`: `any`, `extensionId`: `string`): `void`
-
-Opens the swap field extension dialog
-
-#### Parameters
-
-##### connection
-
-`any`
-
-The guest connection to the host
-
-##### extensionId
-
-`string`
-
-The ID of the extension to open
-
-#### Returns
-
-`void`
-
-#### Throws
-
-Error if connection is missing
-
-***
-
 ### setSwapValue()
 
 > `static` **setSwapValue**(`connection`: `any`, `value`: `string`): `void`
