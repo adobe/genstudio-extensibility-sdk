@@ -11,9 +11,9 @@ An Experience is a container for various fields that define its characteristics.
 
 ## Properties
 
-### channels
+### channels?
 
-> **channels**: [`Channel`](../type-aliases/Channel.md)[]
+> `optional` **channels**: [`Channel`](../type-aliases/Channel.md)[]
 
 Channels associated with the experience
 

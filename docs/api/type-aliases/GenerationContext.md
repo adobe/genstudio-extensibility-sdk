@@ -6,7 +6,7 @@
 
 # Type Alias: GenerationContext
 
-> **GenerationContext**: \{ `additionalContexts`: [`AdditionalContext`](AdditionalContext.md)\<`any`\>[]; `brand`: [`Brand`](Brand.md); `id`: `string`; `locale`: `string`; `persona`: [`Persona`](Persona.md); `product`: [`Product`](Product.md); `sections`: [`SectionGenerationContext`](SectionGenerationContext.md)[]; `sourceExperience`: [`Experience`](../interfaces/Experience.md); `userPrompt`: `string`; \}
+> **GenerationContext**: \{ `additionalContexts`: [`AdditionalContext`](AdditionalContext.md)\<`any`\>[]; `brand`: [`Brand`](Brand.md); `channel`: [`Channel`](Channel.md); `id`: `string`; `locale`: `string`; `persona`: [`Persona`](Persona.md); `product`: [`Product`](Product.md); `sections`: [`SectionGenerationContext`](SectionGenerationContext.md)[]; `sourceExperience`: [`Experience`](../interfaces/Experience.md); `userPrompt`: `string`; \}
 
 ## Type declaration
 
@@ -17,6 +17,14 @@
 ### brand?
 
 > `optional` **brand**: [`Brand`](Brand.md)
+
+### ~~channel?~~
+
+> `optional` **channel**: [`Channel`](Channel.md)
+
+#### Deprecated
+
+Use [Experience.channels](../interfaces/Experience.md#channels) instead
 
 ### id
 

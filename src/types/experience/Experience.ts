@@ -22,7 +22,7 @@ export interface Experience {
   /** Unique identifier for the experience */
   id: string;
   /** Channels associated with the experience */
-  channels: Channel[];
+  channels?: Channel[];
   /** Collection of experience fields stored as key-value pairs */
   experienceFields: Record<string, ExperienceField>;
   /** Template associated with the experience */
