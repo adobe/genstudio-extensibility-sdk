@@ -56,7 +56,6 @@ export type SectionGenerationContext = {
 export type GenerationContext = {
   id: string;
   userPrompt: string;
-  channel?: Channel;
   locale?: string;
   brand?: Brand;
   product?: Product;
