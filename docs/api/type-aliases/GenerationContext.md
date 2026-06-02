@@ -18,9 +18,13 @@
 
 > `optional` **brand**: [`Brand`](Brand.md)
 
-### channel?
+### ~~channel?~~
 
 > `optional` **channel**: [`Channel`](Channel.md)
+
+#### Deprecated
+
+Use [Experience.channels](../interfaces/Experience.md#channels) instead
 
 ### id
 

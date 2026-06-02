@@ -11,6 +11,14 @@ An Experience is a container for various fields that define its characteristics.
 
 ## Properties
 
+### channels?
+
+> `optional` **channels**: [`Channel`](../type-aliases/Channel.md)[]
+
+Channels associated with the experience
+
+***
+
 ### experienceFields
 
 > **experienceFields**: `Record`\<`string`, [`ExperienceField`](ExperienceField.md)\>

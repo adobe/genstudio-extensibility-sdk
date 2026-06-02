@@ -95,10 +95,20 @@ describe("SDK Exports", () => {
 
       const experience: Experience = {
         id: "test",
+        channels: [
+          { id: "email", name: "Email" },
+          { id: "meta", name: "Meta" },
+          { id: "display", name: "Display" },
+        ],
         experienceFields: { test: field },
       };
 
       expect(experience.id).toBe("test");
+      expect(experience.channels).toEqual([
+        { id: "email", name: "Email" },
+        { id: "meta", name: "Meta" },
+        { id: "display", name: "Display" },
+      ]);
       expect(experience.experienceFields.test).toEqual(field);
     });
 

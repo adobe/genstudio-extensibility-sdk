@@ -56,6 +56,9 @@ export type SectionGenerationContext = {
 export type GenerationContext = {
   id: string;
   userPrompt: string;
+  /**
+   * @deprecated Use {@link Experience.channels} instead
+   */
   channel?: Channel;
   locale?: string;
   brand?: Brand;

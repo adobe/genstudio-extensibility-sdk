@@ -11,6 +11,8 @@ governing permissions and limitations under the License.
 */
 /* this file defines types and interfaces that are considered as Experience api for extension consumers */
 
+import { Channel } from "../channel/Channel";
+
 /**
  * Metadata describing a variant's size and aspect ratio.
  */
@@ -50,6 +52,8 @@ export type Variant = {
 export type ExperienceWithVariant = {
   /** Unique identifier for the experience */
   id: string;
+  /** Channels associated with the experience */
+  channels?: Channel[];
   /** Metadata for the experience */
   metadata: {
     /** Basic info about the experience */

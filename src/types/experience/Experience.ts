@@ -11,6 +11,7 @@ governing permissions and limitations under the License.
 */
 /* this file defines types and interfaces that are considered as Experience api for extension consumers */
 
+import { Channel } from "../channel/Channel";
 import { Template } from "../template";
 
 /**
@@ -20,6 +21,8 @@ import { Template } from "../template";
 export interface Experience {
   /** Unique identifier for the experience */
   id: string;
+  /** Channels associated with the experience */
+  channels?: Channel[];
   /** Collection of experience fields stored as key-value pairs */
   experienceFields: Record<string, ExperienceField>;
   /** Template associated with the experience */
