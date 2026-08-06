@@ -38,6 +38,13 @@ export type AppOptions = {
      */
     cors: boolean;
   };
+  importTemplate?: {
+    /**
+     * Indicates that this extension supports the field auto-detect and review step
+     * during template import.
+     */
+    supportsFieldReview?: boolean;
+  };
 };
 
 /** App Metadata */

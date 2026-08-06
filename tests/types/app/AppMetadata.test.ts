@@ -56,11 +56,15 @@ describe("AppMetadata types", () => {
         selectContent: {
           cors: true,
         },
+        importTemplate: {
+          supportsFieldReview: true,
+        },
       },
     };
     expect(metadata).toBeDefined();
     expect(metadata.options?.validation?.singleExperienceViewMode).toBe(true);
     expect(metadata.options?.selectContent?.cors).toBe(true);
+    expect(metadata.options?.importTemplate?.supportsFieldReview).toBe(true);
   });
 
   it("should compile with partial options", () => {
