@@ -47,7 +47,6 @@ export type AppOptions = {
   };
 };
 
-/** App Metadata */
 export type AppMetadata = {
   id: string;
   extensionId: string; //deprecated
