@@ -1,0 +1,89 @@
+name: Save npm SDK Weekly Download History
+
+on:
+  schedule:
+    # Runs every Sunday at 00:00 UTC
+    - cron: '0 0 * * 0'
+  workflow_dispatch: # Allows manual trigger anytime
+
+jobs:
+  update-npm-stats:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout traffic branch
+        uses: actions/checkout@v4
+        with:
+          ref: 'traffic'
+          fetch-depth: 0
+
+      - name: Create traffic branch if missing
+        run: |
+          if ! git show-ref --verify --quiet refs/heads/traffic; then
+            git checkout --orphan traffic
+            git rm -rf .
+            echo "# SDK Registry Weekly Traffic Logs" > README.md
+            echo "[]" > npm_weekly_downloads.json
+            git add README.md npm_weekly_downloads.json
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@://github.com"
+            git commit -m "Initialize traffic branch for weekly npm logs"
+            git push origin traffic
+          else
+            git checkout traffic
+          fi
+
+      - name: Fetch and Merge npm Weekly Analytics
+        run: |
+          # Fetch the aggregated total for the 'last-week' range from npm
+          curl -s "https://npmjs.org" > current_week.json
+          
+          # Merge data via Python using start/end date ranges as a unique key
+          python3 -c "
+          import json, os
+          
+          history_file = 'npm_weekly_downloads.json'
+          if os.path.exists(history_file):
+              try:
+                  with open(history_file, 'r') as f: history = json.load(f)
+              except Exception: history = []
+          else:
+              history = []
+              
+          # Use a combination of start and end dates as a unique key to prevent duplicate weeks
+          history_map = {f\"{item['start_date']}_{item['end_date']}\": item for item in history}
+          
+          with open('current_week.json', 'r') as f:
+              incoming_data = json.load(f)
+          
+          # npm point API returns 'start', 'end', and 'downloads'
+          if 'start' in incoming_data and 'end' in incoming_data:
+              start = incoming_data['start']
+              end = incoming_data['end']
+              unique_key = f\"{start}_{end}\"
+              
+              history_map[unique_key] = {
+                  'start_date': start,
+                  'end_date': end,
+                  'downloads': incoming_data['downloads']
+              }
+              
+          # Sort entries chronologically by their start date
+          sorted_history = sorted(history_map.values(), key=lambda x: x['start_date'])
+          
+          with open(history_file, 'w') as f:
+              json.dump(sorted_history, f, indent=2)
+          "
+          rm current_week.json
+
+      - name: Commit and Push Changes
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@://github.com"
+          git add npm_weekly_downloads.json
+          
+          if ! git diff --cached --quiet; then
+            git commit -m "Automated update of npm weekly download metrics - $(date +%Y-%m-%d)"
+            git push origin traffic
+          else
+            echo "No new weekly data to log."
+          fi
